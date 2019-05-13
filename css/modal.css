@@ -97,9 +97,7 @@
     transition: 0.7s;
     /* box-shadow:0px 2px 2px red; */
   }
-  .product-card:nth-child(3n+1) {
-    /* margin-left: 0px!important; */
-  }
+  
   .product-card .card-image-top{
     height: 70%;
     /* background: red; */
@@ -265,9 +263,7 @@
         float:left;
         margin: 3% 0%;
     }
-    .group{
-      /* margin-bottom: 20%; */
-    }
+    
   }
   @media (min-width: 760px) and (max-width: 980px) {
       .col {  margin: 1% 0 1% 0%; }
@@ -677,12 +673,7 @@ body{
   }
   
   /*  */
-  .flex-row {
-  
-  }
-  .logged-in {
-    /* display: none!important; */
-  }
+ 
   /*  */
   .truncate {
     float: right;
