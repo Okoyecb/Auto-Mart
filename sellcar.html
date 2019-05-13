@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Auto Mart</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/cars.css">
+
+  <!-- External Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+    integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <div class="topnav" id="myTopnav">
+        <a href="index.html" class="active brand">AutoMart</a>
+        <a href="login.html" id="login">Login</a>
+        <a class="button button-sec" href="#">Sell Car</a>
+        <a href="newcars.html">New Cars</a>
+        <a href="usedcars.html">Used Cars</a>
+        <a href="javascript:void(0);" class="icon" onclick="navbarResponsiveness();">
+            <i class="fa fa-bars"></i>
+        </a>
+    </div>
+
+  
+    <form>
+      
+            <h3>Sell your car</h3>
+            
+            <fieldset>
+              <legend><span class="number">1</span>Enter Your Details</legend>
+              <label for="name">Full Name:</label>
+              <input type="text" id="name" name="user_name">
+              
+              <label for="universityname">Email Address:</label>
+              <input type="email" id="mail" name="user_email">
+              
+              <label for="cityname">Phone Number:</label>
+              <input type="email" id="mail" name="user_email">
+              
+              <label for="mail">Address:</label>
+              <input type="email" id="mail" name="user_email">
+              
+              <label for="contactnumber">City:</label>
+              <input type="text" id="contactno" name="user_number">
+              
+              <label for="contactnumber">State:</label>
+              <input type="text" id="contactno" name="user_number">
+              
+            </fieldset>
+            
+            <fieldset>
+              <legend><span class="number">2</span>Vehicle Information</legend>
+              <br></br>
+               <label for="contactnumber">Make:</label>
+              <input type="text" id="contactno" name="user_number">
+            
+            <label for="contactnumber">Model:</label>
+              <input type="text" id="contactno" name="user_number">
+            
+             <label for="contactnumber">Year:</label>
+              <input type="text" id="contactno" name="user_number">
+            
+             <label for="contactnumber">Body Type:</label>
+              <input type="text" id="contactno" name="user_number">
+            
+            
+            <label for="event_select_for">Transmission Type:</label>
+              <select id="event_select" name="memeber_job">
+              <optgroup label="Single Member Events">
+                <option value="sdance">Select Transmission</option>
+                <option value="code">Manual</option>
+                <option value="sbr">Automatic</option>
+              </optgroup>       
+            </select>
+       
+             <label for="price">Price:</label>
+              <input type="text" id="price" name="price">
+              <br></br>
+              <label for="description">Description:</label>
+              <textarea id="des" name="description"></textarea>
+            </fieldset>
+    
+      <label class='file-input'>
+      <input type='file'>
+      <span class='choose'>Select</span>
+        <span class='label' data-js-label>No file selected</span>
+    </label>
+    
+    
+            <button type="submit">Submit</button>
+          </form>
+
+
+
+  <footer id="non-fixed-footer">
+    <p> Designed & Developed with <i class="fa fa-heart fa-sm"></i> by Chidi Okoye</p>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="js/nav.js" charset="utf-8"></script>
+  <script src="js/input.js" charset="utf-8"></script>
+</body>
+
+</html>
