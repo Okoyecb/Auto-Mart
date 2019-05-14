@@ -480,13 +480,13 @@ strong {
 .link:focus,
 .link:visited,
 .link:active {
-    color: #f20902;
+    color: #00A4FF;
     text-decoration: none;
 }
 
 .link {
     font-size: 16px;
-    color: #f20902;
+    color: #00A4FF;
 }
 
 .section:after {
