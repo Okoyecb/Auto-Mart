@@ -1,7 +1,7 @@
 
 
 form { 
-    margin: 0 auto; 
+    /* margin: 0 auto;  */
     width:50%;
     }
     
@@ -16,7 +16,7 @@ form {
     
     .smBox {
       background: #fff;
-      width: 80%;
+      width: 150%;
       border-radius: 3px;
       padding: 15px;
       margin: 5px;
@@ -24,6 +24,12 @@ form {
       transition: 0.2s;
       caret-color: #FFF;
       color: #333333;
+    }
+
+    .modal-header >h2{
+        color: #333333;
+        font-size: 18px;
+        text-align: center;
     }
     
     .smBox:focus {
@@ -105,6 +111,8 @@ form {
       transition: all 0.25s ease-out; 
     }
     
+
+   
     
     /* Med */
     @media screen and (max-width: 1200px) {
@@ -115,8 +123,20 @@ form {
     width: 60%;
     }
     .darkBox {
-      background: #ffffff
+      background: #ffffff;
       padding: 5% 5% 5% 5%;
+    }
+
+    .smBox{
+        background: #fff;
+      width: 90%;
+      border-radius: 3px;
+      padding: 15px;
+      margin: 5px;
+      border: 1px solid #4c5358;
+      transition: 0.2s;
+      caret-color: #FFF;
+      color: #333333;
     }
     }
     
