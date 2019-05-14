@@ -583,11 +583,7 @@ strong {
     }
 }
 
-@media (min-width: 1200px) {
-    .column-bg-7 {
-        /* width: 58.33333%; */
-    }
-}
+
 
 @media (min-width: 1200px) {
 
