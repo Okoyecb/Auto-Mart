@@ -8,6 +8,7 @@
     <title>Auto Mart</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/cars.css">
+    <link rel="stylesheet" href="css/admin.css">
 
 
     <!-- External Fonts -->
@@ -22,8 +23,7 @@
                 <a href="index.html" class="active brand">AutoMart</a>
                 <a href="login.html" id="login">Login</a>
                 <a class="button button-sec" href="#">Sell Car</a>
-                <a href="newcars.html">New Cars</a>
-                <a href="usedcars.html">Used Cars</a>
+                <a href="Car-listing.html">Car Listing</a>
                 <a href="javascript:void(0);" class="icon" onclick="navbarResponsiveness();">
                     <i class="fa fa-bars"></i>
                 </a>
@@ -33,14 +33,50 @@
         <div class="hero-image hero-image-short hero-image-shorter-mobile hero-image-fill hero-image--deals">
             <div
                 class="hero-image-container hero-image-container-middle-aligned hero-image-container-center-aligned hero-image-container-title hero-image-container--deals">
-                <h1 class="heading-title heading-top">Compare the best new car deals</h1>
+                <h1 class="heading-title heading-top">Acquire the best New or Used car deals</h1>
                 <h5 class="hero-sub-title">Browse the best deals currently available on Automart</h5>
             </div>
         </div>
     </div>
-
+    
     <section class="deals-car-section-container">
         <div class="grid-container">
+                <div class="advanced-options group flex-grid content-controls" id="advanced-options" data-grid-type="fill">
+                        <label class="search-option content-control order-by control">
+                            <span class="control-label">Order by State</span>
+                            <div class="custom-select-wrap">
+                                <select name="order" class="search-select">
+                                    <option value="popularity">All Cars</option>
+                                    <option value="newest">Sold Cars</option>
+                                    <option value="newest">Unsold Cars</option>
+                                </select>
+                            </div>
+                        </label>
+                        <label class="search-option content-control order-by control">
+                            <span class="control-label">Filter by Manufacturer</span>
+                            <div class="custom-select-wrap">
+                                <select name="order" class="search-select">
+                                    <option value="popularity">Select Manufacturer</option>
+                                    <option value="newest">Nissan</option>
+                                    <option value="newest">Toyota</option>
+                                    <option value="newest">Tesla</option>
+                                    <option value="newest">BMW</option>
+                                    <option value="newest">Juke</option>
+                                </select>
+                            </div>
+                        </label>
+                        <label class="search-option content-control order-by control">
+                            <span class="control-label">Price Range</span>
+                            <div class="custom-select-wrap">
+                                <select name="order" class="search-select">
+                                    <option value="popularity">Select Range</option>
+                                    <option value="popularity">&#8358;500,000 - &#8358;1,500,000</option>
+                                    <option value="newest">&#8358;1,550,000 - &#8358;2,500,000</option>
+                                    <option value="newest">&#8358;2,500,000 - &#8358;4,500,000</option>
+                                </select>
+                            </div>
+                        </label>
+                    </div>
             <div class="cars-section-content">
                 <ul class="car-cards__list list-unstyled">
                     <li class="car-cards__list-item">
@@ -75,7 +111,17 @@
                                             </div>
                                         </div>
                                         <div>
-
+                                                <div class="wowscore wowscore-small wowscore-excellent " data-progress="8">
+                                                        <div class="circle">
+                                                            <div class="mask full">
+                                                                <div class="fill"></div>
+                                                            </div>
+                                                            <div class="mask half">
+                                                                <div class="fill"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="inset ">New</div>
+                                                    </div>
                                         </div>
                                     </div>
                                     <div class="card-generic__savings">
@@ -129,6 +175,17 @@
                                         </div>
                                         <div>
 
+                                            <div class="Usedscore wowscore-small wowscore-excellent " data-progress="8">
+                                                <div class="circle">
+                                                    <div class="mask full">
+                                                        <div class="fill"></div>
+                                                    </div>
+                                                    <div class="mask half">
+                                                        <div class="fill"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="inset ">Used</div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="card-generic__savings">
@@ -181,7 +238,17 @@
                                             </div>
                                         </div>
                                         <div>
-
+                                                <div class="Usedscore wowscore-small wowscore-excellent " data-progress="8">
+                                                        <div class="circle">
+                                                            <div class="mask full">
+                                                                <div class="fill"></div>
+                                                            </div>
+                                                            <div class="mask half">
+                                                                <div class="fill"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="inset">Used</div>
+                                                    </div>
                                         </div>
                                     </div>
                                     <div class="card-generic__savings">
@@ -234,7 +301,17 @@
                                             </div>
                                         </div>
                                         <div>
-
+                                                <div class="wowscore wowscore-small wowscore-excellent " data-progress="8">
+                                                        <div class="circle">
+                                                            <div class="mask full">
+                                                                <div class="fill"></div>
+                                                            </div>
+                                                            <div class="mask half">
+                                                                <div class="fill"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="inset">New</div>
+                                                    </div>
                                         </div>
                                     </div>
                                     <div class="card-generic__savings">
@@ -287,7 +364,17 @@
                                             </div>
                                         </div>
                                         <div>
-
+                                                <div class="Usedscore wowscore-small wowscore-excellent " data-progress="8">
+                                                        <div class="circle">
+                                                            <div class="mask full">
+                                                                <div class="fill"></div>
+                                                            </div>
+                                                            <div class="mask half">
+                                                                <div class="fill"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="inset ">Used</div>
+                                                    </div>
                                         </div>
                                     </div>
                                     <div class="card-generic__savings">
@@ -340,7 +427,17 @@
                                             </div>
                                         </div>
                                         <div>
-
+                                                <div class="wowscore wowscore-small wowscore-excellent " data-progress="8">
+                                                        <div class="circle">
+                                                            <div class="mask full">
+                                                                <div class="fill"></div>
+                                                            </div>
+                                                            <div class="mask half">
+                                                                <div class="fill"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="inset ">New</div>
+                                                    </div>
                                         </div>
                                     </div>
                                     <div class="card-generic__savings">
@@ -393,7 +490,17 @@
                                             </div>
                                         </div>
                                         <div>
-
+                                                <div class="Usedscore wowscore-small wowscore-excellent " data-progress="8">
+                                                        <div class="circle">
+                                                            <div class="mask full">
+                                                                <div class="fill"></div>
+                                                            </div>
+                                                            <div class="mask half">
+                                                                <div class="fill"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="inset">Used</div>
+                                                    </div>
                                         </div>
                                     </div>
                                     <div class="card-generic__savings">
@@ -446,7 +553,17 @@
                                             </div>
                                         </div>
                                         <div>
-
+                                                <div class="wowscore wowscore-small wowscore-excellent " data-progress="8">
+                                                        <div class="circle">
+                                                            <div class="mask full">
+                                                                <div class="fill"></div>
+                                                            </div>
+                                                            <div class="mask half">
+                                                                <div class="fill"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="inset ">New</div>
+                                                    </div>
                                         </div>
                                     </div>
                                     <div class="card-generic__savings">
@@ -499,7 +616,17 @@
                                             </div>
                                         </div>
                                         <div>
-
+                                                <div class="wowscore wowscore-small wowscore-excellent " data-progress="8">
+                                                        <div class="circle">
+                                                            <div class="mask full">
+                                                                <div class="fill"></div>
+                                                            </div>
+                                                            <div class="mask half">
+                                                                <div class="fill"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="inset ">New</div>
+                                                    </div>
                                         </div>
                                     </div>
                                     <div class="card-generic__savings">
@@ -552,7 +679,17 @@
                                             </div>
                                         </div>
                                         <div>
-
+                                                <div class="wowscore wowscore-small wowscore-excellent " data-progress="8">
+                                                        <div class="circle">
+                                                            <div class="mask full">
+                                                                <div class="fill"></div>
+                                                            </div>
+                                                            <div class="mask half">
+                                                                <div class="fill"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="inset ">New</div>
+                                                    </div>
                                         </div>
                                     </div>
                                     <div class="card-generic__savings">
@@ -605,7 +742,17 @@
                                             </div>
                                         </div>
                                         <div>
-
+                                                <div class="wowscore wowscore-small wowscore-excellent " data-progress="8">
+                                                        <div class="circle">
+                                                            <div class="mask full">
+                                                                <div class="fill"></div>
+                                                            </div>
+                                                            <div class="mask half">
+                                                                <div class="fill"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="inset ">New</div>
+                                                    </div>
                                         </div>
                                     </div>
                                     <div class="card-generic__savings">
@@ -658,7 +805,17 @@
                                             </div>
                                         </div>
                                         <div>
-
+                                                <div class="Usedscore wowscore-small wowscore-excellent " data-progress="8">
+                                                        <div class="circle">
+                                                            <div class="mask full">
+                                                                <div class="fill"></div>
+                                                            </div>
+                                                            <div class="mask half">
+                                                                <div class="fill"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="inset ">Used</div>
+                                                    </div>
                                         </div>
                                     </div>
                                     <div class="card-generic__savings">
