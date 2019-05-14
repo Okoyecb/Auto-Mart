@@ -258,6 +258,24 @@
     width: 100%;
 }
 
+.wowscore{
+    background-color: #2ecc71;
+    color: #FFF;
+    font-size: 14px;
+    padding: 5px 10px 5px 10px;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+.Usedscore{
+    background-color: yellow;
+    color: #FFF;
+    font-size: 14px;
+    padding: 5px 10px 5px 10px;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
 
 /* Sell car */
 *,  *:before,  *:after  {
@@ -265,15 +283,7 @@
     -webkit-box-sizing:  border-box;
     box-sizing:  border-box;
 }
-/* body  {
-    font-family:  'Nunito',  sans-serif;
-    color:  #384047;
-    background-image: url('http://designvkp.com/wp-content/uploads/2015/07/pattern.png');
-    background-position:  0px 0px;
-    background-repeat:  repeat;
-    animation:  animatedBackground 40s linear infinite;
-    opacity: 0.9;
-} */
+
 @keyframes animatedBackground  {
     from  {
     background-position:  0 0;
