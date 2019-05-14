@@ -1,0 +1,425 @@
+.hero-image-short {
+    height: 400px;
+}
+
+.hero-image {
+    background-color: #9da5b2;
+    background-size: cover;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+}
+
+.hero-image {
+    max-height: 1280px;
+    position: relative;
+}
+
+.hero-image-fill:before {
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    content: "";
+    background-color: rgba(33, 34, 36, .3);
+}
+
+.hero-image-container-middle-aligned {
+    vertical-align: middle;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.hero-image-container-center-aligned {
+    text-align: center;
+}
+
+.hero-image-container {
+    max-width: 1188px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 32px 16px;
+    position: relative;
+}
+
+.hero-image .heading-title {
+    color: #fff;
+}
+
+.heading-title {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.hero-sub-title {
+    color: #fff;
+    font-weight: 400;
+    margin-top: 16px;
+    margin-bottom: 32px;
+}
+
+.hero-image {
+    background-image: url('https://res.cloudinary.com/okoyecb/image/upload/v1557445765/lifestyle-hero_x0evdp.jpg');
+}
+
+.grid-container {
+    max-width: 1188px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.car-cards__list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.list-unstyled {
+    list-style: none;
+}
+
+.card-generic__vertical-split-info {
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-generic__vertical-split-info .card-generic__pricing {
+    margin-bottom: 0;
+}
+
+.price--no-wrap,
+.text--no-wrap,
+.value {
+    white-space: nowrap;
+}
+
+.card-generic__savings {
+    color: #2ecc71;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.card-generic__ctas {
+    margin-top: auto;
+}
+
+.btn-one {
+    text-align: center;
+    border-radius: 3px;
+    cursor: pointer;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    color: #fff;
+    font-weight: 700;
+    transition: background-color .15s;
+    min-width: 180px;
+    height: 100%;
+    /* text-decoration: none; */
+}
+
+
+
+.btn-full-width {
+    width: 100%;
+}
+
+.card-generic__ctas .btn-one {
+    margin-top: 16px;
+    font-size: 25px;
+}
+
+.btn.btn--disabled,
+.btn.btn-secondary,
+.btn.btn-transparent,
+.btn:disabled {
+    padding: 11px 31px;
+}
+
+.btn-secondary {
+    border: 1px solid rgba(33, 34, 36, .15);
+    background-color: #fff;
+    color: #212224;
+}
+
+.card-generic__media-text {
+    color: #fff;
+    text-shadow: 1px 1px 1px rgba(33, 34, 36, .3);
+    bottom: 0;
+}
+
+.card-generic__media-actions,
+.card-generic__media-badges,
+.card-generic__media-text {
+    z-index: 1;
+    position: absolute;
+    left: 0;
+    right: 0;
+    padding: 16px;
+}
+
+.card-generic__media-container--with-overlay:before {
+    position: absolute;
+    background-image: linear-gradient(transparent, #212224);
+    content: "";
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 40%;
+    opacity: .6;
+    z-index: 1;
+}
+
+.card-generic__media {
+    border-top-left-radius: 3px;
+    height: 300px !important;
+    border-top-right-radius: 3px;
+    transition: transform 1s cubic-bezier(.165, .84, .44, 1);
+    background-size: cover;
+    background-position: 50%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.picanto {
+    background-image: url('https://res.cloudinary.com/okoyecb/image/upload/v1557606741/images_cb7xyg.jpg')
+}
+
+.corolla {
+    background-image: url('https://res.cloudinary.com/okoyecb/image/upload/v1557606807/1_uxyfpn.jpg');
+}
+
+.accord {
+    background-image: url('https://res.cloudinary.com/okoyecb/image/upload/v1557606879/1_1_lpy6ta.jpg');
+}
+
+.lexus {
+    background-image: url('https://res.cloudinary.com/okoyecb/image/upload/v1557606956/1_2_kczkiq.jpg');
+}
+
+.camaro {
+    background-image: url('https://res.cloudinary.com/okoyecb/image/upload/v1557607040/b09bcda965c827db2dfd5cad3ced74ce_a43ful.jpg');
+}
+
+.legend {
+    background-image: url('https://res.cloudinary.com/okoyecb/image/upload/v1557607110/59764bb6a2b5f_IMG_4391-940x614_ueqojy.jpg');
+}
+
+.pasat {
+    background-image: url('https://res.cloudinary.com/okoyecb/image/upload/v1557607196/trager-vw-pasat-b6-7dfc34874c1f0d3a22-0-0-0-0-0_iieir9.jpg');
+}
+
+.benz {
+    background-image: url('https://res.cloudinary.com/okoyecb/image/upload/v1557607298/58146209-1_ssfers.jpg');
+}
+
+.elantra {
+    background-image: url('https://res.cloudinary.com/okoyecb/image/upload/v1557607550/2019_Hyundai_Elantra_facelift_front_1.21.19_xwn0ez.jpg');
+}
+
+.mustang {
+    background-image: url('https://res.cloudinary.com/okoyecb/image/upload/v1557607733/2019_Ford_Mustang_GT_5.0_facelift_xmwazy.jpg');
+}
+
+.peugeot {
+    background-image: url('https://res.cloudinary.com/okoyecb/image/upload/v1557607485/664e606d-e5a4-4832-9973-0ca867a3c2ef_j8odde.jpg');
+}
+
+.bmw {
+    background-image: url('https://res.cloudinary.com/okoyecb/image/upload/v1557607772/5-BMW-X6-Body-kit-By-Xclusive-Customz-Sheffield_16945396290_m_giifdy.jpg');
+}
+
+.card-generic__media-subtitle,
+.card-generic__media-title {
+    font-weight: 600;
+}
+
+.card-generic__media-container {
+    padding-top: 70%;
+    position: relative;
+    height: 0% !important;
+}
+
+.card-generic__body {
+    display: flex;
+    flex-grow: 1;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.card-generic__section {
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    width: 100%;
+}
+
+
+
+
+
+@media screen and (min-width: 651px) {
+
+    .card-generic__heading,
+    .card-generic__option,
+    .card-generic__pricing-from,
+    .card-generic__subtitle {
+        font-size: 16px;
+        line-height: 24px;
+        color: #666b76;
+    }
+}
+
+@media screen and (min-width: 1025px) {
+    h5 {
+        font-size: 24px;
+        line-height: 32px;
+    }
+}
+
+@media screen and (min-width: 651px) {
+    .grid-container {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+}
+
+@media screen and (min-width: 1025px) {
+    .car-cards__list-item:nth-child(3n+1) {
+        clear: left;
+    }
+}
+
+@media screen and (min-width: 1025px) {
+    h1 {
+        font-size: 56px;
+        line-height: 60px;
+    }
+}
+
+@media screen and (min-width: 651px) {
+    .hero-image-container {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+}
+
+@media screen and (min-width: 1025px) {
+    .car-cards__list-item {
+        float: left;
+        display: block;
+        margin-right: 2.35765%;
+        width: 31.76157%;
+        margin-bottom: 32px;
+    }
+}
+
+@media screen and (min-width: 1025px) {
+    .car-cards__list-item:nth-child(2n) {
+        margin-right: 2.35765%;
+    }
+}
+
+@media screen and (min-width: 1025px) {
+    .car-cards__list-item {
+        float: left;
+        display: block;
+        margin-right: 2.35765%;
+        width: 31.76157%;
+        margin-bottom: 32px;
+    }
+}
+
+@media screen and (min-width: 1025px) {
+    .car-cards__list-item:nth-child(3n) {
+        margin-right: 0;
+    }
+}
+
+@media screen and (min-width: 1025px) {
+    .car-cards__list-item:nth-child(odd) {
+        clear: none;
+    }
+}
+
+@media screen and (min-width: 1025px) {
+    .car-cards__list-item:nth-child(3n+1) {
+        clear: left;
+    }
+}
+
+@media screen and (min-width: 1025px) {
+    .car-cards__list-item:nth-child(2n) {
+        margin-right: 2.35765%;
+    }
+}
+
+@media screen and (min-width: 1025px) {
+    .car-cards__list-item:nth-child(odd) {
+        clear: none;
+    }
+}
+
+@media screen and (min-width: 1025px) {
+    .car-cards__list-item:nth-child(3n) {
+        margin-right: 0;
+    }
+}
+
+@media screen and (min-width: 1025px) {
+    .car-cards__list-item:nth-child(3n+1) {
+        clear: left;
+    }
+
+}
+
+@media screen and (min-width: 1025px) {
+    .car-cards__list-item:nth-child(2n) {
+        margin-right: 2.35765%;
+    }
+}
+
+@media screen and (min-width: 1025px) {
+    .car-cards__list-item:nth-child(3n) {
+        margin-right: 0;
+    }
+}
+
+@media screen and (min-width: 1025px) {
+    .car-cards__list-item:nth-child(odd) {
+        clear: none;
+    }
+}
+
+@media screen and (min-width: 651px) {
+    .card-generic__savings {
+        font-size: 18px;
+        line-height: 28px;
+    }
+}
+
+@media screen and (min-width: 1025px) {
+    .card-generic__media-subtitle {
+        font-size: 24px;
+        line-height: 32px;
+    }
+}
+
+@media screen and (min-width: 651px) {
+    .btn-one {
+        font-size: 20px;
+        line-height: 32px;
+    }
+}

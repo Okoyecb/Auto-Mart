@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Auto Mart</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/cars.css">
+    <link rel="stylesheet" href="css/admin.css">
+
+
+    <!-- External Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+        integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <div class="topnav" id="myTopnav">
+        <a href="index.html" class="active brand">AutoMart</a>
+        <a href="login.html" id="login">Login</a>
+        <a class="button button-sec" href="sellcar.html">Sell Car</a>
+        <a href="Car-listing.html">Car Listing</a>
+        <a href="javascript:void(0);" class="icon" onclick="navbarResponsiveness();">
+            <i class="fa fa-bars"></i>
+        </a>
+    </div>
+
+    <div id="deals-index">
+        <div class="hero-image hero-image-short hero-image-shorter-mobile hero-image-fill hero-image--deals">
+            <div
+                class="hero-image-container hero-image-container-middle-aligned hero-image-container-center-aligned hero-image-container-title hero-image-container--deals">
+                <h1 class="heading-title heading-top">Acquire the best New or Used car deals</h1>
+                <h5 class="hero-sub-title">Browse the best deals currently available on Automart</h5>
+            </div>
+        </div>
+    </div>
+
+    <section class="deals-car-section-container">
+        <div class="grid-container">
+            <div class="advanced-options group flex-grid content-controls" id="advanced-options" data-grid-type="fill">
+                <label class="search-option content-control order-by control">
+                    <span class="control-label">Order by State</span>
+                    <div class="custom-select-wrap">
+                        <select name="order" class="search-select">
+                            <option value="popularity">All Cars</option>
+                            <option value="newest">Sold Cars</option>
+                            <option value="newest">Unsold Cars</option>
+                        </select>
+                    </div>
+                </label>
+                <label class="search-option content-control order-by control">
+                    <span class="control-label">Filter by Manufacturer</span>
+                    <div class="custom-select-wrap">
+                        <select name="order" class="search-select">
+                            <option value="popularity">Select Manufacturer</option>
+                            <option value="newest">Nissan</option>
+                            <option value="newest">Toyota</option>
+                            <option value="newest">Tesla</option>
+                            <option value="newest">BMW</option>
+                            <option value="newest">Juke</option>
+                        </select>
+                    </div>
+                </label>
+                <label class="search-option content-control order-by control">
+                    <span class="control-label">Price Range</span>
+                    <div class="custom-select-wrap">
+                        <select name="order" class="search-select">
+                            <option value="popularity">Select Range</option>
+                            <option value="popularity">&#8358;500,000 - &#8358;1,500,000</option>
+                            <option value="newest">&#8358;1,550,000 - &#8358;2,500,000</option>
+                            <option value="newest">&#8358;2,500,000 - &#8358;4,500,000</option>
+                        </select>
+                    </div>
+                </label>
+            </div>
+            <div class="cars-section-content">
+                <ul class="car-cards__list list-unstyled">
+                    <li class="car-cards__list-item">
+                        <article class="card-generic">
+                            <a class="card-generic__media-container card-generic__media-container--with-overlay"
+                                href="singlecar.html">
+                                <div class="card-generic__media-text">
+                                    <div class="card-generic__media-title">
+                                        Renault
+                                    </div>
+                                    <div class="card-generic__media-subtitle">
+                                        Zoe
+                                    </div>
+                                </div>
+                                <div class="card-generic__media zoe">
+
+                                </div>
+                            </a>
+
+                            <div class="card-generic__body">
+                                <div class="card-generic__section">
+                                    <div class="card-generic__vertical-split-info">
+                                        <div>
+                                            <div class="card-generic__pricing-from">
+                                                Price
+                                            </div>
+                                            <div class="card-generic__pricing">
+                                                <div class="value">
+                                                    <span class="price--no-wrap">&#8358;4,200,000</span> - <span
+                                                        class="price--no-wrap">&#8358;6,120,000</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="wowscore wowscore-small wowscore-excellent " data-progress="8">
+                                                <div class="circle">
+                                                    <div class="mask full">
+                                                        <div class="fill"></div>
+                                                    </div>
+                                                    <div class="mask half">
+                                                        <div class="fill"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="inset ">New</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-generic__savings">
+                                        Avg. saving &#8358;7,134
+                                    </div>
+                                    <div class="card-generic__option">
+                                        An electric car that's perfect for the city
+                                    </div>
+                                    <div class="card-generic__ctas">
+                                        <a class="btn-one btn-action btn-full-width" href="purchase-order.html">
+                                            Buy Now
+                                        </a>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </article>
+
+                    </li>
+                    <li class="car-cards__list-item">
+                        <article class="card-generic">
+                            <a class="card-generic__media-container card-generic__media-container--with-overlay"
+                                href="singlecar.html">
+                                <div class="card-generic__media-text">
+                                    <div class="card-generic__media-title">
+                                        SEAT
+                                    </div>
+                                    <div class="card-generic__media-subtitle">
+                                        Leon
+                                    </div>
+                                </div>
+                                <div class="card-generic__media leon">
+                                </div>
+                            </a>
+
+                            <div class="card-generic__body">
+                                <div class="card-generic__section">
+                                    <div class="card-generic__vertical-split-info">
+                                        <div>
+                                            <div class="card-generic__pricing-from">
+                                                Price
+                                            </div>
+                                            <div class="card-generic__pricing">
+                                                <div class="value">
+                                                    <span class="price--no-wrap">&#8358;4,200,000</span> - <span
+                                                        class="price--no-wrap">&#8358;6,120,000</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div>
+
+                                            <div class="Usedscore wowscore-small wowscore-excellent " data-progress="8">
+                                                <div class="circle">
+                                                    <div class="mask full">
+                                                        <div class="fill"></div>
+                                                    </div>
+                                                    <div class="mask half">
+                                                        <div class="fill"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="inset ">Used</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-generic__savings">
+                                        Avg. saving &#8358;5,682
+                                    </div>
+                                    <div class="card-generic__option">
+                                        A sporty-yet-practical family car
+                                    </div>
+                                    <div class="card-generic__ctas">
+                                        <a class="btn-one btn-action btn-full-width" href="purchase-order.html">
+                                            Buy Now
+                                        </a>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </article>
+
+                    </li>
+                    <li class="car-cards__list-item">
+                        <article class="card-generic">
+                            <a class="card-generic__media-container card-generic__media-container--with-overlay"
+                                href="singlecar.html">
+                                <div class="card-generic__media-text">
+                                    <div class="card-generic__media-title">
+                                        Nissan
+                                    </div>
+                                    <div class="card-generic__media-subtitle">
+                                        Juke
+                                    </div>
+                                </div>
+                                <div class="card-generic__media juke">
+                                </div>
+                            </a>
+
+                            <div class="card-generic__body">
+                                <div class="card-generic__section">
+                                    <div class="card-generic__vertical-split-info">
+                                        <div>
+                                            <div class="card-generic__pricing-from">
+                                                Price
+                                            </div>
+                                            <div class="card-generic__pricing">
+                                                <div class="value">
+                                                    <span class="price--no-wrap">&#8358;4,200,000</span> - <span
+                                                        class="price--no-wrap">&#8358;6,120,000</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="Usedscore wowscore-small wowscore-excellent " data-progress="8">
+                                                <div class="circle">
+                                                    <div class="mask full">
+                                                        <div class="fill"></div>
+                                                    </div>
+                                                    <div class="mask half">
+                                                        <div class="fill"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="inset">Used</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-generic__savings">
+                                        Avg. saving &#8358;4,541
+                                    </div>
+                                    <div class="card-generic__option">
+                                        A funky looking small family car that’s cheap to run
+                                    </div>
+                                    <div class="card-generic__ctas" style="height: 50px;">
+                                        <a class="btn-one btn-action btn-full-width" href="purchase-order.html">
+                                            Buy Now
+                                        </a>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </article>
+
+                    </li>
+                    <li class="car-cards__list-item">
+                        <article class="card-generic">
+                            <a class="card-generic__media-container card-generic__media-container--with-overlay"
+                                href="singlecar.html">
+                                <div class="card-generic__media-text">
+                                    <div class="card-generic__media-title">
+                                        Nissan
+                                    </div>
+                                    <div class="card-generic__media-subtitle">
+                                        Qashqai
+                                    </div>
+                                </div>
+                                <div class="card-generic__media qashqai">
+                                </div>
+                            </a>
+
+                            <div class="card-generic__body">
+                                <div class="card-generic__section">
+                                    <div class="card-generic__vertical-split-info">
+                                        <div>
+                                            <div class="card-generic__pricing-from">
+                                                Price
+                                            </div>
+                                            <div class="card-generic__pricing">
+                                                <div class="value">
+                                                    <span class="price--no-wrap">&#8358;4,200,000</span> - <span
+                                                        class="price--no-wrap">&#8358;6,120,000</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="wowscore wowscore-small wowscore-excellent " data-progress="8">
+                                                <div class="circle">
+                                                    <div class="mask full">
+                                                        <div class="fill"></div>
+                                                    </div>
+                                                    <div class="mask half">
+                                                        <div class="fill"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="inset">New</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-generic__savings">
+                                        Avg. saving &#8358;5,811
+                                    </div>
+                                    <div class="card-generic__option">
+                                        Small, economical family SUV that’s comfortable to drive
+                                    </div>
+                                    <div class="card-generic__ctas" style="height: 50px;">
+                                        <a class="btn-one btn-action btn-full-width" href="purchase-order.html">
+                                            Buy Now
+                                        </a>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </article>
+
+                    </li>
+                    <li class="car-cards__list-item">
+                        <article class="card-generic">
+                            <a class="card-generic__media-container card-generic__media-container--with-overlay"
+                                href="singlecar.html">
+                                <div class="card-generic__media-text">
+                                    <div class="card-generic__media-title">
+                                        Nissan
+                                    </div>
+                                    <div class="card-generic__media-subtitle">
+                                        Micra
+                                    </div>
+                                </div>
+                                <div class="card-generic__media micra">
+                                </div>
+                            </a>
+
+                            <div class="card-generic__body">
+                                <div class="card-generic__section">
+                                    <div class="card-generic__vertical-split-info">
+                                        <div>
+                                            <div class="card-generic__pricing-from">
+                                                Price
+                                            </div>
+                                            <div class="card-generic__pricing">
+                                                <div class="value">
+                                                    <span class="price--no-wrap">&#8358;4,200,000</span> - <span
+                                                        class="price--no-wrap">&#8358;6,120,000</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="Usedscore wowscore-small wowscore-excellent " data-progress="8">
+                                                <div class="circle">
+                                                    <div class="mask full">
+                                                        <div class="fill"></div>
+                                                    </div>
+                                                    <div class="mask half">
+                                                        <div class="fill"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="inset ">Used</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-generic__savings">
+                                        Avg. saving &#8358;3,322
+                                    </div>
+                                    <div class="card-generic__option">
+                                        A comfortable small car with a stylish interior
+                                    </div>
+                                    <div class="card-generic__ctas">
+                                        <a class="btn-one btn-action btn-full-width" href="purchase-order.html">
+                                            Buy Now
+                                        </a>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </article>
+
+                    </li>
+                    <li class="car-cards__list-item">
+                        <article class="card-generic">
+                            <a class="card-generic__media-container card-generic__media-container--with-overlay"
+                                href="singlecar.html">
+                                <div class="card-generic__media-text">
+                                    <div class="card-generic__media-title">
+                                        Vauxhall
+                                    </div>
+                                    <div class="card-generic__media-subtitle">
+                                        Astra
+                                    </div>
+                                </div>
+                                <div class="card-generic__media astra">
+                                </div>
+                            </a>
+
+                            <div class="card-generic__body">
+                                <div class="card-generic__section">
+                                    <div class="card-generic__vertical-split-info">
+                                        <div>
+                                            <div class="card-generic__pricing-from">
+                                                Price
+                                            </div>
+                                            <div class="card-generic__pricing">
+                                                <div class="value">
+                                                    <span class="price--no-wrap">&#8358;4,200,000</span> - <span
+                                                        class="price--no-wrap">&#8358;6,120,000</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="wowscore wowscore-small wowscore-excellent " data-progress="8">
+                                                <div class="circle">
+                                                    <div class="mask full">
+                                                        <div class="fill"></div>
+                                                    </div>
+                                                    <div class="mask half">
+                                                        <div class="fill"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="inset ">New</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-generic__savings">
+                                        Avg. saving &#8358;4,715
+                                    </div>
+                                    <div class="card-generic__option">
+                                        A class-leading, British-built hatchback
+                                    </div>
+                                    <div class="card-generic__ctas">
+                                        <a class="btn-one btn-action btn-full-width" href="purchase-order.html">
+                                            Buy Now
+                                        </a>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </article>
+
+                    </li>
+                    <li class="car-cards__list-item">
+                        <article class="card-generic">
+                            <a class="card-generic__media-container card-generic__media-container--with-overlay"
+                                href="singlecar.html">
+                                <div class="card-generic__media-text">
+                                    <div class="card-generic__media-title">
+                                        SEAT
+                                    </div>
+                                    <div class="card-generic__media-subtitle">
+                                        Ibiza
+                                    </div>
+                                </div>
+                                <div class="card-generic__media ibiza">
+                                </div>
+                            </a>
+
+                            <div class="card-generic__body">
+                                <div class="card-generic__section">
+                                    <div class="card-generic__vertical-split-info">
+                                        <div>
+                                            <div class="card-generic__pricing-from">
+                                                Price
+                                            </div>
+                                            <div class="card-generic__pricing">
+                                                <div class="value">
+                                                    <span class="price--no-wrap">&#8358;4,200,000</span> - <span
+                                                        class="price--no-wrap">&#8358;6,120,000</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="Usedscore wowscore-small wowscore-excellent " data-progress="8">
+                                                <div class="circle">
+                                                    <div class="mask full">
+                                                        <div class="fill"></div>
+                                                    </div>
+                                                    <div class="mask half">
+                                                        <div class="fill"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="inset">Used</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-generic__savings">
+                                        Avg. saving &#8358;3,814
+                                    </div>
+                                    <div class="card-generic__option">
+                                        A sporty looking small family car with a big boot
+                                    </div>
+                                    <div class="card-generic__ctas" style="height: 50px;">
+                                        <a class="btn-one btn-action btn-full-width" href="purchase-order.html">
+                                            Buy Now
+                                        </a>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </article>
+
+                    </li>
+                    <li class="car-cards__list-item">
+                        <article class="card-generic">
+                            <a class="card-generic__media-container card-generic__media-container--with-overlay"
+                                href="singlecar.html">
+                                <div class="card-generic__media-text">
+                                    <div class="card-generic__media-title">
+                                        Mercedes
+                                    </div>
+                                    <div class="card-generic__media-subtitle">
+                                        E-Class Saloon
+                                    </div>
+                                </div>
+                                <div class="card-generic__media eclass">
+                                </div>
+                            </a>
+
+                            <div class="card-generic__body">
+                                <div class="card-generic__section">
+                                    <div class="card-generic__vertical-split-info">
+                                        <div>
+                                            <div class="card-generic__pricing-from">
+                                                Price
+                                            </div>
+                                            <div class="card-generic__pricing">
+                                                <div class="value">
+                                                    <span class="price--no-wrap">&#8358;4,200,000</span> - <span
+                                                        class="price--no-wrap">&#8358;6,120,000</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="wowscore wowscore-small wowscore-excellent " data-progress="8">
+                                                <div class="circle">
+                                                    <div class="mask full">
+                                                        <div class="fill"></div>
+                                                    </div>
+                                                    <div class="mask half">
+                                                        <div class="fill"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="inset ">New</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-generic__savings">
+                                        Avg. saving &#8358;8,794
+                                    </div>
+                                    <div class="card-generic__option">
+                                        A comfortable saloon with a stunning interior
+                                    </div>
+                                    <div class="card-generic__ctas">
+                                        <a class="btn-one btn-action btn-full-width" href="purchase-order.html">
+                                            Buy Now
+                                        </a>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </article>
+
+                    </li>
+                    <li class="car-cards__list-item">
+                        <article class="card-generic">
+                            <a class="card-generic__media-container card-generic__media-container--with-overlay"
+                                href="singlecar.html">
+                                <div class="card-generic__media-text">
+                                    <div class="card-generic__media-title">
+                                        Hyundai
+                                    </div>
+                                    <div class="card-generic__media-subtitle">
+                                        Tucson
+                                    </div>
+                                </div>
+                                <div class="card-generic__media tucson">
+                                </div>
+                            </a>
+
+                            <div class="card-generic__body">
+                                <div class="card-generic__section">
+                                    <div class="card-generic__vertical-split-info">
+                                        <div>
+                                            <div class="card-generic__pricing-from">
+                                                Price
+                                            </div>
+                                            <div class="card-generic__pricing">
+                                                <div class="value">
+                                                    <span class="price--no-wrap">&#8358;4,200,000</span> - <span
+                                                        class="price--no-wrap">&#8358;6,120,000</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="wowscore wowscore-small wowscore-excellent " data-progress="8">
+                                                <div class="circle">
+                                                    <div class="mask full">
+                                                        <div class="fill"></div>
+                                                    </div>
+                                                    <div class="mask half">
+                                                        <div class="fill"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="inset ">New</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-generic__savings">
+                                        Avg. saving &#8358;5,073
+                                    </div>
+                                    <div class="card-generic__option">
+                                        Well-equipped small family SUV
+                                    </div>
+                                    <div class="card-generic__ctas">
+                                        <a class="btn-one btn-action btn-full-width" href="purchase-order.html">
+                                            Buy Now
+                                        </a>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </article>
+
+                    </li>
+                    <li class="car-cards__list-item">
+                        <article class="card-generic">
+                            <a class="card-generic__media-container card-generic__media-container--with-overlay"
+                                href="singlecar.html">
+                                <div class="card-generic__media-text">
+                                    <div class="card-generic__media-title">
+                                        Nissan
+                                    </div>
+                                    <div class="card-generic__media-subtitle">
+                                        X-Trail
+                                    </div>
+                                </div>
+                                <div class="card-generic__media xtrail">
+                                </div>
+                            </a>
+
+                            <div class="card-generic__body">
+                                <div class="card-generic__section">
+                                    <div class="card-generic__vertical-split-info">
+                                        <div>
+                                            <div class="card-generic__pricing-from">
+                                                Price
+                                            </div>
+                                            <div class="card-generic__pricing">
+                                                <div class="value">
+                                                    <span class="price--no-wrap">&#8358;4,200,000</span> - <span
+                                                        class="price--no-wrap">&#8358;6,120,000</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="wowscore wowscore-small wowscore-excellent " data-progress="8">
+                                                <div class="circle">
+                                                    <div class="mask full">
+                                                        <div class="fill"></div>
+                                                    </div>
+                                                    <div class="mask half">
+                                                        <div class="fill"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="inset ">New</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-generic__savings">
+                                        Avg. saving &#8358;5,786
+                                    </div>
+                                    <div class="card-generic__option">
+                                        Comfortable and practical SUV comes with five or seven seats
+                                    </div>
+                                    <div class="card-generic__ctas" style="height: 50px;">
+                                        <a class="btn-one btn-action btn-full-width" href="purchase-order.html">
+                                            Buy Now
+                                        </a>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </article>
+
+                    </li>
+                    <li class="car-cards__list-item">
+                        <article class="card-generic">
+                            <a class="card-generic__media-container card-generic__media-container--with-overlay"
+                                href="singlecar.html">
+                                <div class="card-generic__media-text">
+                                    <div class="card-generic__media-title">
+                                        Peugeot
+                                    </div>
+                                    <div class="card-generic__media-subtitle">
+                                        208
+                                    </div>
+                                </div>
+                                <div class="card-generic__media  peugeot">
+                                </div>
+                            </a>
+
+                            <div class="card-generic__body">
+                                <div class="card-generic__section">
+                                    <div class="card-generic__vertical-split-info">
+                                        <div>
+                                            <div class="card-generic__pricing-from">
+                                                Price
+                                            </div>
+                                            <div class="card-generic__pricing">
+                                                <div class="value">
+                                                    <span class="price--no-wrap">&#8358;4,200,000</span> - <span
+                                                        class="price--no-wrap">&#8358;6,120,000</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="wowscore wowscore-small wowscore-excellent " data-progress="8">
+                                                <div class="circle">
+                                                    <div class="mask full">
+                                                        <div class="fill"></div>
+                                                    </div>
+                                                    <div class="mask half">
+                                                        <div class="fill"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="inset ">New</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-generic__savings">
+                                        Avg. saving &#8358;3,282
+                                    </div>
+                                    <div class="card-generic__option">
+                                        A cheap-to-run and stylish supermini
+                                    </div>
+                                    <div class="card-generic__ctas">
+                                        <a class="btn-one btn-action btn-full-width" href="purchase-order.html">
+                                            Buy Now
+                                        </a>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </article>
+
+                    </li>
+                    <li class="car-cards__list-item">
+                        <article class="card-generic">
+                            <a class="card-generic__media-container card-generic__media-container--with-overlay"
+                                href="singlecar.html">
+                                <div class="card-generic__media-text">
+                                    <div class="card-generic__media-title">
+                                        Honda
+                                    </div>
+                                    <div class="card-generic__media-subtitle">
+                                        Civic
+                                    </div>
+                                </div>
+                                <div class="card-generic__media civic">
+                                </div>
+                            </a>
+
+                            <div class="card-generic__body">
+                                <div class="card-generic__section">
+                                    <div class="card-generic__vertical-split-info">
+                                        <div>
+                                            <div class="card-generic__pricing-from">
+                                                Price
+                                            </div>
+                                            <div class="card-generic__pricing">
+                                                <div class="value">
+                                                    <span class="price--no-wrap">&#8358;4,200,000</span> - <span
+                                                        class="price--no-wrap">&#8358;6,120,000</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="Usedscore wowscore-small wowscore-excellent " data-progress="8">
+                                                <div class="circle">
+                                                    <div class="mask full">
+                                                        <div class="fill"></div>
+                                                    </div>
+                                                    <div class="mask half">
+                                                        <div class="fill"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="inset ">Used</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-generic__savings">
+                                        Avg. saving &#8358;4,200
+                                    </div>
+                                    <div class="card-generic__option">
+                                        A roomy family car with funky looks and perky petrol engines
+                                    </div>
+                                    <div class="card-generic__ctas" style="height: 50px;">
+                                        <a class="btn-one btn-action btn-full-width" href="purchase-order.html">
+                                            Buy Now
+                                        </a>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </article>
+
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <footer id="non-fixed-footer">
+        <p> Designed & Developed with <i class="fa fa-heart fa-sm"></i> by Chidi Okoye</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/nav.js" charset="utf-8"></script>
+</body>
+
+</html>

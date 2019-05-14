@@ -1,0 +1,156 @@
+
+
+form { 
+    /* margin: 0 auto;  */
+    width:50%;
+    }
+    
+    .darkBox {
+      background: #fff;
+      padding: 5% 20% 5% 20%;
+    }
+
+    label{
+        font-size: 16px;
+    }
+    
+    .smBox {
+      background: #fff;
+      width: 150%;
+      border-radius: 3px;
+      padding: 15px;
+      margin: 5px;
+      border: 1px solid #4c5358;
+      transition: 0.2s;
+      caret-color: #FFF;
+      color: #333333;
+    }
+
+    .modal-header >h2{
+        color: #333333;
+        font-size: 18px;
+        text-align: center;
+    }
+    
+    .smBox:focus {
+      outline: none;
+      background: #fff;
+      border: 1px solid #333333;
+      box-shadow: 0  1px #333333;
+    }
+    
+    ::placeholder {
+        color: #AEAFAF;
+        opacity: 1;
+    }
+    
+    .bigBox {
+      min-height: 150px;
+      padding-bottom: 20%;
+    }
+    
+    .bigTitle {
+      text-align: center;
+      color: #333333;
+      font-size: 20px;
+      font-weight: bold;
+    }
+    
+    .trial {
+      position: relative;
+      transform: translateY(10%);
+      display: block;
+      text-transform: none;
+      text-decoration: none;
+      background: rgba(255, 255, 255, 0);
+      border: 2px solid rgba(235, 235, 235, 1);
+      border-radius: 12px;
+      padding: 1px 1em;
+      overflow: hidden;
+      color: #333333;
+      font-weight: 100;
+      z-index: 0;
+      backface-visibility: hidden;
+      width: 40%;
+      text-align: center;
+      /* border-radius: 4px; */
+      margin: auto;
+    }
+    
+    .trial:hover {
+      /* background: white; */
+      background: #ffffff;
+      color: #333333;
+      border: 2px solid #333333;
+      border-radius: 12px;
+      text-decoration: none;
+    }
+    
+    .btn-in::before {
+      transform: scale(5);
+      border-radius: 100px;
+      transition: all 0.25s ease-out;
+    
+    }
+    .trial::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      transform: scale(0,0.5);
+      background: #ffffff;
+      border-radius: 100%;
+      overflow: hidden;
+      z-index: -1;
+      
+    }
+    .trial:hover::before {
+      transform: scale(2,4);
+      transition: all 0.25s ease-out; 
+    }
+    
+
+   
+    
+    /* Med */
+    @media screen and (max-width: 1200px) {
+      /* ... */
+      
+      form { 
+    margin: 0 auto; 
+    width: 60%;
+    }
+    .darkBox {
+      background: #ffffff;
+      padding: 5% 5% 5% 5%;
+    }
+
+    .smBox{
+        background: #fff;
+      width: 90%;
+      border-radius: 3px;
+      padding: 15px;
+      margin: 5px;
+      border: 1px solid #4c5358;
+      transition: 0.2s;
+      caret-color: #FFF;
+      color: #333333;
+    }
+    }
+    
+    
+    /* Small */
+    @media screen and (max-width: 650px) {
+      /* ... */
+      
+      form { 
+    margin: 0 auto; 
+    width: 100%;
+    }
+    .darkBox {
+      background: #ffffff;
+      padding: 5% 5% 5% 5%;
+    }
+    }
