@@ -7,11 +7,13 @@ form {
     
     .darkBox {
       background: #fff;
-      padding: 5% 20% 5% 20%;
+      padding: 5% 20% 5% 30%;
+      margin: auto;
     }
 
     label{
         font-size: 16px;
+        padding-left: 2%;
     }
     
     .smBox {
@@ -22,8 +24,8 @@ form {
       margin: 5px;
       border: 1px solid #4c5358;
       transition: 0.2s;
-      caret-color: #FFF;
       color: #333333;
+      line-height: 2;
     }
 
     .modal-header >h2{
@@ -57,14 +59,12 @@ form {
     }
     
     .trial {
-      position: relative;
       transform: translateY(10%);
       display: block;
-      text-transform: none;
       text-decoration: none;
       background: rgba(255, 255, 255, 0);
       border: 2px solid rgba(235, 235, 235, 1);
-      border-radius: 12px;
+      border-radius: 6px;
       padding: 1px 1em;
       overflow: hidden;
       color: #333333;

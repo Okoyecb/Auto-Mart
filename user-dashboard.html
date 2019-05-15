@@ -9,6 +9,7 @@
 
     <link rel="stylesheet" href="css/modal.css">
     <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="css/sidenav.css">
     <link rel="stylesheet" href="css/purchase.css">
     <!-- External fonts -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
@@ -19,356 +20,390 @@
 <body>
     <div class="topnav" id="myTopnav">
         <a href="index.html" class="active brand">AutoMart</a>
-        <a href="javascript:void(0);" id="logout">Log out</a>
-        <a href="user-dashboard.html">User Dashboard</a>
+        <a href="javascript:void(0);" id="logout">logout</a>
+        <a href="admin.html">Admin</a>
         <a href="javascript:void(0);" class="icon" onclick="navbarResponsiveness();">
             <i class="fa fa-bars"></i>
         </a>
     </div>
+    
 
-    <div class="contain">
-        <h1 class="caption">Listed Adverts</h1>
-        <div class="advanced-options group flex-grid content-controls" id="advanced-options" data-grid-type="fill">
-            <label class="search-option content-control order-by control">
-                <span class="control-label">Order by State</span>
-                <div class="custom-select-wrap">
-                    <select name="order" class="search-select">
-                        <option value="popularity">All Cars</option>
-                        <option value="newest">Sold Cars</option>
-                        <option value="newest">Unsold Cars</option>
-                    </select>
-                </div>
-            </label>
-            <label class="search-option content-control order-by control">
-                <span class="control-label">Filter by Manufacturer</span>
-                <div class="custom-select-wrap">
-                    <select name="order" class="search-select">
-                        <option value="popularity">Select Manufacturer</option>
-                        <option value="newest">Nissan</option>
-                        <option value="newest">Toyota</option>
-                        <option value="newest">Tesla</option>
-                        <option value="newest">BMW</option>
-                    </select>
-                </div>
-            </label>
-            <label class="search-option content-control order-by control">
-                <span class="control-label">Price Range</span>
-                <div class="custom-select-wrap">
-                    <select name="order" class="search-select">
-                        <option value="popularity">Select Range</option>
-                        <option value="popularity">&#8358;500,000 - &#8358;1,500,000</option>
-                        <option value="newest">&#8358;1,550,000 - &#8358;2,500,000</option>
-                        <option value="newest">&#8358;2,500,000 - &#8358;4,500,000</option>
-                    </select>
-                </div>
-            </label>
-        </div>
+    <div class="w3-sidebar w3-bar-block w3-light-grey w3-card">
+            <h5 class="w3-bar-item">Menu</h5>
+            <button class="w3-bar-item w3-button tablink" onclick="openCity(event, 'Tokyo')">User Profile</button>
+            <button class="w3-bar-item w3-button tablink" onclick="openCity(event, 'London')">Listed Adverts</button>
+            <button class="w3-bar-item w3-button tablink" onclick="openCity(event, 'Paris')">Pending Purchase</button>
+          </div>
+          
+          <div class="side-content" >
 
-        <table>
-            <thead>
-                <tr>
-                    <th scope="col">Date Added</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Manufacturer</th>
-                    <th scope="col">State</th>
-                    <th scope="col">Availability</th>
-                    <th scope="col">Action</th>
+            <div id="Tokyo" class="w3-container city">
+                    <h1>Welcome Chidi Okoye</h1>
 
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-
-                    <td data-label="Date Added">04/01/2019</td>
-                    <td data-label="Price">&#8358;10,000,000</td>
-                    <td data-label="Manufacturer">Toyota</td>
-                    <td data-label="State">New</td>
-                    <td data-label="available"><select>
-                            <option>Select Availability</option>
-                            <option>Sold</option>
-                            <option>Unsold</option>
-                        </select>
-                    </td>
-                    <td data-label="Action" class="icons">
-                        <button type="button" id=" " name="button" class="btn bg-transparent" onclick="fire()"><i
-                                class="fas fa-edit"></i></i></button>
-                        <button type="button" id="myBtn" name="button" class="btn bg-transparent " onclick="btn()"><i
-                                class="far fa-trash-alt"></i></button>
-                    </td>
-                </tr>
-                <tr>
-
-                    <td data-label="Date Added">03/01/2019</td>
-                    <td data-label="Price">&#8358;6,550,000</td>
-                    <td data-label="Manufacturer">Nissan</td>
-                    <td data-label="State">New</td>
-                    <td data-label="available"><select>
-                            <option>Select Availability</option>
-                            <option>Sold</option>
-                            <option>Unsold</option>
-                        </select></td>
-                    <td data-label="Action" class="icons">
-                        <button type="button" id=" " name="button" class="btn bg-transparent" onclick="fire()"><i
-                                class="fas fa-edit"></i></i></button>
-                        <button type="button" id="myBtn" name="button" class="btn bg-transparent" onclick="btn()"><i
-                                class="far fa-trash-alt"></i></button>
-                    </td>
-                </tr>
-                <tr>
-
-                    <td data-label="Date Added">03/01/2019</td>
-                    <td data-label="Price">&#8358;850,000</td>
-                    <td data-label="Manufacturer">Ford</td>
-                    <td data-label="State">Used</td>
-                    <td data-label="available"><select>
-                            <option>Select Availability</option>
-                            <option>Sold</option>
-                            <option>Unsold</option>
-                        </select></td>
-                    <td data-label="Action" class="icons">
-                        <button type="button" id=" " name="button" class="btn bg-transparent" onclick="fire()"><i
-                                class="fas fa-edit"></i></i></button>
-                        <button type="button" id="myBtn" name="button" class="btn bg-transparent" onclick="btn()"><i
-                                class="far fa-trash-alt"></i></button>
-                    </td>
-                </tr>
-                <tr>
-
-                    <td data-label="Date Added">02/01/2019</td>
-                    <td data-label="Price">&#8358;550,000</td>
-                    <td data-label="Manufacturer">Kia</td>
-                    <td data-label="State">Used</td>
-                    <td data-label="available"><select>
-                            <option>Select Availability</option>
-                            <option>Sold</option>
-                            <option>Unsold</option>
-                        </select>
-                    </td>
-                    <td data-label="Action" class="icons">
-                        <button type="button" id=" " name="button" class="btn bg-transparent" onclick="fire()"><i
-                                class="fas fa-edit"></i></i></button>
-                        <button type="button" id="myBtn" name="button" class="btn bg-transparent" onclick="btn()"><i
-                                class="far fa-trash-alt"></i></button>
-                    </td>
-                </tr>
-
-                <tr>
-
-                    <td data-label="Date Added">02/01/2019</td>
-                    <td data-label="Price">&#8358;1,8000,000</td>
-                    <td data-label="Manufacturer">BMW</td>
-                    <td data-label="State">Used</td>
-                    <td data-label="available"><select>
-                            <option>Select Availability</option>
-                            <option>Sold</option>
-                            <option>Unsold</option>
-                        </select>
-                    </td>
-                    <td data-label="Action" class="icons">
-                        <button type="button" id=" " name="button" class="btn bg-transparent" onclick="fire()"><i
-                                class="fas fa-edit"></i></i></button>
-                        <button type="button" id="myBtn" name="button" class="btn bg-transparent" onclick="btn()"><i
-                                class="far fa-trash-alt"></i></button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <div class="contain">
-        <h1 class="caption">Intent Orders</h1>
-
-        <table>
-            <thead>
-                <tr>
-                    <th scope="col">Owner</th>
-                    <th scope="col">Date Added</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Make</th>
-                    <th scope="col">State</th>
-                    <th scope="col">Status</th>
-                    <th scope="col">Price Offered</th>
-                    <th scope="col">Action</th>
-
-
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td data-label="Owner">Owolabi Ajao</td>
-                    <td data-label="Date Added">04/01/2019</td>
-                    <td data-label="Price">&#8358;10,000,000</td>
-                    <td data-label="Manufacturer">Toyota</td>
-                    <td data-label="State">New</td>
-                    <td data-label="status">Pending</td>
-                    <td data-label="Price">&#8358;8,000,000</td>
-                    <td data-label="Action" class="icons">
-                        <button type="button" id=" " name="button" class="btn bg-transparent" onclick="pull()"><i
-                                class="fas fa-edit"></i></i></button>
-                        <button type="button" id="myBtn" name="button" class="btn bg-transparent" onclick="btn()"><i
-                                class="far fa-trash-alt"></i></button>
-                    </td>
-                </tr>
-                <tr>
-                    <td scope="row" data-label="Owner">Okoye Chukwuma</td>
-                    <td data-label="Date Added">03/01/2019</td>
-                    <td data-label="Price">&#8358;6,550,000</td>
-                    <td data-label="Manufacturer">Nissan</td>
-                    <td data-label="State">New</td>
-                    <td data-label="status">Pending</td>
-                    <td data-label="Price">&#8358;5,500,000</td>
-                    <td data-label="Action" class="icons">
-                        <button type="button" id=" " name="button" class="btn bg-transparent" onclick="pull()"><i
-                                class="fas fa-edit"></i></i></button>
-                        <button type="button" id="myBtn" name="button" class="btn bg-transparent" onclick="btn()"><i
-                                class="far fa-trash-alt"></i></button>
-                    </td>
-                </tr>
-                <tr>
-                    <td scope="row" data-label="Owner">Okoye Chinazo</td>
-                    <td data-label="Date Added">03/01/2019</td>
-                    <td data-label="Price">&#8358;850,000</td>
-                    <td data-label="Manufacturer">Ford</td>
-                    <td data-label="State">Used</td>
-                    <td data-label="status">Pending</td>
-                    <td data-label="Price">&#8358;600,000</td>
-                    <td data-label="Action" class="icons">
-                        <button type="button" id=" " name="button" class="btn bg-transparent" onclick="pull()"><i
-                                class="fas fa-edit"></i></i></button>
-                        <button type="button" id="myBtn" name="button" class="btn bg-transparent" onclick="btn()"><i
-                                class="far fa-trash-alt"></i></button>
-                    </td>
-                </tr>
-                <tr>
-                    <td scope="row" data-label="Acount">Okoye Rita</td>
-                    <td data-label="Date Added">02/01/2019</td>
-                    <td data-label="Price">&#8358;550,000</td>
-                    <td data-label="Manufacturer">Kia</td>
-                    <td data-label="State">Used</td>
-                    <td data-label="status">Pending</td>
-                    <td data-label="Price">&#8358;300,000</td>
-                    <td data-label="Action" class="icons">
-                        <button type="button" id=" " name="button" class="btn bg-transparent" onclick="pull()"><i
-                                class="fas fa-edit"></i></i></button>
-                        <button type="button" id="myBtn" name="button" class="btn bg-transparent" onclick="btn()"><i
-                                class="far fa-trash-alt"></i></button>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td scope="row" data-label="Acount">Okoye Chijioke</td>
-                    <td data-label="Date Added">02/01/2019</td>
-                    <td data-label="Price">&#8358;1,8000,000</td>
-                    <td data-label="Manufacturer">BMW</td>
-                    <td data-label="State">Used</td>
-                    <td data-label="status">Pending</td>
-                    <td data-label="Price">&#8358;1,300,000</td>
-                    <td data-label="Action" class="icons">
-                        <button type="button" id=" " name="button" class="btn bg-transparent" onclick="pull()"><i
-                                class="fas fa-edit"></i></i></button>
-                        <button type="button" id="myBtn" name="button" class="btn bg-transparent" onclick="btn()"><i
-                                class="far fa-trash-alt"></i></button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-
-    <!-- modals -->
+                    <div class="user-profile">
+                            <div id="fullname"></div>
+                          <div id="username">
+                          </div>
+                            <div class="description">
+                            <div>Full Name: <span id="email">&nbsp;&nbsp;&nbsp; Chidi Okoye</span></div>
+                              <div>Email: <span id="email">&nbsp;&nbsp;&nbsp; Okoyecb@yahoo.com</span></div>
+                              <div>Address: <span id="email">&nbsp;&nbsp;&nbsp; Lekki Phse 1</span></div>
+                              <div>Phone Number: <span id="email">&nbsp;&nbsp;&nbsp;07039634068</span></div>
+                              <div>State: <span id="email">&nbsp;&nbsp;&nbsp;Lagos State</span></div>
+                              <div>City: <span id="email">&nbsp;&nbsp;&nbsp;Lagos </span></div>
+                          </div>
+                        </div>
+             </div>
+          
+            <div id="London" class="w3-container city">
+                    <div class="contain">
+                            <h1 class="caption">Listed Adverts</h1>
+                            <div class="advanced-options group flex-grid content-controls" id="advanced-options" data-grid-type="fill">
+                                <label class="search-option content-control order-by control">
+                                    <span class="control-label">Order by State</span>
+                                    <div class="custom-select-wrap">
+                                        <select name="order" class="search-select">
+                                            <option value="popularity">All Cars</option>
+                                            <option value="newest">Sold Cars</option>
+                                            <option value="newest">Unsold Cars</option>
+                                        </select>
+                                    </div>
+                                </label>
+                                <label class="search-option content-control order-by control">
+                                    <span class="control-label">Filter by Manufacturer</span>
+                                    <div class="custom-select-wrap">
+                                        <select name="order" class="search-select">
+                                            <option value="popularity">Select Manufacturer</option>
+                                            <option value="newest">Nissan</option>
+                                            <option value="newest">Toyota</option>
+                                            <option value="newest">Tesla</option>
+                                            <option value="newest">BMW</option>
+                                        </select>
+                                    </div>
+                                </label>
+                                <label class="search-option content-control order-by control">
+                                    <span class="control-label">Price Range</span>
+                                    <div class="custom-select-wrap">
+                                        <select name="order" class="search-select">
+                                            <option value="popularity">Select Range</option>
+                                            <option value="popularity">&#8358;500,000 - &#8358;1,500,000</option>
+                                            <option value="newest">&#8358;1,550,000 - &#8358;2,500,000</option>
+                                            <option value="newest">&#8358;2,500,000 - &#8358;4,500,000</option>
+                                        </select>
+                                    </div>
+                                </label>
+                            </div>
+                    
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Date Added</th>
+                                        <th scope="col">Price</th>
+                                        <th scope="col">Manufacturer</th>
+                                        <th scope="col">State</th>
+                                        <th scope="col">Availability</th>
+                                        <th scope="col">Action</th>
+                    
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                    
+                                        <td data-label="Date Added">04/01/2019</td>
+                                        <td data-label="Price">&#8358;10,000,000</td>
+                                        <td data-label="Manufacturer">Toyota</td>
+                                        <td data-label="State">New</td>
+                                        <td data-label="available"><select>
+                                                <option>Select Availability</option>
+                                                <option>Sold</option>
+                                                <option>Unsold</option>
+                                            </select>
+                                        </td>
+                                        <td data-label="Action" class="icons">
+                                            <button type="button" id=" " name="button" class="btn bg-transparent" onclick="fire()"><i
+                                                    class="fas fa-edit"></i></i></button>
+                                            <button type="button" id="myBtn" name="button" class="btn bg-transparent " onclick="btn()"><i
+                                                    class="far fa-trash-alt"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                    
+                                        <td data-label="Date Added">03/01/2019</td>
+                                        <td data-label="Price">&#8358;6,550,000</td>
+                                        <td data-label="Manufacturer">Nissan</td>
+                                        <td data-label="State">New</td>
+                                        <td data-label="available"><select>
+                                                <option>Select Availability</option>
+                                                <option>Sold</option>
+                                                <option>Unsold</option>
+                                            </select></td>
+                                        <td data-label="Action" class="icons">
+                                            <button type="button" id=" " name="button" class="btn bg-transparent" onclick="fire()"><i
+                                                    class="fas fa-edit"></i></i></button>
+                                            <button type="button" id="myBtn" name="button" class="btn bg-transparent" onclick="btn()"><i
+                                                    class="far fa-trash-alt"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                    
+                                        <td data-label="Date Added">03/01/2019</td>
+                                        <td data-label="Price">&#8358;850,000</td>
+                                        <td data-label="Manufacturer">Ford</td>
+                                        <td data-label="State">Used</td>
+                                        <td data-label="available"><select>
+                                                <option>Select Availability</option>
+                                                <option>Sold</option>
+                                                <option>Unsold</option>
+                                            </select></td>
+                                        <td data-label="Action" class="icons">
+                                            <button type="button" id=" " name="button" class="btn bg-transparent" onclick="fire()"><i
+                                                    class="fas fa-edit"></i></i></button>
+                                            <button type="button" id="myBtn" name="button" class="btn bg-transparent" onclick="btn()"><i
+                                                    class="far fa-trash-alt"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                    
+                                        <td data-label="Date Added">02/01/2019</td>
+                                        <td data-label="Price">&#8358;550,000</td>
+                                        <td data-label="Manufacturer">Kia</td>
+                                        <td data-label="State">Used</td>
+                                        <td data-label="available"><select>
+                                                <option>Select Availability</option>
+                                                <option>Sold</option>
+                                                <option>Unsold</option>
+                                            </select>
+                                        </td>
+                                        <td data-label="Action" class="icons">
+                                            <button type="button" id=" " name="button" class="btn bg-transparent" onclick="fire()"><i
+                                                    class="fas fa-edit"></i></i></button>
+                                            <button type="button" id="myBtn" name="button" class="btn bg-transparent" onclick="btn()"><i
+                                                    class="far fa-trash-alt"></i></button>
+                                        </td>
+                                    </tr>
+                    
+                                    <tr>
+                    
+                                        <td data-label="Date Added">02/01/2019</td>
+                                        <td data-label="Price">&#8358;1,8000,000</td>
+                                        <td data-label="Manufacturer">BMW</td>
+                                        <td data-label="State">Used</td>
+                                        <td data-label="available"><select>
+                                                <option>Select Availability</option>
+                                                <option>Sold</option>
+                                                <option>Unsold</option>
+                                            </select>
+                                        </td>
+                                        <td data-label="Action" class="icons">
+                                            <button type="button" id=" " name="button" class="btn bg-transparent" onclick="fire()"><i
+                                                    class="fas fa-edit"></i></i></button>
+                                            <button type="button" id="myBtn" name="button" class="btn bg-transparent" onclick="btn()"><i
+                                                    class="far fa-trash-alt"></i></button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+            </div>
+          
+            <div id="Paris" class="w3-container city">
+                    <div class="contain">
+                            <h1 class="caption">Intent Orders</h1>
+                    
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Owner</th>
+                                        <th scope="col">Date Added</th>
+                                        <th scope="col">Price</th>
+                                        <th scope="col">Make</th>
+                                        <th scope="col">State</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col">Price Offered</th>
+                                        <th scope="col">Action</th>
+                    
+                    
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td data-label="Owner">Owolabi Ajao</td>
+                                        <td data-label="Date Added">04/01/2019</td>
+                                        <td data-label="Price">&#8358;10,000,000</td>
+                                        <td data-label="Manufacturer">Toyota</td>
+                                        <td data-label="State">New</td>
+                                        <td data-label="status">Pending</td>
+                                        <td data-label="Price">&#8358;8,000,000</td>
+                                        <td data-label="Action" class="icons">
+                                            <button type="button" id=" " name="button" class="btn bg-transparent" onclick="pull()"><i
+                                                    class="fas fa-edit"></i></i></button>
+                                            <button type="button" id="myBtn" name="button" class="btn bg-transparent" onclick="btn()"><i
+                                                    class="far fa-trash-alt"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td scope="row" data-label="Owner">Okoye Chukwuma</td>
+                                        <td data-label="Date Added">03/01/2019</td>
+                                        <td data-label="Price">&#8358;6,550,000</td>
+                                        <td data-label="Manufacturer">Nissan</td>
+                                        <td data-label="State">New</td>
+                                        <td data-label="status">Pending</td>
+                                        <td data-label="Price">&#8358;5,500,000</td>
+                                        <td data-label="Action" class="icons">
+                                            <button type="button" id=" " name="button" class="btn bg-transparent" onclick="pull()"><i
+                                                    class="fas fa-edit"></i></i></button>
+                                            <button type="button" id="myBtn" name="button" class="btn bg-transparent" onclick="btn()"><i
+                                                    class="far fa-trash-alt"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td scope="row" data-label="Owner">Okoye Chinazo</td>
+                                        <td data-label="Date Added">03/01/2019</td>
+                                        <td data-label="Price">&#8358;850,000</td>
+                                        <td data-label="Manufacturer">Ford</td>
+                                        <td data-label="State">Used</td>
+                                        <td data-label="status">Pending</td>
+                                        <td data-label="Price">&#8358;600,000</td>
+                                        <td data-label="Action" class="icons">
+                                            <button type="button" id=" " name="button" class="btn bg-transparent" onclick="pull()"><i
+                                                    class="fas fa-edit"></i></i></button>
+                                            <button type="button" id="myBtn" name="button" class="btn bg-transparent" onclick="btn()"><i
+                                                    class="far fa-trash-alt"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td scope="row" data-label="Acount">Okoye Rita</td>
+                                        <td data-label="Date Added">02/01/2019</td>
+                                        <td data-label="Price">&#8358;550,000</td>
+                                        <td data-label="Manufacturer">Kia</td>
+                                        <td data-label="State">Used</td>
+                                        <td data-label="status">Pending</td>
+                                        <td data-label="Price">&#8358;300,000</td>
+                                        <td data-label="Action" class="icons">
+                                            <button type="button" id=" " name="button" class="btn bg-transparent" onclick="pull()"><i
+                                                    class="fas fa-edit"></i></i></button>
+                                            <button type="button" id="myBtn" name="button" class="btn bg-transparent" onclick="btn()"><i
+                                                    class="far fa-trash-alt"></i></button>
+                                        </td>
+                                    </tr>
+                    
+                                    <tr>
+                                        <td scope="row" data-label="Acount">Okoye Chijioke</td>
+                                        <td data-label="Date Added">02/01/2019</td>
+                                        <td data-label="Price">&#8358;1,8000,000</td>
+                                        <td data-label="Manufacturer">BMW</td>
+                                        <td data-label="State">Used</td>
+                                        <td data-label="status">Pending</td>
+                                        <td data-label="Price">&#8358;1,300,000</td>
+                                        <td data-label="Action" class="icons">
+                                            <button type="button" id=" " name="button" class="btn bg-transparent" onclick="pull()"><i
+                                                    class="fas fa-edit"></i></i></button>
+                                            <button type="button" id="myBtn" name="button" class="btn bg-transparent" onclick="btn()"><i
+                                                    class="far fa-trash-alt"></i></button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+            </div>
+          
+            <!-- modals -->
     <div id="myModal" class="modal">
 
-        <!-- Modal content -->
-        <div class="modal-content">
-            <div class="modal-header">
-                <span class="close" onclick="closeModal('myModal')">&times;</span>
-                <h2>&nbsp;</h2>
+            <!-- Modal content -->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="close" onclick="closeModal('myModal')">&times;</span>
+                    <h2>&nbsp;</h2>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to delete this Advert?</p>
+                </div>
+                <div class="modal-footer d-flex justify-content-between">
+                    <button type="button" class="btn btn-red">Cancel</button>
+                    <button type="button" class="btn btn-blue">Delete</button>
+                </div>
             </div>
-            <div class="modal-body">
-                <p>Are you sure you want to delete this Advert?</p>
-            </div>
-            <div class="modal-footer d-flex justify-content-between">
-                <button type="button" class="btn btn-red">Cancel</button>
-                <button type="button" class="btn btn-blue">Delete</button>
-            </div>
+    
         </div>
-
-    </div>
-
-
-    <!-- modals -->
-    <div id="editModal" class="modal">
-
-        <!-- Modal content -->
-        <div class="modal-content">
-            <div class="modal-header">
-                <span class="closee" onclick="closeModal('editModal')">&times;</span>
-                <h2>&nbsp;</h2>
+    
+    
+        <!-- modals -->
+        <div id="editModal" class="modal">
+    
+            <!-- Modal content -->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="closee" onclick="closeModal('editModal')">&times;</span>
+                    <h2>&nbsp;</h2>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <label for="cityname">Car Manufacturer:</label>
+                        <input class="smBox" type="text" name="firstname" value="Renault Zoe" disabled>
+    
+                        <label for="cityname">Price:</label>
+                        <input class="smBox" type="text" name="firstname" value="&#8358;4,000,000">
+    
+                        <label for="cityname">Transmission Type:</label>
+                        <input class="smBox" type="text" name="firstname" value="Automatic" disabled>
+    
+                        <label for="cityname">Color:</label>
+                        <input class="smBox" type="text" name="firstname" value="Silver" disabled>
+    
+                        <label for="cityname">State</label>
+                        <input class="smBox" type="text" name="firstname" value="New" disabled>
+                    </form>
+                </div>
+                <div class="modal-footer d-flex justify-content-between">
+                    <button type="button" class="btn btn-red">Cancel</button>
+                    <button type="button" class="btn btn-blue">Update</button>
+                </div>
             </div>
-            <div class="modal-body">
-                <form>
-                    <label for="cityname">Car Manufacturer:</label>
-                    <input class="smBox" type="text" name="firstname" value="Renault Zoe" disabled>
-
-                    <label for="cityname">Price:</label>
-                    <input class="smBox" type="text" name="firstname" value="&#8358;4,000,000">
-
-                    <label for="cityname">Transmission Type:</label>
-                    <input class="smBox" type="text" name="firstname" value="Automatic" disabled>
-
-                    <label for="cityname">Color:</label>
-                    <input class="smBox" type="text" name="firstname" value="Silver" disabled>
-
-                    <label for="cityname">State</label>
-                    <input class="smBox" type="text" name="firstname" value="New" disabled>
-                </form>
-            </div>
-            <div class="modal-footer d-flex justify-content-between">
-                <button type="button" class="btn btn-red">Cancel</button>
-                <button type="button" class="btn btn-blue">Update</button>
-            </div>
+    
         </div>
-
-    </div>
-
-
-    <div id="poModal" class="modal">
-
-        <!-- Modal content -->
-        <div class="modal-content">
-            <div class="modal-header">
-                <span class="closee" onclick="closeModal('poModal')">&times;</span>
-                <h2>Update Purchase Order</h2>
+    
+    
+        <div id="poModal" class="modal">
+    
+            <!-- Modal content -->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="closee" onclick="closeModal('poModal')">&times;</span>
+                    <h2>Update Purchase Order</h2>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <label for="cityname">Car Manufacturer:</label>
+                        <input class="smBox" type="text" name="firstname" value="Renault Zoe" disabled>
+    
+                        <label for="cityname">Price:</label>
+                        <input class="smBox" type="text" name="firstname" value="&#8358;4,000,000" disabled>
+    
+                        <label for="cityname">Transmission Type:</label>
+                        <input class="smBox" type="text" name="firstname" value="Automatic" disabled>
+    
+                        <label for="cityname">Color:</label>
+                        <input class="smBox" type="text" name="firstname" value="Silver" disabled>
+    
+                        <label for="cityname">State</label>
+                        <input class="smBox" type="text" name="firstname" value="New" disabled>
+    
+                        <label for="cityname">Bargain Price:</label>
+                        <input class="smBox" type="text" name="firstname" value="&#8358;3,200,000">
+                    </form>
+                </div>
+                <div class="modal-footer d-flex justify-content-between">
+                    <button type="button" class="btn btn-red">Cancel</button>
+                    <button type="button" class="btn btn-blue">Update</button>
+                </div>
             </div>
-            <div class="modal-body">
-                <form>
-                    <label for="cityname">Car Manufacturer:</label>
-                    <input class="smBox" type="text" name="firstname" value="Renault Zoe" disabled>
-
-                    <label for="cityname">Price:</label>
-                    <input class="smBox" type="text" name="firstname" value="&#8358;4,000,000" disabled>
-
-                    <label for="cityname">Transmission Type:</label>
-                    <input class="smBox" type="text" name="firstname" value="Automatic" disabled>
-
-                    <label for="cityname">Color:</label>
-                    <input class="smBox" type="text" name="firstname" value="Silver" disabled>
-
-                    <label for="cityname">State</label>
-                    <input class="smBox" type="text" name="firstname" value="New" disabled>
-
-                    <label for="cityname">Bargain Price:</label>
-                    <input class="smBox" type="text" name="firstname" value="&#8358;3,200,000">
-                </form>
-            </div>
-            <div class="modal-footer d-flex justify-content-between">
-                <button type="button" class="btn btn-red">Cancel</button>
-                <button type="button" class="btn btn-blue">Update</button>
-            </div>
+    
         </div>
-
-    </div>
-
+           
+          
+          </div>
+          
 
     <!--  scripts -->
     <script src="js/nav.js" charset="utf-8"></script>
