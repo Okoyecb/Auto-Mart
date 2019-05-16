@@ -577,8 +577,8 @@ strong {
 
 @media (min-width: 768px) {
     .row_section.-small-gutters-gtxs>[class*='column-'] {
-        padding-left: 5px;
-        padding-right: 5px;
+        padding-left: 15%;
+        padding-right: 15%;
         padding-top: 50px;
     }
 }
