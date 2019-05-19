@@ -1,8 +1,8 @@
 
 
-var inputs = document.querySelectorAll('.file-input')
+const inputs = document.querySelectorAll('.file-input');
 
-for (var i = 0, len = inputs.length; i < len; i++) {
+for (let i = 0, len = inputs.length; i < len; i++) {
   customInput(inputs[i])
 }
 
@@ -14,7 +14,7 @@ function customInput (el) {
   fileInput.onmouseout = function () {
     if (!fileInput.value) return
     
-    var value = fileInput.value.replace(/^.*[\\\/]/, '')
+    let value = fileInput.value.replace(/^.*[\\\/]/, '')
     el.className += ' -chosen'
     label.innerText = value
   }
