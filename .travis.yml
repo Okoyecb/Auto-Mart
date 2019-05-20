@@ -6,10 +6,6 @@ node_js:
 install:
   - npm install
 
-script:
-  - npm run query
-  - npm test
-
 cache:
   directories:
     - "node_modules"  
