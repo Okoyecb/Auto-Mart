@@ -1,0 +1,20 @@
+language: node_js
+
+node_js:
+  - "stable"
+
+install:
+  - npm install
+
+script:
+  - npm run query
+  - npm test
+
+cache:
+  directories:
+    - "node_modules"  
+
+after_success:
+  - npm run coveralls
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+
