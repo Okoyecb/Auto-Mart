@@ -6,6 +6,6 @@ const router = express.Router();
 
 router.post('/auth/signup', Users.createUsers);
 router.post('/car', car.createCar);
-
+router.get('/car/:id', car.getCar);
 
 export default router;

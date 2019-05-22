@@ -13,6 +13,7 @@ const createCar = (req, res) => {
     body_type: req.body.body_type,
   };
 
+
   carModel.push(newCar);
   return res.status(201).json({
     status: 201,
@@ -20,9 +21,25 @@ const createCar = (req, res) => {
   });
 };
 
+const getCar = (req, res) => {
+  const id = parseInt(req.params.id, 10);
+  carModel.map((cars) => {
+    if (cars.id === id) {
+      return res.status(200).send({
+        success: 'true',
+        message: 'Car retrieved successfully',
+        cars,
+      });
+    }
+  });
+  return res.status(404).send({
+    success: 'false',
+    message: 'Car does not exist',
+  });
+};
 
 const CarController = {
-  createCar,
+  createCar, getCar,
 };
 
 export default CarController;
