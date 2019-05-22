@@ -19,8 +19,6 @@ const userModel = [
     password: 'qwerty1234',
     address: 'Gold street, Cliford way',
     is_admin: 'false',
-
-
   },
 
   {
