@@ -1,13 +1,11 @@
 import express from 'express';
-import UserController from '../controllers/user';
+import Users from '../controllers/user';
+import car from '../controllers/cars';
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
-  res.send('Welcome to Automart app');
-});
-
-router.post('/api/v1/auth/signup');
+router.post('/auth/signup', Users.createUsers);
+router.post('/car', car.createCar);
 
 
 export default router;
