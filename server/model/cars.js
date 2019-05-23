@@ -11,6 +11,32 @@ const carModel = [
     body_type: 'Sedan',
 
   },
+
+  {
+    id: 101,
+    owner: 'Okoye Chukwuma',
+    created_on: 'Thurs May 23 09:13:52 2019 UTC',
+    state: 'New',
+    status: 'Sold',
+    price: 14.000000,
+    manufacturer: 'BMW',
+    model: 'X6',
+    body_type: 'SUV',
+
+  },
+
+  {
+    id: 102,
+    owner: 'Okoye Chijioke',
+    created_on: 'Mon May 20 09:13:52 2019 UTC',
+    state: 'Used',
+    status: 'Available',
+    price: 2.800000,
+    manufacturer: 'Chevrolet',
+    model: 'Camaro',
+    body_type: 'Sedan',
+
+  },
 ];
 
 export default carModel;
