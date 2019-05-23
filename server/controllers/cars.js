@@ -78,19 +78,13 @@ const updateStatus = (req, res) => {
     });
   }
 
-  if (!req.body.status) {
-    return res.status(400).send({
-      success: 'false',
-      message: 'Status is required',
-    });
-  }
 
   const updatedStatus = {
     id: carFound.id,
     created_on: carFound.created_on,
     state: carFound.state,
     status: req.body.status || carFound.status,
-    price: carFound.price,
+    price: req.body.price || carFound.price,
     manufacturer: carFound.manufacturer,
     model: carFound.model,
     body_type: carFound.body_type,
@@ -105,6 +99,7 @@ const updateStatus = (req, res) => {
     updatedStatus,
   });
 };
+
 
 const CarController = {
   createCar, getCar, getAllCars, deleteCar, updateStatus,
