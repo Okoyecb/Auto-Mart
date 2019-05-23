@@ -31,11 +31,26 @@ const getCar = (req, res) => {
       });
     }
   });
+};
+
+const deleteCar = (req, res) => {
+  const id = parseInt(req.params.id, 10);
+  carModel.map((cars, index) => {
+    if (cars.id === id) {
+      carModel.splice(index, 1);
+      return res.status(200).send({
+        success: 'true',
+        message: 'Car deleted successfuly',
+      });
+    }
+  });
+
   return res.status(404).send({
     success: 'false',
     message: 'Car does not exist',
   });
 };
+
 
 const getAllCars = (req, res) => res.status(200).send({
   success: 'true',
@@ -45,7 +60,7 @@ const getAllCars = (req, res) => res.status(200).send({
 
 
 const CarController = {
-  createCar, getCar, getAllCars,
+  createCar, getCar, getAllCars, deleteCar,
 };
 
 export default CarController;

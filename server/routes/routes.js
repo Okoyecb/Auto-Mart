@@ -9,6 +9,7 @@ router.post('/auth/signup', Users.createUsers);
 router.post('/car', car.createCar);
 router.get('/car/:id', car.getCar);
 router.get('/car', car.getAllCars);
+router.delete('/car/:id', car.deleteCar);
 router.post('/order', order.createOrder);
 
 export default router;
