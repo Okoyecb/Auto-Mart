@@ -1,3 +1,5 @@
+/* eslint-disable consistent-return */
+/* eslint-disable array-callback-return */
 import carModel from '../model/cars';
 
 const createCar = (req, res) => {
@@ -58,9 +60,54 @@ const getAllCars = (req, res) => res.status(200).send({
   carModel,
 });
 
+const updateCar = (req, res) => {
+  const id = parseInt(req.params.id, 10);
+  let carFound;
+  let itemIndex;
+  carModel.map((cars, index) => {
+    if (cars.id === id) {
+      carFound = cars;
+      itemIndex = index;
+    }
+  });
+
+  if (!carFound) {
+    return res.status(404).send({
+      success: 'false',
+      message: 'Car not found',
+    });
+  }
+
+  if (!req.body.status) {
+    return res.status(400).send({
+      success: 'false',
+      message: 'Status is required',
+    });
+  }
+
+  const updatedCar = {
+    id: carFound.id,
+    created_on: req.body.created_on || carFound.created_on,
+    state: req.body.state || carFound.state,
+    status: req.body.status || carFound.status,
+    price: req.body.price || carFound.price,
+    manufacturer: req.body.manufacturer || carFound.manufacturer,
+    model: req.body.model || carFound.model,
+    body_type: req.body.body_type || carFound.body_type,
+
+  };
+
+  carModel.splice(itemIndex, 1, updatedCar);
+
+  return res.status(201).send({
+    success: 'true',
+    message: 'Car Updated successfully',
+    updatedCar,
+  });
+};
 
 const CarController = {
-  createCar, getCar, getAllCars, deleteCar,
+  createCar, getCar, getAllCars, deleteCar, updateCar,
 };
 
 export default CarController;
