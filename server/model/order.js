@@ -5,8 +5,8 @@ const orderModel = [
     car_id: 100,
     created_on: 'Wed May 22 09:13:52 2019 UTC',
     status: 'Pending',
-    price: 4.000000,
-    price_offered: '3.8000000',
+    price: 4000000,
+    price_offered: 38000000,
 
   },
 
@@ -16,8 +16,8 @@ const orderModel = [
     car_id: 101,
     created_on: 'Wed May 22 09:13:52 2019 UTC',
     status: 'Sold',
-    price: 1.2000000,
-    price_offered: 1.1000000,
+    price: 12000000,
+    price_offered: 11000000,
   },
 ];
 
