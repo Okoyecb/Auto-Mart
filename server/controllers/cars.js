@@ -87,13 +87,13 @@ const updateStatus = (req, res) => {
 
   const updatedStatus = {
     id: carFound.id,
-    created_on: req.body.created_on || carFound.created_on,
-    state: req.body.state || carFound.state,
+    created_on: carFound.created_on,
+    state: carFound.state,
     status: req.body.status || carFound.status,
-    price: req.body.price || carFound.price,
-    manufacturer: req.body.manufacturer || carFound.manufacturer,
-    model: req.body.model || carFound.model,
-    body_type: req.body.body_type || carFound.body_type,
+    price: carFound.price,
+    manufacturer: carFound.manufacturer,
+    model: carFound.model,
+    body_type: carFound.body_type,
 
   };
 
