@@ -37,8 +37,15 @@ const getCar = (req, res) => {
   });
 };
 
+const getAllCars = (req, res) => res.status(200).send({
+  success: 'true',
+  message: 'Cars retrieved successfully',
+  carModel,
+});
+
+
 const CarController = {
-  createCar, getCar,
+  createCar, getCar, getAllCars,
 };
 
 export default CarController;
