@@ -37,6 +37,19 @@ const carModel = [
     body_type: 'Sedan',
 
   },
+
+  {
+    id: 107,
+    owner: 'Okoye Edward',
+    created_on: 'Mon May 20 11:13:52 2019 UTC',
+    state: 'Used',
+    status: 'Available',
+    price: 2.800000,
+    manufacturer: 'Ford',
+    model: 'Explorer',
+    body_type: 'SUV',
+
+  },
 ];
 
 export default carModel;
