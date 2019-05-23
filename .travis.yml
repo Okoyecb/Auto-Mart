@@ -12,5 +12,8 @@ cache:
 
 after_success:
   - npm run coveralls
+  - npm run coverage
+  - npm run report-coverage
+  - npm run codeclimate-report
 
 
