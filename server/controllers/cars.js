@@ -60,7 +60,7 @@ const getAllCars = (req, res) => res.status(200).send({
   carModel,
 });
 
-const updateCar = (req, res) => {
+const updateStatus = (req, res) => {
   const id = parseInt(req.params.id, 10);
   let carFound;
   let itemIndex;
@@ -85,7 +85,7 @@ const updateCar = (req, res) => {
     });
   }
 
-  const updatedCar = {
+  const updatedStatus = {
     id: carFound.id,
     created_on: req.body.created_on || carFound.created_on,
     state: req.body.state || carFound.state,
@@ -97,17 +97,17 @@ const updateCar = (req, res) => {
 
   };
 
-  carModel.splice(itemIndex, 1, updatedCar);
+  carModel.splice(itemIndex, 1, updatedStatus);
 
   return res.status(201).send({
     success: 'true',
     message: 'Car Updated successfully',
-    updatedCar,
+    updatedStatus,
   });
 };
 
 const CarController = {
-  createCar, getCar, getAllCars, deleteCar, updateCar,
+  createCar, getCar, getAllCars, deleteCar, updateStatus,
 };
 
 export default CarController;
