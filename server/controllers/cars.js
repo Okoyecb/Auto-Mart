@@ -13,7 +13,6 @@ const createCar = (req, res) => {
     body_type: req.body.body_type,
   };
 
-
   carModel.push(newCar);
   return res.status(201).json({
     status: 201,
