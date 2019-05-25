@@ -35,6 +35,22 @@ const getCar = (req, res) => {
   });
 };
 
+const carStatus = (req, res) => {
+  const { status } = req.query;
+  const filtered = carModel.filter(cars => cars.status === status);
+  if (filtered.length > 0) {
+    return res.status(200).send({
+      success: 'true',
+      message: 'Car retrieved successfully',
+      filtered,
+    });
+  }
+  return res.status(400).send({
+    success: 'false',
+  });
+};
+
+
 const deleteCar = (req, res) => {
   const id = parseInt(req.params.id, 10);
   carModel.map((cars, index) => {
@@ -54,11 +70,16 @@ const deleteCar = (req, res) => {
 };
 
 
-const getAllCars = (req, res) => res.status(200).send({
-  success: 'true',
-  message: 'Cars retrieved successfully',
-  carModel,
-});
+const getAllCars = (req, res) => {
+  if (Object.keys(req.query).length !== 0) {
+    carStatus(req, res);
+  }
+  res.status(200).send({
+    success: 'true',
+    message: 'Cars retrieved successfully',
+    carModel,
+  });
+};
 
 const updateStatus = (req, res) => {
   const id = parseInt(req.params.id, 10);
@@ -102,7 +123,7 @@ const updateStatus = (req, res) => {
 
 
 const CarController = {
-  createCar, getCar, getAllCars, deleteCar, updateStatus,
+  createCar, getCar, getAllCars, deleteCar, updateStatus, carStatus,
 };
 
 export default CarController;
