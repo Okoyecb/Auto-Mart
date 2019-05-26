@@ -15,17 +15,10 @@ app.use(bodyParser.json({
 // app.use(express.json());
 
 app.get('/', (req, res) => {
-  res.send('Welcome to Automart app');
+  res.json('Hi there! Welcome to our AutoMart API');
 });
 
 app.use('/api/v1', routes);
-
-// // send 404 error to error handler
-// app.use((req, res, next) => {
-//   const error = new Error('Not Found');
-//   error.status = 404;
-//   next(error);
-// });
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log('Welcome to Auto-Mart!!!'));

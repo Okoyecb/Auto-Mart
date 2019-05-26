@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 /* eslint-disable consistent-return */
 /* eslint-disable array-callback-return */
 import carModel from '../model/cars';
@@ -17,6 +18,7 @@ const createCar = (req, res) => {
 
   carModel.push(newCar);
   return res.status(201).json({
+    message: 'Car Posted Successfully',
     status: 201,
     data: newCar,
   });
@@ -43,6 +45,24 @@ const carStatus = (req, res) => {
       success: 'true',
       message: 'Car retrieved successfully',
       filtered,
+    });
+  }
+  return res.status(400).send({
+    success: 'false',
+  });
+};
+
+const priceRange = (req, res) => {
+  const { status, min_price, max_price } = req.query;
+  const filtered = carModel.filter(cars => cars.status === status);
+  if (filtered.length > 0) {
+    const filteredCars = filtered.filter(
+      cars => cars.price >= min_price && cars.price <= max_price,
+    );
+    return res.status(200).send({
+      success: 'true',
+      message: 'Car retrieved successfully',
+      filteredCars,
     });
   }
   return res.status(400).send({
@@ -123,7 +143,7 @@ const updateStatus = (req, res) => {
 
 
 const CarController = {
-  createCar, getCar, getAllCars, deleteCar, updateStatus, carStatus,
+  createCar, getCar, getAllCars, deleteCar, updateStatus, carStatus, priceRange,
 };
 
 export default CarController;
