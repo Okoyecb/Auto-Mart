@@ -26,14 +26,17 @@ const createCar = (req, res) => {
 
 const getCar = (req, res) => {
   const id = parseInt(req.params.id, 10);
-  carModel.map((cars) => {
-    if (cars.id === id) {
-      return res.status(200).send({
-        success: 'true',
-        message: 'Car retrieved successfully',
-        cars,
-      });
-    }
+  const singleCar = carModel.find(car => car.id === id);
+  if (!singleCar) {
+    return res.status(404).json({
+      status: 'success',
+      message: 'Car not Found',
+    });
+  }
+  return res.status(200).json({
+    status: 'success',
+    message: 'Successfully retrieved single car',
+    singleCar,
   });
 };
 
@@ -73,12 +76,13 @@ const priceRange = (req, res) => {
 
 const deleteCar = (req, res) => {
   const id = parseInt(req.params.id, 10);
-  carModel.map((cars, index) => {
+  carModel.find((cars, index) => {
     if (cars.id === id) {
       carModel.splice(index, 1);
       return res.status(200).send({
         success: 'true',
-        message: 'Car deleted successfuly',
+        message: 'Car deleted successfully',
+        data: carModel,
       });
     }
   });
@@ -89,12 +93,30 @@ const deleteCar = (req, res) => {
   });
 };
 
+// const deleteCar = (req, res) => {
+//   const { id } = req.params;
+//   carModel.forEach((cars, i) => {
+//     if (parseInt(cars.id, 10) === parseInt(id, 10)) {
+//       carModel.splice(i, 1);
+//       return res.status(200).json({
+//         status: 'success',
+//         message: 'Car Deleted Successfully',
+//         data: carModel,
+//       });
+//     }
+//     return res.status(404).json({
+//       status: 'error',
+//       message: 'Car not found',
+//     });
+//   });
+// };
+
 
 const getAllCars = (req, res) => {
   if (Object.keys(req.query).length !== 0) {
     carStatus(req, res);
   }
-  res.status(200).send({
+  return res.status(200).send({
     success: 'true',
     message: 'Cars retrieved successfully',
     carModel,

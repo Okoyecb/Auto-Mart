@@ -33,4 +33,56 @@ describe('Create a Post', () => {
         done();
       });
   });
+
+  it('/api/v1/car/:id should respond with status code 200 and get a single car', (done) => {
+    const id = 100;
+    chai.request(app)
+      .get(`/api/v1/car/${id}`)
+      .set('Accept', 'application/json')
+      .end((err, res) => {
+        if (err) return done(err);
+        expect(res.status).to.equal(200);
+        expect(res.body.message).to.eql('Successfully retrieved single car');
+        done();
+      });
+  });
+
+  it('/api/v1/car?status=available should respond with status code 200 and get a single car', (done) => {
+    // const status = 'available';
+    chai.request(app)
+      .get('/api/v1/car?status=available')
+      .set('Accept', 'application/json')
+      .end((err, res) => {
+        if (err) return done(err);
+        expect(res.status).to.equal(200);
+        expect(res.body.message).to.eql('Car retrieved successfully');
+        done();
+      });
+  });
+
+  it('/api/v1/car should respond with status code 201 and create a post', (done) => {
+    const id = 100;
+    chai.request(app)
+      .delete(`/api/v1/car/${id}`)
+      .set('Accept', 'application/json')
+      .send(details)
+      .end((err, res) => {
+        if (err) return done(err);
+        expect(res.status).to.equal(200);
+        expect(res.body.message).to.eql('Car deleted successfully');
+        done();
+      });
+  });
+
+  it('/api/v1/car should respond with status code 200 and get a single car', (done) => {
+    chai.request(app)
+      .get('/api/v1/car')
+      .set('Accept', 'application/json')
+      .end((err, res) => {
+        if (err) return done(err);
+        expect(res.status).to.equal(200);
+        expect(res.body.message).to.eql('Cars retrieved successfully');
+        done();
+      });
+  });
 });
