@@ -38,7 +38,8 @@
     "nyc": "^14.1.1"
   },
   "scripts": {
-    "start": "node server/app.js",
+    "start-dev": "nodemon --exec babel-node server/app.js",
+    "start": "node dist/app.js",
     "build": "npm run babel ./server --out-dir dist/",
     "watch": "nodemon --exec babel-node --presets @babel/preset-env ./server/app.js",
     "babel-node": "babel-core/register --presets=env",
