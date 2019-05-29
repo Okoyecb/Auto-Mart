@@ -17,6 +17,7 @@ const createOrder = (req, res) => {
   orderModel.push(newOrder);
   return res.status(201).json({
     status: 201,
+    message: 'Order created',
     data: newOrder,
   });
 };
