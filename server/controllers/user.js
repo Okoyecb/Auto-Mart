@@ -45,7 +45,6 @@ const signIn = (req, res) => {
   const verifiedUser = userModel.find(
     databaseUser => databaseUser.email === userData.email,
   );
-  // const encryptedPass = bcrypt.hash(userData.password, 10)
   if (!verifiedUser) {
     res.status(404).json({ status: 'error', message: 'User Not Found' });
   } else {
@@ -61,8 +60,9 @@ const signIn = (req, res) => {
         } else {
           res.status(201).json({
             status: 'success',
-            message: 'Login Succesful',
             token: `Bearer ${token}`,
+            message: 'Login Succesful',
+            first_name: 'testing oo',
           });
         }
       });
