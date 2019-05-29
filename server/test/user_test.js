@@ -19,6 +19,7 @@ const details = {
   address: 'Ojota Avenue Osapa London',
 };
 
+
 describe('User Sign-up Test', () => {
   it('/api/v1/auth/signup should respond with status code 201 and create a User', (done) => {
     chai.request(app)
@@ -29,6 +30,19 @@ describe('User Sign-up Test', () => {
         if (err) return done(err);
         expect(res.status).to.equal(201);
         expect(res.body.message).to.eql('User successfully created');
+        done();
+      });
+  });
+
+  it('/api/v1/auth/signin should respond with status code 201 and create a User', (done) => {
+    chai.request(app)
+      .post('/api/v1/auth/signin')
+      .set('Accept', 'application/json')
+      .send(details)
+      .end((err, res) => {
+        if (err) return done(err);
+        expect(res.status).to.equal(201);
+        expect(res.body.message).to.eql('Login Succesful');
         done();
       });
   });

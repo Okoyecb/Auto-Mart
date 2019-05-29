@@ -1,3 +1,4 @@
+
 const userModel = [
   {
     id: 12,
@@ -5,6 +6,7 @@ const userModel = [
     first_name: 'Chidi',
     last_name: 'Okoye',
     password: 'qwerty123',
+    token: 'jgdydgwldihjhgsydw53teugc2h2e',
     address: 'No 14, Salem Crescent',
     is_admin: 'false',
 
@@ -45,5 +47,6 @@ const userModel = [
 
   },
 ];
+
 
 export default userModel;

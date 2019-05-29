@@ -5,13 +5,18 @@
   "main": "src/app.js",
   "dependencies": {
     "@babel/preset-env": "^7.4.5",
+    "@hapi/joi": "^15.0.3",
+    "bcrypt": "^3.0.6",
     "body-parser": "^1.19.0",
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
+    "cloudinary": "^1.14.0",
+    "coveralls": "^3.0.3",
     "dotenv": "^8.0.0",
     "express": "^4.17.0",
     "jsonwebtoken": "^8.5.1",
     "mocha": "^6.1.4",
+    "morgan": "^1.9.1",
     "validate.js": "^0.12.0",
     "validator": "^11.0.0"
   },
@@ -24,6 +29,7 @@
     "@babel/register": "^7.4.4",
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
+    "debug": "^4.1.1",
     "eslint": "^5.3.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2.14.0",
@@ -31,7 +37,7 @@
     "nyc": "^14.1.1"
   },
   "scripts": {
-    "start": "node dist/server.js",
+    "start": "node dist/app.js",
     "watch": "nodemon --exec babel-node --presets @babel/preset-env ./server/app.js",
     "babel-node": "babel-core/register --presets=env",
     "coveralls": "nyc npm test && nyc report --reporter=text-lcov | coveralls",

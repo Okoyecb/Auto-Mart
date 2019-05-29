@@ -93,24 +93,6 @@ const deleteCar = (req, res) => {
   });
 };
 
-// const deleteCar = (req, res) => {
-//   const { id } = req.params;
-//   carModel.forEach((cars, i) => {
-//     if (parseInt(cars.id, 10) === parseInt(id, 10)) {
-//       carModel.splice(i, 1);
-//       return res.status(200).json({
-//         status: 'success',
-//         message: 'Car Deleted Successfully',
-//         data: carModel,
-//       });
-//     }
-//     return res.status(404).json({
-//       status: 'error',
-//       message: 'Car not found',
-//     });
-//   });
-// };
-
 
 const getAllCars = (req, res) => {
   if (Object.keys(req.query).length !== 0) {

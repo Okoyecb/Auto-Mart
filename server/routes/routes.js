@@ -3,9 +3,11 @@ import Users from '../controllers/user';
 import car from '../controllers/cars';
 import order from '../controllers/order';
 
+
 const router = express.Router();
 
 router.post('/auth/signup', Users.createUsers);
+router.post('/auth/signin', Users.signIn);
 router.post('/car', car.createCar);
 router.get('/car/:id', car.getCar);
 router.get('/car?status=available&min_price=​XXXValue​&max_price=​XXXValue', car.priceRange);
