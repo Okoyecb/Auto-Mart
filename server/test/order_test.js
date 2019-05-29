@@ -21,8 +21,8 @@ const updatedOrder = {
   id: 201,
   car_id: 100,
   status: 'Pending',
-  old_price_offered: 4000000,
-  new_price_offered: 38000000,
+  old_price_offered: 40000000,
+  new_price_offered: 380000000,
 };
 
 describe('Create an Order', () => {
