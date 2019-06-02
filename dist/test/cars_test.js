@@ -35,9 +35,10 @@ var updatedStatus = {
   model: 'Accord',
   body_type: 'Sedan'
 };
+var API_PREFIX = '/api/v1';
 describe('Create a Post', function () {
   it('/api/v1/car should respond with status code 201 and create a post', function (done) {
-    _chai["default"].request(_app["default"]).post('/api/v1/car').set('Accept', 'application/json').send(details).end(function (err, res) {
+    _chai["default"].request(_app["default"]).post("".concat(API_PREFIX, "/car")).set('Accept', 'application/json').send(details).end(function (err, res) {
       if (err) return done(err);
       expect(res.status).to.equal(201);
       expect(res.body.message).to.eql('Car Posted Successfully');
@@ -47,7 +48,7 @@ describe('Create a Post', function () {
   it('/api/v1/car/:id should respond with status code 200 and get a single car', function (done) {
     var id = 100;
 
-    _chai["default"].request(_app["default"]).get("/api/v1/car/".concat(id)).set('Accept', 'application/json').end(function (err, res) {
+    _chai["default"].request(_app["default"]).get("".concat(API_PREFIX, "/car/").concat(id)).set('Accept', 'application/json').end(function (err, res) {
       if (err) return done(err);
       expect(res.status).to.equal(200);
       expect(res.body.message).to.eql('Successfully retrieved single car');
@@ -55,8 +56,7 @@ describe('Create a Post', function () {
     });
   });
   it('/api/v1/car?status=available should respond with status code 200 and get a single car', function (done) {
-    // const status = 'available';
-    _chai["default"].request(_app["default"]).get('/api/v1/car?status=available').set('Accept', 'application/json').end(function (err, res) {
+    _chai["default"].request(_app["default"]).get("".concat(API_PREFIX, "/car?status=available")).set('Accept', 'application/json').end(function (err, res) {
       if (err) return done(err);
       expect(res.status).to.equal(200);
       expect(res.body.message).to.eql('Car retrieved successfully');
@@ -66,7 +66,7 @@ describe('Create a Post', function () {
   it('/api/v1/car should respond with status code 201 and create a post', function (done) {
     var id = 101;
 
-    _chai["default"].request(_app["default"])["delete"]("/api/v1/car/".concat(id)).set('Accept', 'application/json').send(details).end(function (err, res) {
+    _chai["default"].request(_app["default"])["delete"]("".concat(API_PREFIX, "/car/").concat(id)).set('Accept', 'application/json').send(details).end(function (err, res) {
       if (err) return done(err);
       expect(res.status).to.equal(200);
       expect(res.body.message).to.eql('Car deleted successfully');
@@ -76,7 +76,7 @@ describe('Create a Post', function () {
   it('/api/v1/car/:id should respond with status code 201 and update a car', function (done) {
     var id = 100;
 
-    _chai["default"].request(_app["default"]).patch("/api/v1/car/".concat(id)).set('Accept', 'application/json').send(updatedStatus).end(function (err, res) {
+    _chai["default"].request(_app["default"]).patch("".concat(API_PREFIX, "/car/").concat(id)).set('Accept', 'application/json').send(updatedStatus).end(function (err, res) {
       if (err) return done(err);
       expect(res.status).to.equal(201);
       expect(res.body.message).to.eql('Car Updated successfully');
@@ -84,7 +84,7 @@ describe('Create a Post', function () {
     });
   });
   it('/api/v1/car should respond with status code 200 and get a single car', function (done) {
-    _chai["default"].request(_app["default"]).get('/api/v1/car').set('Accept', 'application/json').end(function (err, res) {
+    _chai["default"].request(_app["default"]).get("".concat(API_PREFIX, "/car")).set('Accept', 'application/json').end(function (err, res) {
       if (err) return done(err);
       expect(res.status).to.equal(200);
       expect(res.body.message).to.eql('Cars retrieved successfully');

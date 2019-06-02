@@ -68,14 +68,14 @@ var updateOrder = function updateOrder(req, res) {
   var updatedOrder = {
     id: orderFound.id,
     car_id: orderFound.car_id,
-    status: orderFound.car_id,
+    status: orderFound.status,
     old_price_offered: orderFound.price_offered,
     new_price_offered: req.body.price_offered || orderFound.price_offered
   };
 
   _order["default"].splice(itemIndex, 1, updatedOrder);
 
-  return res.status(201).send({
+  return res.status(200).json({
     success: 'true',
     message: 'Order Updated successfully',
     updatedOrder: updatedOrder

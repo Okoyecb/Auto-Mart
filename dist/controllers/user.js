@@ -55,10 +55,10 @@ var createUsers = function createUsers(req, res) {
 };
 
 var signIn = function signIn(req, res) {
-  var userData = req.body;
+  var userInfo = req.body;
 
   var verifiedUser = _user["default"].find(function (databaseUser) {
-    return databaseUser.email === userData.email;
+    return databaseUser.email === userInfo.email;
   });
 
   if (!verifiedUser) {
@@ -67,11 +67,11 @@ var signIn = function signIn(req, res) {
       message: 'User Not Found'
     });
   } else {
-    if (verifiedUser.password === userData.password) {
+    if (verifiedUser.password === userInfo.password) {
       var payload = {
-        id: userData.id,
-        email: userData.email,
-        isAdmin: userData.isAdmin
+        id: userInfo.id,
+        email: userInfo.email,
+        isAdmin: userInfo.isAdmin
       };
 
       _jsonwebtoken["default"].sign(payload, process.env.secret_key, function (err, token) {
@@ -81,8 +81,7 @@ var signIn = function signIn(req, res) {
           res.status(201).json({
             status: 'success',
             token: "Bearer ".concat(token),
-            message: 'Login Succesful',
-            first_name: 'testing oo'
+            message: 'Login Succesful'
           });
         }
       });
