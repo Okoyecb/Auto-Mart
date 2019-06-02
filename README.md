@@ -9,7 +9,7 @@ Auto Mart is an online marketplace for automobiles of diverse makes, model or bo
 
 ## Table of Contents
 1. <a href="#hosted-app">Link to Hosted App</a>
-2. <a href="#Templates">Link to Pivotal Tracker</a>
+2. <a href="#Templates">Link to UI Template</a>
 3. <a href="#tech-stack-used">Tech Stack Used</a>
 4. <a href="#Testing tools">How To Use</a>
 5. <a href="#author">Author</a>
