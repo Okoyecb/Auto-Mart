@@ -30,11 +30,12 @@ const updatedStatus = {
   body_type: 'Sedan',
 };
 
+const API_PREFIX = '/api/v1';
 
 describe('Create a Post', () => {
   it('/api/v1/car should respond with status code 201 and create a post', (done) => {
     chai.request(app)
-      .post('/api/v1/car')
+      .post(`${API_PREFIX}/car`)
       .set('Accept', 'application/json')
       .send(details)
       .end((err, res) => {
@@ -48,7 +49,7 @@ describe('Create a Post', () => {
   it('/api/v1/car/:id should respond with status code 200 and get a single car', (done) => {
     const id = 100;
     chai.request(app)
-      .get(`/api/v1/car/${id}`)
+      .get(`${API_PREFIX}/car/${id}`)
       .set('Accept', 'application/json')
       .end((err, res) => {
         if (err) return done(err);
@@ -59,9 +60,8 @@ describe('Create a Post', () => {
   });
 
   it('/api/v1/car?status=available should respond with status code 200 and get a single car', (done) => {
-    // const status = 'available';
     chai.request(app)
-      .get('/api/v1/car?status=available')
+      .get(`${API_PREFIX}/car?status=available`)
       .set('Accept', 'application/json')
       .end((err, res) => {
         if (err) return done(err);
@@ -74,7 +74,7 @@ describe('Create a Post', () => {
   it('/api/v1/car should respond with status code 201 and create a post', (done) => {
     const id = 101;
     chai.request(app)
-      .delete(`/api/v1/car/${id}`)
+      .delete(`${API_PREFIX}/car/${id}`)
       .set('Accept', 'application/json')
       .send(details)
       .end((err, res) => {
@@ -88,7 +88,7 @@ describe('Create a Post', () => {
   it('/api/v1/car/:id should respond with status code 201 and update a car', (done) => {
     const id = 100;
     chai.request(app)
-      .patch(`/api/v1/car/${id}`)
+      .patch(`${API_PREFIX}/car/${id}`)
       .set('Accept', 'application/json')
       .send(updatedStatus)
       .end((err, res) => {
@@ -101,7 +101,7 @@ describe('Create a Post', () => {
 
   it('/api/v1/car should respond with status code 200 and get a single car', (done) => {
     chai.request(app)
-      .get('/api/v1/car')
+      .get(`${API_PREFIX}/car`)
       .set('Accept', 'application/json')
       .end((err, res) => {
         if (err) return done(err);

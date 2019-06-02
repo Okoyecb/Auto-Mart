@@ -41,7 +41,9 @@ const getCar = (req, res) => {
 };
 
 const carStatus = (req, res) => {
-  const { status } = req.query;
+  const {
+    status,
+  } = req.query;
   const filtered = carModel.filter(cars => cars.status === status);
   if (filtered.length > 0) {
     return res.status(200).send({
@@ -55,24 +57,34 @@ const carStatus = (req, res) => {
   });
 };
 
+
 const priceRange = (req, res) => {
-  const { status, min_price, max_price } = req.query;
-  const filtered = carModel.filter(cars => cars.status === status);
-  if (filtered.length > 0) {
-    const filteredCars = filtered.filter(
-      cars => cars.price >= min_price && cars.price <= max_price,
+  const {
+    status,
+    min_price,
+    max_price,
+  } = req.query;
+  const availableCars = carModel.filter(order => order.status === status);
+  if (availableCars.length > 0) {
+    const filteredCars = availableCars.filter(
+      order => order.price >= min_price && order.price <= max_price,
     );
-    return res.status(200).send({
-      success: 'true',
-      message: 'Car retrieved successfully',
-      filteredCars,
+    if (filteredCars.length > 0) {
+      return res.status(200).json({
+        status: 'success',
+        data: filteredCars,
+      });
+    }
+    return res.status(404).json({
+      status: 'error',
+      message: 'Car not found',
     });
   }
-  return res.status(400).send({
-    success: 'false',
+  return res.status(404).json({
+    status: 'error',
+    message: 'Car not found',
   });
 };
-
 
 const deleteCar = (req, res) => {
   const id = parseInt(req.params.id, 10);
@@ -147,7 +159,13 @@ const updateStatus = (req, res) => {
 
 
 const CarController = {
-  createCar, getCar, getAllCars, deleteCar, updateStatus, carStatus, priceRange,
+  createCar,
+  getCar,
+  getAllCars,
+  deleteCar,
+  updateStatus,
+  carStatus,
+  priceRange,
 };
 
 export default CarController;

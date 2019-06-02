@@ -2,7 +2,6 @@
 /* eslint-disable import/no-unresolved */
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
-// import bcrypt from 'bcrypt';
 import userModel from '../model/user';
 
 dotenv.config();
@@ -41,18 +40,21 @@ const createUsers = (req, res) => {
 };
 
 const signIn = (req, res) => {
-  const userData = req.body;
+  const userInfo = req.body;
   const verifiedUser = userModel.find(
-    databaseUser => databaseUser.email === userData.email,
+    databaseUser => databaseUser.email === userInfo.email,
   );
   if (!verifiedUser) {
-    res.status(404).json({ status: 'error', message: 'User Not Found' });
+    res.status(404).json({
+      status: 'error',
+      message: 'User Not Found',
+    });
   } else {
-    if (verifiedUser.password === userData.password) {
+    if (verifiedUser.password === userInfo.password) {
       const payload = {
-        id: userData.id,
-        email: userData.email,
-        isAdmin: userData.isAdmin,
+        id: userInfo.id,
+        email: userInfo.email,
+        isAdmin: userInfo.isAdmin,
       };
       jwt.sign(payload, process.env.secret_key, (err, token) => {
         if (err) {
@@ -62,20 +64,23 @@ const signIn = (req, res) => {
             status: 'success',
             token: `Bearer ${token}`,
             message: 'Login Succesful',
-            first_name: 'testing oo',
           });
         }
       });
     } else {
       return res
         .status(400)
-        .json({ status: 'error', message: 'Password Incorrect' });
+        .json({
+          status: 'error',
+          message: 'Password Incorrect',
+        });
     }
     return false;
   }
 };
 const UserController = {
-  createUsers, signIn,
+  createUsers,
+  signIn,
 };
 
 export default UserController;
