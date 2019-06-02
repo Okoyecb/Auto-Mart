@@ -18,7 +18,7 @@ Auto Mart is an online marketplace for automobiles of diverse makes, model or bo
 
 
 ## Link to Hosted App
-* [API link]( )
+* [API link](https://automart-okoyecb.herokuapp.com/)
 
 ## Templates
 * UI templates are hosted on Github pages [visit here](https://okoyecb.github.io/Auto-Mart/)
@@ -71,10 +71,15 @@ ISC
 
 ## References
 
+[Homestudy](https://homestudy.andela.com)
+
 [StackOverflow](https://stackoverflow.com/)
 
-[Homestudy](homestudy.andela.com)
----
+[Scotch](https://scotch.io)
+
+[Dev.to](https://dev.to)
+
+
 
 
 
