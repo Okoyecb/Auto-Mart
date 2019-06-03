@@ -180,7 +180,6 @@
         "parameters": [
           {
             "name": "id",
-            "in": "query",
             "description": "Enter Car ID",
             "type": "Integer"
           }
