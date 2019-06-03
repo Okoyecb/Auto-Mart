@@ -179,10 +179,10 @@
         ],
         "parameters": [
           {
-            "name": "status",
+            "name": "id",
             "in": "query",
-            "description": "Available || Sold",
-            "type": "string"
+            "description": "Enter Car ID",
+            "type": "Integer"
           }
         ],
         "responses": {
