@@ -35,50 +35,37 @@ var createOrder = function createOrder(req, res) {
 var getOrder = function getOrder(req, res) {
   var id = parseInt(req.params.id, 10);
 
-  _order["default"].map(function (order) {
-    if (order.id === id) {
-      return res.status(200).send({
-        success: 'true',
-        message: 'Order retrieved successfully',
-        order: order
-      });
-    }
+  var retrievedOrder = _order["default"].find(function (order) {
+    return order.id === id;
+  });
+
+  return res.status(200).send({
+    success: 'true',
+    message: 'Order retrieved successfully',
+    retrievedOrder: retrievedOrder
   });
 };
 
 var updateOrder = function updateOrder(req, res) {
   var id = parseInt(req.params.id, 10);
-  var orderFound;
-  var itemIndex;
 
-  _order["default"].map(function (order, index) {
-    if (order.id === id) {
-      orderFound = order;
-      itemIndex = index;
-    }
+  var seenOrder = _order["default"].find(function (order) {
+    return order.id === id;
   });
 
-  if (!orderFound) {
+  if (!seenOrder) {
     return res.status(404).send({
       success: 'false',
-      message: 'Order not found'
+      message: 'Order Not Found'
     });
   }
 
-  var updatedOrder = {
-    id: orderFound.id,
-    car_id: orderFound.car_id,
-    status: orderFound.status,
-    old_price_offered: orderFound.price_offered,
-    new_price_offered: req.body.price_offered || orderFound.price_offered
-  };
-
-  _order["default"].splice(itemIndex, 1, updatedOrder);
-
-  return res.status(200).json({
+  seenOrder.old_offer = seenOrder.current_offer;
+  seenOrder.current_offer = req.body.price_offered;
+  return res.status(201).send({
     success: 'true',
-    message: 'Order Updated successfully',
-    updatedOrder: updatedOrder
+    message: 'Order updated successfully',
+    seenOrder: seenOrder
   });
 };
 

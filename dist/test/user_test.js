@@ -11,8 +11,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 /* eslint-disable consistent-return */
 
 /* eslint-disable no-undef */
-// import { userModel } from './dummyData/user';
-// config chai to use expect
 _chai["default"].use(_chaiHttp["default"]);
 
 var expect = _chai["default"].expect;

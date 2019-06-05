@@ -52,7 +52,7 @@ var getCar = function getCar(req, res) {
 
   return res.status(200).json({
     status: 'success',
-    message: 'Successfully retrieved single car',
+    message: 'Car Successfully Retrieved',
     singleCar: singleCar
   });
 };
@@ -83,95 +83,95 @@ var priceRange = function priceRange(req, res) {
       min_price = _req$query.min_price,
       max_price = _req$query.max_price;
 
-  var filtered = _cars["default"].filter(function (cars) {
-    return cars.status === status;
+  var availableCars = _cars["default"].filter(function (order) {
+    return order.status === status;
   });
 
-  if (filtered.length > 0) {
-    var filteredCars = filtered.filter(function (cars) {
-      return cars.price >= min_price && cars.price <= max_price;
+  if (availableCars.length > 0) {
+    var filteredCars = availableCars.filter(function (order) {
+      return order.price >= min_price && order.price <= max_price;
     });
-    return res.status(200).send({
-      success: 'true',
-      message: 'Car retrieved successfully',
-      filteredCars: filteredCars
+
+    if (filteredCars.length > 0) {
+      return res.status(200).json({
+        status: 'success',
+        data: filteredCars
+      });
+    }
+
+    return res.status(404).json({
+      status: 'error',
+      message: 'Car not found'
     });
   }
 
-  return res.status(400).send({
-    success: 'false'
+  return res.status(404).json({
+    status: 'error',
+    message: 'Car not found'
   });
 };
 
 var deleteCar = function deleteCar(req, res) {
   var id = parseInt(req.params.id, 10);
 
-  _cars["default"].find(function (cars, index) {
-    if (cars.id === id) {
+  _cars["default"].find(function (car, index) {
+    if (car.id === id) {
       _cars["default"].splice(index, 1);
 
-      return res.status(200).send({
+      return res.status(200).json({
         success: 'true',
-        message: 'Car deleted successfully',
-        data: _cars["default"]
+        message: 'Car has been deleted successfully',
+        carModel: _cars["default"]
       });
     }
-  });
 
-  return res.status(404).send({
-    success: 'false',
-    message: 'Car does not exist'
+    return res.status(404).json({
+      success: 'false',
+      message: 'Car does not exist'
+    });
   });
 };
 
 var getAllCars = function getAllCars(req, res) {
-  if (Object.keys(req.query).length !== 0) {
-    carStatus(req, res);
+  if (_cars["default"].length === 0) {
+    return res.status(200).json({
+      status: 'false',
+      message: 'No cars available'
+    });
   }
 
-  return res.status(200).send({
-    success: 'true',
+  return res.status(200).json({
+    status: 'true',
     message: 'Cars retrieved successfully',
     carModel: _cars["default"]
   });
 };
 
-var updateStatus = function updateStatus(req, res) {
-  var id = parseInt(req.params.id, 10);
-  var carFound;
-  var itemIndex;
+var updateCarStatus = function updateCarStatus(req, res) {
+  var id = req.params.id;
 
-  _cars["default"].map(function (cars, index) {
-    if (cars.id === id) {
-      carFound = cars;
-      itemIndex = index;
-    }
+  var searchCar = _cars["default"].find(function (car) {
+    return car.id === parseInt(id, 10);
   });
 
-  if (!carFound) {
-    return res.status(404).send({
-      success: 'false',
-      message: 'Car not found'
+  if (!searchCar) {
+    return res.status(404).json({
+      status: 'false',
+      message: 'car not found'
     });
   }
 
-  var updatedStatus = {
-    id: carFound.id,
-    created_on: carFound.created_on,
-    state: carFound.state,
-    status: req.body.status || carFound.status,
-    price: req.body.price || carFound.price,
-    manufacturer: carFound.manufacturer,
-    model: carFound.model,
-    body_type: carFound.body_type
-  };
+  if (searchCar.status === 'sold') {
+    return res.status(400).json({
+      status: 'false',
+      message: 'car has already been sold'
+    });
+  }
 
-  _cars["default"].splice(itemIndex, 1, updatedStatus);
-
-  return res.status(201).send({
-    success: 'true',
-    message: 'Car Updated successfully',
-    updatedStatus: updatedStatus
+  searchCar.status = 'sold';
+  return res.status(404).json({
+    status: 'true',
+    message: 'car status successfully changed'
   });
 };
 
@@ -180,7 +180,7 @@ var CarController = {
   getCar: getCar,
   getAllCars: getAllCars,
   deleteCar: deleteCar,
-  updateStatus: updateStatus,
+  updateCarStatus: updateCarStatus,
   carStatus: carStatus,
   priceRange: priceRange
 };

@@ -62,7 +62,7 @@ $ npm run watch
 
 ## Author
 
-Chidi Okoye
+[Chidi Bartholomew Okoye](https://github.com/Okoyecb)
 
 
 ## License
