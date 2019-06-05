@@ -28,16 +28,6 @@ const userdetails = {
   address: 'Gold street, Cliford way',
 };
 
-// const updatedStatus = {
-//   id: 101,
-//   created_on: 'Wed May 22 09:13:52 2019 UTC',
-//   state: 'New',
-//   status: 'sold',
-//   price: 3000000,
-//   manufacturer: 'Honda',
-//   model: 'Accord',
-//   body_type: 'Sedan',
-// };
 
 const API_PREFIX = '/api/v1';
 let authToken;

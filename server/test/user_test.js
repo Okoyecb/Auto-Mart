@@ -3,9 +3,7 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 import app from '../app';
-// import { userModel } from './dummyData/user';
 
-// config chai to use expect
 
 chai.use(chaiHttp);
 const { expect } = chai;
