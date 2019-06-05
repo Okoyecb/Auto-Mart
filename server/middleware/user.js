@@ -44,6 +44,7 @@ const validateSignup = (req, res, next) => {
   }
 };
 
+
 const userValidator = {
   validateSignup, validateSignin,
 };

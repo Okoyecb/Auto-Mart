@@ -2,15 +2,17 @@ import express from 'express';
 import Users from '../controllers/user';
 import car from '../controllers/cars';
 import order from '../controllers/order';
-import userValidator from '../validator/user';
-import carsValidator from '../validator/cars';
-import orderValidator from '../validator/order';
+import userValidator from '../middleware/user';
+import carsValidator from '../middleware/cars';
+import orderValidator from '../middleware/order';
+import VerifyToken from '../middleware/verifyToken';
 
 
 const {
   validateSignin, validateSignup,
 } = userValidator;
 
+const { verifyToken } = VerifyToken;
 
 const {
   validateNewPost, validateUpdateStatus,
@@ -21,18 +23,24 @@ const {
   validateCreateOrder, validateUpdateOrder,
 } = orderValidator;
 
+const {
+  createCar, getCar, getAllCars, deleteCar, updateCarStatus,
+} = car;
+const { createOrder, getOrder, updateOrder } = order;
+const { createUsers } = Users;
+
 const router = express.Router();
 
-router.post('/auth/signup', validateSignup, Users.createUsers);
+router.post('/auth/signup', validateSignup, createUsers);
 router.post('/auth/signin', validateSignin, Users.signIn);
-router.post('/car', validateNewPost, car.createCar);
-router.get('/car/:id', car.getCar);
-router.get('/car?status=available&min_price=​XXXValue​&max_price=​XXXValue', car.priceRange);
-router.get('/car', car.getAllCars);
-router.delete('/car/:id', car.deleteCar);
-router.patch('/car/:id', validateUpdateStatus, car.updateStatus);
-router.post('/order', validateCreateOrder, order.createOrder);
-router.get('/order/:id', order.getOrder);
-router.patch('/order/:id', validateUpdateOrder, order.updateOrder);
+router.post('/car', validateNewPost, createCar);
+router.get('/car/:id', getCar);
+// router.get('/car?status=available', carStatus);
+router.get('/car', getAllCars);
+router.delete('/car/:id', verifyToken, deleteCar);
+router.patch('/car/:id', verifyToken, validateUpdateStatus, updateCarStatus);
+router.post('/order', verifyToken, validateCreateOrder, createOrder);
+router.get('/order/:id', verifyToken, getOrder);
+router.patch('/order/:id', verifyToken, validateUpdateOrder, updateOrder);
 
 export default router;

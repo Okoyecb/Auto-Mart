@@ -17,14 +17,37 @@ const details = {
   price_offered: 38000000,
 };
 
+const userdetails = {
+  id: 13,
+  email: 'ishola@gmail.com',
+  first_name: 'Ishola',
+  last_name: 'Daniel',
+  password: 'qwerty1234',
+  address: 'Gold street, Cliford way',
+};
+
+const updatedOrder = {
+  price_offered: 40000000,
+};
 
 const API_PREFIX = '/api/v1';
 
-describe('Create an Order', () => {
+let authToken;
+describe('Sign in User to perform Operations', () => {
+  before((done) => {
+    chai.request(app)
+      .post('/api/v1/auth/signin')
+      .send(userdetails)
+      .end((err, res) => {
+        authToken = res.body.token;
+        done();
+      });
+  });
+
   it('/api/v1/order should respond with status code 201 and create an order', (done) => {
     chai.request(app)
       .post(`${API_PREFIX}/order`)
-      .set('accept', 'application/json')
+      .set('x-access-token', authToken)
       .send(details)
       .end((err, res) => {
         if (err) return done(err);
@@ -38,11 +61,25 @@ describe('Create an Order', () => {
     const id = 201;
     chai.request(app)
       .get(`${API_PREFIX}/order/${id}`)
-      .set('Accept', 'application/json')
+      .set('x-access-token', authToken)
       .end((err, res) => {
         if (err) return done(err);
         expect(res.status).to.equal(200);
         expect(res.body.message).to.eql('Order retrieved successfully');
+        done();
+      });
+  });
+
+  it('/api/v1/order/:id should respond with status code 201 and update the order', (done) => {
+    const id = 201;
+    chai.request(app)
+      .patch(`${API_PREFIX}/order/${id}`)
+      .set('Authorization', authToken)
+      .send(updatedOrder)
+      .end((err, res) => {
+        if (err) return done(err);
+        expect(res.status).to.equal(201);
+        expect(res.body.message).to.eql('Order updated successfully');
         done();
       });
   });
@@ -54,7 +91,7 @@ describe('Create an Order', () => {
       .send({
         new_price_offered: 50000000,
       })
-      .set('Accept', 'application/json')
+      .set('x-access-token', authToken)
       .end((err, res) => {
         if (err) return done(err);
         expect(res.status).to.equal(404);

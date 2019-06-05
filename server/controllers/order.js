@@ -24,53 +24,33 @@ const createOrder = (req, res) => {
 
 const getOrder = (req, res) => {
   const id = parseInt(req.params.id, 10);
-  orderModel.map((order) => {
-    if (order.id === id) {
-      return res.status(200).send({
-        success: 'true',
-        message: 'Order retrieved successfully',
-        order,
-      });
-    }
+  const retrievedOrder = orderModel.find(order => order.id === id);
+  return res.status(200).send({
+    success: 'true',
+    message: 'Order retrieved successfully',
+    retrievedOrder,
   });
 };
 
 const updateOrder = (req, res) => {
   const id = parseInt(req.params.id, 10);
-  let orderFound;
-  let itemIndex;
-  orderModel.map((order, index) => {
-    if (order.id === id) {
-      orderFound = order;
-      itemIndex = index;
-    }
-  });
-
-  if (!orderFound) {
+  const seenOrder = orderModel.find(order => order.id === id);
+  if (!seenOrder) {
     return res.status(404).send({
       success: 'false',
-      message: 'Order not found',
+      message: 'Order Not Found',
     });
   }
 
+  seenOrder.old_offer = seenOrder.current_offer;
+  seenOrder.current_offer = req.body.price_offered;
 
-  const updatedOrder = {
-    id: orderFound.id,
-    car_id: orderFound.car_id,
-    status: orderFound.status,
-    old_price_offered: orderFound.price_offered,
-    new_price_offered: req.body.price_offered || orderFound.price_offered,
-  };
-
-  orderModel.splice(itemIndex, 1, updatedOrder);
-
-  return res.status(200).json({
+  return res.status(201).send({
     success: 'true',
-    message: 'Order Updated successfully',
-    updatedOrder,
+    message: 'Order updated successfully',
+    seenOrder,
   });
 };
-
 const OrderController = {
   createOrder,
   getOrder,

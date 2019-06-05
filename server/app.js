@@ -22,6 +22,7 @@ app.use(bodyParser.json({
   extended: true,
 }));
 
+
 app.use(logger('dev'));
 
 app.get('/', (req, res) => {
@@ -29,6 +30,12 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api/v1', routes);
+
+app.use('*', (req, res) => res.status(404).json({
+  success: false,
+  message: 'Page not Found',
+}));
+
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log('Welcome to AutoMart'));
