@@ -37,6 +37,12 @@ app.get('/', function (req, res) {
   res.json('Hi there! Welcome to our AutoMart API');
 });
 app.use('/api/v1', _routes["default"]);
+app.use('*', function (req, res) {
+  return res.status(404).json({
+    success: false,
+    message: 'Page not Found'
+  });
+});
 var port = process.env.PORT || 3000;
 app.listen(port, function () {
   return console.log('Welcome to AutoMart');

@@ -16,7 +16,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 /* eslint-disable consistent-return */
 
 /* eslint-disable import/no-unresolved */
-// import bcrypt from 'bcrypt';
 _dotenv["default"].config();
 
 var createUsers = function createUsers(req, res) {
@@ -80,7 +79,7 @@ var signIn = function signIn(req, res) {
         } else {
           res.status(201).json({
             status: 'success',
-            token: "Bearer ".concat(token),
+            token: "".concat(token),
             message: 'Login Succesful'
           });
         }

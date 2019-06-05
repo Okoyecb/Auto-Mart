@@ -33,7 +33,21 @@ var validateUpdateStatus = function validateUpdateStatus(req, res, next) {
       error: 'Details are missing'
     });
   }
-};
+}; // const validateDeleteCar = (req, res, next) => {
+//   try {
+//     if ((req.body.id) || req.body.status) {
+//       next();
+//     } else {
+//       throw new Error();
+//     }
+//   } catch (err) {
+//     res.status(412).json({
+//       status: 412,
+//       error: 'Details are missing',
+//     });
+//   }
+// };
+
 
 var carsValidator = {
   validateNewPost: validateNewPost,

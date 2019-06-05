@@ -23,10 +23,28 @@ var details = {
   price: 4000000,
   price_offered: 38000000
 };
+var userdetails = {
+  id: 13,
+  email: 'ishola@gmail.com',
+  first_name: 'Ishola',
+  last_name: 'Daniel',
+  password: 'qwerty1234',
+  address: 'Gold street, Cliford way'
+};
+var updatedOrder = {
+  price_offered: 40000000
+};
 var API_PREFIX = '/api/v1';
-describe('Create an Order', function () {
+var authToken;
+describe('Sign in User to perform Operations', function () {
+  before(function (done) {
+    _chai["default"].request(_app["default"]).post('/api/v1/auth/signin').send(userdetails).end(function (err, res) {
+      authToken = res.body.token;
+      done();
+    });
+  });
   it('/api/v1/order should respond with status code 201 and create an order', function (done) {
-    _chai["default"].request(_app["default"]).post("".concat(API_PREFIX, "/order")).set('accept', 'application/json').send(details).end(function (err, res) {
+    _chai["default"].request(_app["default"]).post("".concat(API_PREFIX, "/order")).set('x-access-token', authToken).send(details).end(function (err, res) {
       if (err) return done(err);
       expect(res.status).to.equal(201);
       expect(res.body.message).to.eql('Order created');
@@ -36,10 +54,20 @@ describe('Create an Order', function () {
   it('/api/v1/order/:id should respond with status code 200 and retrieve an order', function (done) {
     var id = 201;
 
-    _chai["default"].request(_app["default"]).get("".concat(API_PREFIX, "/order/").concat(id)).set('Accept', 'application/json').end(function (err, res) {
+    _chai["default"].request(_app["default"]).get("".concat(API_PREFIX, "/order/").concat(id)).set('x-access-token', authToken).end(function (err, res) {
       if (err) return done(err);
       expect(res.status).to.equal(200);
       expect(res.body.message).to.eql('Order retrieved successfully');
+      done();
+    });
+  });
+  it('/api/v1/order/:id should respond with status code 201 and update the order', function (done) {
+    var id = 201;
+
+    _chai["default"].request(_app["default"]).patch("".concat(API_PREFIX, "/order/").concat(id)).set('Authorization', authToken).send(updatedOrder).end(function (err, res) {
+      if (err) return done(err);
+      expect(res.status).to.equal(201);
+      expect(res.body.message).to.eql('Order updated successfully');
       done();
     });
   });
@@ -48,7 +76,7 @@ describe('Create an Order', function () {
 
     _chai["default"].request(_app["default"]).patch("".concat(API_PREFIX, "/order/").concat(id, "/price")).send({
       new_price_offered: 50000000
-    }).set('Accept', 'application/json').end(function (err, res) {
+    }).set('x-access-token', authToken).end(function (err, res) {
       if (err) return done(err);
       expect(res.status).to.equal(404);
       done();
