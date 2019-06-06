@@ -24,7 +24,7 @@ const {
 } = orderValidator;
 
 const {
-  createCar, getCar, getAllCars, deleteCar, updateCarStatus,
+  createCar, getCar, getAllCars, deleteCar, updateCarStatus, carStatus,
 } = car;
 const { createOrder, getOrder, updateOrder } = order;
 const { createUsers } = Users;
@@ -35,12 +35,12 @@ router.post('/auth/signup', validateSignup, createUsers);
 router.post('/auth/signin', validateSignin, Users.signIn);
 router.post('/car', validateNewPost, createCar);
 router.get('/car/:id', getCar);
-// router.get('/car?status=available', carStatus);
+router.get('/car?status=available', carStatus);
 router.get('/car', getAllCars);
-router.delete('/car/:id', verifyToken, deleteCar);
+router.delete('/car/:id', deleteCar);
 router.patch('/car/:id', verifyToken, validateUpdateStatus, updateCarStatus);
-router.post('/order', verifyToken, validateCreateOrder, createOrder);
-router.get('/order/:id', verifyToken, getOrder);
-router.patch('/order/:id', verifyToken, validateUpdateOrder, updateOrder);
+router.post('/order', validateCreateOrder, createOrder);
+router.get('/order/:id', getOrder);
+router.patch('/order/:id', validateUpdateOrder, updateOrder);
 
 export default router;
