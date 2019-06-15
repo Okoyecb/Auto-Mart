@@ -62,7 +62,7 @@ const signIn = (req, res) => {
         } else {
           res.status(201).json({
             status: 'success',
-            token: `${token}`,
+            token: `Bearer ${token}`,
             message: 'Login Succesful',
           });
         }

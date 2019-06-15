@@ -141,6 +141,26 @@ const updateCarStatus = (req, res) => {
   });
 };
 
+const getSpecificBodytype = (req, res) => {
+  const { body_type } = req.params;
+  const customcars = [];
+  carModel.find((car) => {
+    if (car.body_type === body_type) {
+      customcars.push(car);
+    }
+  });
+  if (customcars.length === 0) {
+    return res.status(404).json({
+      status: 'false',
+      message: 'Car not Found',
+    });
+  }
+  return res.status(200).json({
+    status: 'success',
+    message: 'Cars Successfully Retrieved',
+    customcars,
+  });
+};
 
 const CarController = {
   createCar,
@@ -150,6 +170,7 @@ const CarController = {
   updateCarStatus,
   carStatus,
   priceRange,
+  getSpecificBodytype,
 };
 
 export default CarController;

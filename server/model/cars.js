@@ -63,6 +63,19 @@ const carModel = [
     body_type: 'Sedan',
 
   },
+
+  {
+    id: 110,
+    owner: 'Okoye Janel',
+    created_on: 'Mon May 20 11:13:52 2019 UTC',
+    state: 'New',
+    status: 'available',
+    price: 2000000,
+    manufacturer: 'Hyundai',
+    model: 'Sonata',
+    body_type: 'FWD',
+
+  },
 ];
 
 

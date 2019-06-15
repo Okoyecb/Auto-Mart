@@ -19,13 +19,12 @@ var _cars2 = _interopRequireDefault(require("../middleware/cars"));
 
 var _order2 = _interopRequireDefault(require("../middleware/order"));
 
-var _verifyToken = _interopRequireDefault(require("../middleware/verifyToken"));
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
+// import VerifyToken from '../middleware/verifyToken';
 var validateSignin = _user2["default"].validateSignin,
-    validateSignup = _user2["default"].validateSignup;
-var verifyToken = _verifyToken["default"].verifyToken;
+    validateSignup = _user2["default"].validateSignup; // const { verifyToken } = VerifyToken;
+
 var validateNewPost = _cars2["default"].validateNewPost,
     validateUpdateStatus = _cars2["default"].validateUpdateStatus;
 var validateCreateOrder = _order2["default"].validateCreateOrder,
@@ -34,7 +33,9 @@ var createCar = _cars["default"].createCar,
     getCar = _cars["default"].getCar,
     getAllCars = _cars["default"].getAllCars,
     deleteCar = _cars["default"].deleteCar,
-    updateCarStatus = _cars["default"].updateCarStatus;
+    updateCarStatus = _cars["default"].updateCarStatus,
+    carStatus = _cars["default"].carStatus,
+    getSpecificBodytype = _cars["default"].getSpecificBodytype;
 var createOrder = _order["default"].createOrder,
     getOrder = _order["default"].getOrder,
     updateOrder = _order["default"].updateOrder;
@@ -45,13 +46,14 @@ var router = _express["default"].Router();
 router.post('/auth/signup', validateSignup, createUsers);
 router.post('/auth/signin', validateSignin, _user["default"].signIn);
 router.post('/car', validateNewPost, createCar);
-router.get('/car/:id', getCar); // router.get('/car?status=available', carStatus);
-
+router.get('/car/:id', getCar);
+router.get('/car?status=available', carStatus);
 router.get('/car', getAllCars);
-router["delete"]('/car/:id', verifyToken, deleteCar);
-router.patch('/car/:id', verifyToken, validateUpdateStatus, updateCarStatus);
-router.post('/order', verifyToken, validateCreateOrder, createOrder);
-router.get('/order/:id', verifyToken, getOrder);
-router.patch('/order/:id', verifyToken, validateUpdateOrder, updateOrder);
+router.get('/car/body_type/:body_type', getSpecificBodytype);
+router["delete"]('/car/:id', deleteCar);
+router.patch('/car/:id', validateUpdateStatus, updateCarStatus);
+router.post('/order', validateCreateOrder, createOrder);
+router.get('/order/:id', getOrder);
+router.patch('/order/:id', validateUpdateOrder, updateOrder);
 var _default = router;
 exports["default"] = _default;

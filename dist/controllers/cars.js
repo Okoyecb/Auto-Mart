@@ -175,6 +175,30 @@ var updateCarStatus = function updateCarStatus(req, res) {
   });
 };
 
+var getSpecificBodytype = function getSpecificBodytype(req, res) {
+  var body_type = req.params.body_type;
+  var customcars = [];
+
+  _cars["default"].find(function (car) {
+    if (car.body_type === body_type) {
+      customcars.push(car);
+    }
+  });
+
+  if (customcars.length === 0) {
+    return res.status(404).json({
+      status: 'false',
+      message: 'Car not Found'
+    });
+  }
+
+  return res.status(200).json({
+    status: 'success',
+    message: 'Cars Successfully Retrieved',
+    customcars: customcars
+  });
+};
+
 var CarController = {
   createCar: createCar,
   getCar: getCar,
@@ -182,7 +206,8 @@ var CarController = {
   deleteCar: deleteCar,
   updateCarStatus: updateCarStatus,
   carStatus: carStatus,
-  priceRange: priceRange
+  priceRange: priceRange,
+  getSpecificBodytype: getSpecificBodytype
 };
 var _default = CarController;
 exports["default"] = _default;

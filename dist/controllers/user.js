@@ -40,7 +40,7 @@ var createUsers = function createUsers(req, res) {
     token: 'kjhgvkysbtgvxg'
   };
 
-  var token = _jsonwebtoken["default"].sign(userDetails, process.env.secret_key);
+  var token = _jsonwebtoken["default"].sign(userDetails, process.env.SECRET_KEY);
 
   newUser.token = token;
 
@@ -73,13 +73,13 @@ var signIn = function signIn(req, res) {
         isAdmin: userInfo.isAdmin
       };
 
-      _jsonwebtoken["default"].sign(payload, process.env.secret_key, function (err, token) {
+      _jsonwebtoken["default"].sign(payload, process.env.SECRET_KEY, function (err, token) {
         if (err) {
           throw err;
         } else {
           res.status(201).json({
             status: 'success',
-            token: "".concat(token),
+            token: "Bearer ".concat(token),
             message: 'Login Succesful'
           });
         }
