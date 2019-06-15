@@ -56,13 +56,13 @@ const signIn = (req, res) => {
         email: userInfo.email,
         isAdmin: userInfo.isAdmin,
       };
-      jwt.sign(payload, process.env.secret_key, (err, token) => {
+      jwt.sign(payload, process.env.SECRET_KEY, (err, token) => {
         if (err) {
           throw err;
         } else {
           res.status(201).json({
             status: 'success',
-            token: `${token}`,
+            token: `Bearer ${token}`,
             message: 'Login Succesful',
           });
         }
