@@ -4,7 +4,7 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const secretHash = process.env.SECRET_KEY;
+const secretHash = process.env.secret_key;
 
 class VerifyToken {
   static verifyToken(req, res, next) {

@@ -28,7 +28,7 @@ const createUsers = (req, res) => {
     token: 'kjhgvkysbtgvxg',
   };
 
-  const token = jwt.sign(userDetails, process.env.SECRET_KEY);
+  const token = jwt.sign(userDetails, process.env.secret_key);
   newUser.token = token;
   userModel.push(newUser);
   return res.status(201).json({
@@ -56,7 +56,7 @@ const signIn = (req, res) => {
         email: userInfo.email,
         isAdmin: userInfo.isAdmin,
       };
-      jwt.sign(payload, process.env.SECRET_KEY, (err, token) => {
+      jwt.sign(payload, process.env.secret_key, (err, token) => {
         if (err) {
           throw err;
         } else {
