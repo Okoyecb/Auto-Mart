@@ -28,7 +28,7 @@ const createUsers = (req, res) => {
     token: 'kjhgvkysbtgvxg',
   };
 
-  const token = jwt.sign(userDetails, process.env.secret_key);
+  const token = jwt.sign(userDetails, process.env.SECRET_KEY);
   newUser.token = token;
   userModel.push(newUser);
   return res.status(201).json({
