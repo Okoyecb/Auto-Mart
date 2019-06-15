@@ -40,7 +40,7 @@ var createUsers = function createUsers(req, res) {
     token: 'kjhgvkysbtgvxg'
   };
 
-  var token = _jsonwebtoken["default"].sign(userDetails, process.env.secret_key);
+  var token = _jsonwebtoken["default"].sign(userDetails, process.env.SECRET_KEY);
 
   newUser.token = token;
 

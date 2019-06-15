@@ -25,15 +25,34 @@ function () {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
-            _context.next = 2;
+            console.log('here');
+            _context.prev = 1;
+            _context.next = 4;
             return _connections["default"].query(_createTables["default"].userTable);
 
-          case 2:
+          case 4:
+            _context.next = 6;
+            return _connections["default"].query(_createTables["default"].carTable);
+
+          case 6:
+            _context.next = 8;
+            return _connections["default"].query(_createTables["default"].orderTable);
+
+          case 8:
+            _context.next = 13;
+            break;
+
+          case 10:
+            _context.prev = 10;
+            _context.t0 = _context["catch"](1);
+            console.log(_context.t0);
+
+          case 13:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee);
+    }, _callee, null, [[1, 10]]);
   }));
 
   return function run() {
@@ -41,5 +60,6 @@ function () {
   };
 }();
 
-var _default = run;
+var _default = run();
+
 exports["default"] = _default;
