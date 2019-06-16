@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable camelcase */
 /* eslint-disable consistent-return */
 /* eslint-disable array-callback-return */
@@ -56,7 +57,6 @@ const carStatus = (req, res) => {
     success: 'false',
   });
 };
-
 
 const priceRange = (req, res) => {
   const {
@@ -162,6 +162,40 @@ const getSpecificBodytype = (req, res) => {
   });
 };
 
+const NewAvailableCars = (req, res) => {
+  const AvailableCars = carModel.filter(car => car.status === 'available' && car.state === 'New');
+
+  if (!AvailableCars) {
+    res.status(404).json({
+      status: 404,
+      message: 'Cars not Found',
+    });
+  }
+
+  return res.status(200).json({
+    status: 200,
+    message: 'Cars retrieved successfully',
+    data: AvailableCars,
+  });
+};
+
+// const UsedAvailableCars = (req, res) => {
+//   const AvailableusedCars = carModel.filter(car => car.status === 'available' && car.state === 'Used');
+
+//   if (!AvailableusedCars) {
+//     res.status(404).json({
+//       status: 404,
+//       message: 'Cars not Found',
+//     });
+//   }
+
+//   return res.status(200).json({
+//     status: 200,
+//     message: 'Cars retrieved successfully',
+//     data: AvailableusedCars,
+//   });
+// };
+
 const CarController = {
   createCar,
   getCar,
@@ -171,6 +205,8 @@ const CarController = {
   carStatus,
   priceRange,
   getSpecificBodytype,
+  NewAvailableCars,
+  // UsedAvailableCars,
 };
 
 export default CarController;
