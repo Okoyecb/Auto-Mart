@@ -25,7 +25,7 @@ const {
 } = orderValidator;
 
 const {
-  createCar, getCar, getAllCars, deleteCar, updateCarStatus, carStatus, getSpecificBodytype, NewAvailableCars,
+  createCar, getCar, getAllCars, deleteCar, updateCarStatus, carStatus, getSpecificBodytype, NewAvailableCars, UsedAvailableCars,
 } = car;
 const { createOrder, getOrder, updateOrder } = order;
 const { createUsers } = Users;
@@ -37,7 +37,7 @@ router.post('/auth/signin', validateSignin, Users.signIn);
 router.post('/car', validateNewPost, createCar);
 router.get('/car/:id', getCar);
 router.get('/car/status/available/New', NewAvailableCars);
-// router.get('/car/status/available/Used', UsedAvailableCars);
+router.get('/car/status/available/Used', UsedAvailableCars);
 router.get('/car?status=available', carStatus);
 router.get('/car', getAllCars);
 router.get('/car/body_type/:body_type', getSpecificBodytype);

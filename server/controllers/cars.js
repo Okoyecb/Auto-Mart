@@ -179,22 +179,22 @@ const NewAvailableCars = (req, res) => {
   });
 };
 
-// const UsedAvailableCars = (req, res) => {
-//   const AvailableusedCars = carModel.filter(car => car.status === 'available' && car.state === 'Used');
+const UsedAvailableCars = (req, res) => {
+  const AvailableusedCars = carModel.filter(car => car.status === 'available' && car.state === 'Used');
 
-//   if (!AvailableusedCars) {
-//     res.status(404).json({
-//       status: 404,
-//       message: 'Cars not Found',
-//     });
-//   }
+  if (!AvailableusedCars) {
+    res.status(404).json({
+      status: 404,
+      message: 'Cars not Found',
+    });
+  }
 
-//   return res.status(200).json({
-//     status: 200,
-//     message: 'Cars retrieved successfully',
-//     data: AvailableusedCars,
-//   });
-// };
+  return res.status(200).json({
+    status: 200,
+    message: 'Cars retrieved successfully',
+    data: AvailableusedCars,
+  });
+};
 
 const CarController = {
   createCar,
@@ -206,7 +206,7 @@ const CarController = {
   priceRange,
   getSpecificBodytype,
   NewAvailableCars,
-  // UsedAvailableCars,
+  UsedAvailableCars,
 };
 
 export default CarController;
