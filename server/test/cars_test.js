@@ -96,7 +96,7 @@ describe('Create a Post', () => {
   it('/api/v1/order/:id/price should respond with status code 404 and and show order not found', (done) => {
     const id = 201;
     chai.request(app)
-      .patch(`/api/v1/order/${id}/price`)
+      .patch(`${API_PREFIX}/order/${id}/price`)
       .send({
         new_price_offered: 50000000,
       })
@@ -104,6 +104,42 @@ describe('Create a Post', () => {
       .end((err, res) => {
         if (err) return done(err);
         expect(res.status).to.equal(404);
+        done();
+      });
+  });
+
+  it('/api/v1/car/body_type/:body_type should respond with status code 200 and get cars with specific body type', (done) => {
+    chai.request(app)
+      .get(`${API_PREFIX}/car/body_type/:body_type`)
+      .set('Accept', 'application/json')
+      .end((err, res) => {
+        if (err) return done(err);
+        expect(res.status).to.eql(404);
+        expect(res.body.message).to.eql('Car not Found');
+        done();
+      });
+  });
+
+  it('/api/v1/car/status/available/New should respond with status code 200', (done) => {
+    chai.request(app)
+      .get(`${API_PREFIX}/car/status/available/New`)
+      .set('Accept', 'application/json')
+      .end((err, res) => {
+        if (err) return done(err);
+        expect(res.status).to.eql(200);
+        expect(res.body.message).to.eql('Cars retrieved successfully');
+        done();
+      });
+  });
+
+  it('/api/v1/car/status/available/Used should respond with status code 200', (done) => {
+    chai.request(app)
+      .get(`${API_PREFIX}/car/status/available/Used`)
+      .set('Accept', 'application/json')
+      .end((err, res) => {
+        if (err) return done(err);
+        expect(res.status).to.eql(200);
+        expect(res.body.message).to.eql('Cars retrieved successfully');
         done();
       });
   });
