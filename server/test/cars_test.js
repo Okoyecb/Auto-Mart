@@ -67,18 +67,6 @@ describe('Create a Post', () => {
       });
   });
 
-  it('/api/v1/car?status=available should respond with status code 200 and get a single car', (done) => {
-    chai.request(app)
-      .get('/api/v1/car/?status=available')
-      .set('Accept', 'application/json')
-      .end((err, res) => {
-        if (err) return done(err);
-        expect(res.status).to.eql(200);
-        expect(res.body.message).to.eql('Cars retrieved successfully');
-        done();
-      });
-  });
-
   it('/api/v1/car should respond with status code 200', (done) => {
     const id = 100;
     chai.request(app)
