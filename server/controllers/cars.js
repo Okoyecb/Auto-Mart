@@ -49,7 +49,7 @@ const carStatus = (req, res) => {
   if (filtered.length > 0) {
     return res.status(200).send({
       success: 'true',
-      message: 'Car retrieved successfully',
+      message: 'Cars retrieved successfully',
       filtered,
     });
   }
@@ -105,19 +105,20 @@ const deleteCar = (req, res) => {
 };
 
 
-const getAllCars = (req, res) => {
-  if (carModel.length === 0) {
-    return res.status(200).json({
-      status: 'false',
-      message: 'No cars available',
-    });
-  }
-  return res.status(200).json({
-    status: 'true',
-    message: 'Cars retrieved successfully',
-    carModel,
-  });
-};
+// const getAllCars = (req, res) => {
+//   if (carModel.length === 0) {
+//     return res.status(200).json({
+//       status: 'false',
+//       message: 'No cars available',
+//     });
+//   }
+//   return res.status(200).json({
+//     status: 'true',
+//     message: 'Cars retrieved successfully',
+//     carModel,
+//   });
+// };
+
 
 const updateCarStatus = (req, res) => {
   const { id } = req.params;
@@ -142,7 +143,7 @@ const updateCarStatus = (req, res) => {
 };
 
 const getSpecificBodytype = (req, res) => {
-  const { body_type } = req.params;
+  const { body_type } = req.query;
   const customcars = [];
   carModel.find((car) => {
     if (car.body_type === body_type) {
@@ -194,6 +195,20 @@ const UsedAvailableCars = (req, res) => {
     message: 'Cars retrieved successfully',
     data: AvailableusedCars,
   });
+};
+
+const getAllCars = (req, res) => {
+  if ('status' in req.query) {
+    carStatus(req, res);
+  } else if ('body_type' in req.query) {
+    getSpecificBodytype(req, res);
+  } else {
+    return res.status(200).send({
+      success: 'true',
+      message: 'Cars retrieved successfully',
+      carModel,
+    });
+  }
 };
 
 const CarController = {

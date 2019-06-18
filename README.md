@@ -50,6 +50,9 @@ $ git clone https://github.com/Okoyecb/Auto-Mart
 # Install dependencies
 $ npm install
 
+# Setup ENV
+Create a .Env file and add your secret credentials .
+
 
 # Run the app
 $ npm run watch
