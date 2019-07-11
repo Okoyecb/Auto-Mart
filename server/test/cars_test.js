@@ -75,7 +75,7 @@ describe('/GET /api/v1/car', () => {
 
   it('/api/v1/car should Delete Car', (done) => {
     console.log('ghgyhgh', authToken);
-    const id = 1;
+    const id = 2;
     chai.request(app)
       .delete(`${API_PREFIX}/car/${id}`)
       .set('x-access-token', `Bearer ${authToken}`)
