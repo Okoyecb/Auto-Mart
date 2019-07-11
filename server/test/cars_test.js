@@ -73,19 +73,19 @@ describe('/GET /api/v1/car', () => {
       });
   });
 
-  it('/api/v1/car should Delete Car', (done) => {
-    console.log('ghgyhgh', authToken);
-    const id = 2;
-    chai.request(app)
-      .delete(`${API_PREFIX}/car/${id}`)
-      .set('x-access-token', `Bearer ${authToken}`)
-      .send(details)
-      .end((err, res) => {
-        expect(res.status).to.eql(200);
-        expect(res.body.message).to.eql('Car deleted successfully');
-        done();
-      });
-  });
+  // it('/api/v1/car should Delete Car', (done) => {
+  //   console.log('ghgyhgh', authToken);
+  //   const id = 2;
+  //   chai.request(app)
+  //     .delete(`${API_PREFIX}/car/${id}`)
+  //     .set('x-access-token', `Bearer ${authToken}`)
+  //     .send(details)
+  //     .end((err, res) => {
+  //       expect(res.status).to.eql(200);
+  //       expect(res.body.message).to.eql('Car deleted successfully');
+  //       done();
+  //     });
+  // });
 
   it('/api/v1/car?body_type=Sedan should respond with status code 200', (done) => {
     chai.request(app)
