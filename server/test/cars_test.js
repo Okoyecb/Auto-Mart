@@ -100,7 +100,7 @@ describe('/GET /api/v1/car', () => {
   });
   it('/api/v1/car?status=available&manufacturer=Honda should respond with status code 200', (done) => {
     chai.request(app)
-      .get(`${API_PREFIX}/car?status=available&manufacturer=Honda`)
+      .get(`${API_PREFIX}/car?status=available&manufacturer=Toyota`)
       .set('Accept', 'application/json')
       .end((err, res) => {
         if (err) return done(err);
