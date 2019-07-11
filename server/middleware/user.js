@@ -1,21 +1,25 @@
 /* eslint-disable max-len */
 /* eslint-disable no-useless-escape */
-const nameregex = /^[A-Za-z ]{3,}$/;
-const emailregex = /^\S+@[\w\-]+\.[A-Za-z ]{2,}$/;
-const passwordregex = /^\S{6,}$/;
+/* eslint-disable consistent-return */
+import jwt from 'jsonwebtoken';
+import userModel from '../model/user';
+
+const nameregex = /^[A-Z a-z ]{3,}$/;
+const emailregex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+const passwordregex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&]){8,}/;
 
 
 const validateSignin = (req, res, next) => {
   try {
-    req.body.email = req.body.email.trim();
-    req.body.password = req.body.password.trim();
-    if ((emailregex.test(req.body.email) || emailregex.test(req.body.email))
-            && passwordregex.test(req.body.password)) {
-      next();
-    } else {
-      throw new Error();
+    if ((!emailregex.test(req.body.email) || !emailregex.test(req.body.email))
+            && !passwordregex.test(req.body.password)) {
+      return res.status(412).json({
+        status: 412,
+        error: 'Email or Password is Invalid',
+      });
     }
-  } catch (err) {
+    return next();
+  } catch (error) {
     res.status(412).json({
       status: 412,
       error: 'Email or Password is Invalid',
@@ -26,17 +30,15 @@ const validateSignin = (req, res, next) => {
 
 const validateSignup = (req, res, next) => {
   try {
-    req.body.first_name = req.body.first_name.trim();
-    req.body.last_name = req.body.last_name.trim();
-    req.body.email = req.body.email.trim();
-    req.body.password = req.body.password.trim();
-    if (emailregex.test(req.body.email) && passwordregex.test(req.body.password) && nameregex.test(req.body.first_name)
-            && nameregex.test(req.body.last_name)) {
-      next();
-    } else {
-      throw new Error();
+    if (!emailregex.test(req.body.email) && !passwordregex.test(req.body.password) && !nameregex.test(req.body.first_name)
+            && !nameregex.test(req.body.last_name)) {
+      return res.status(412).json({
+        status: 412,
+        error: 'Required Details are not Valid',
+      });
     }
-  } catch (err) {
+    return next();
+  } catch (error) {
     res.status(412).json({
       status: 412,
       error: 'Required Details are not Valid',
@@ -44,9 +46,30 @@ const validateSignup = (req, res, next) => {
   }
 };
 
+const validateAdmin = async (req, res, next) => {
+  try {
+    let token = req.headers.authorization || req.headers['x-access-token'];
+
+    token = token.split('Bearer ');
+    let user;
+    jwt.verify(token[1], process.env.secret_key, (err, authData) => {
+      user = authData;
+    });
+    const isUserAdmin = await userModel.getUser(user.email);
+    if (isUserAdmin.rows[0].is_admin !== true) {
+      return 'user is not an admin';
+    }
+    return next();
+  } catch (error) {
+    res.status(400).json({
+      status: 400,
+      message: 'invalid token',
+    });
+  }
+};
 
 const userValidator = {
-  validateSignup, validateSignin,
+  validateSignup, validateSignin, validateAdmin,
 };
 
 export default userValidator;

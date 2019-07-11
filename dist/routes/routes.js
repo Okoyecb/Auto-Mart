@@ -1,5 +1,7 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -19,11 +21,15 @@ var _cars2 = _interopRequireDefault(require("../middleware/cars"));
 
 var _order2 = _interopRequireDefault(require("../middleware/order"));
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+/* eslint-disable import/no-named-as-default-member */
 
+/* eslint-disable import/no-named-as-default */
+
+/* eslint-disable max-len */
 // import VerifyToken from '../middleware/verifyToken';
 var validateSignin = _user2["default"].validateSignin,
-    validateSignup = _user2["default"].validateSignup; // const { verifyToken } = VerifyToken;
+    validateSignup = _user2["default"].validateSignup,
+    validateAdmin = _user2["default"].validateAdmin; // const { verifyToken } = VerifyToken;
 
 var validateNewPost = _cars2["default"].validateNewPost,
     validateUpdateStatus = _cars2["default"].validateUpdateStatus;
@@ -34,7 +40,6 @@ var createCar = _cars["default"].createCar,
     getAllCars = _cars["default"].getAllCars,
     deleteCar = _cars["default"].deleteCar,
     updateCarStatus = _cars["default"].updateCarStatus,
-    carStatus = _cars["default"].carStatus,
     getSpecificBodytype = _cars["default"].getSpecificBodytype;
 var createOrder = _order["default"].createOrder,
     getOrder = _order["default"].getOrder,
@@ -47,10 +52,9 @@ router.post('/auth/signup', validateSignup, createUsers);
 router.post('/auth/signin', validateSignin, _user["default"].signIn);
 router.post('/car', validateNewPost, createCar);
 router.get('/car/:id', getCar);
-router.get('/car?status=available', carStatus);
 router.get('/car', getAllCars);
 router.get('/car/body_type/:body_type', getSpecificBodytype);
-router["delete"]('/car/:id', deleteCar);
+router["delete"]('/car/:id', validateAdmin, deleteCar);
 router.patch('/car/:id', validateUpdateStatus, updateCarStatus);
 router.post('/order', validateCreateOrder, createOrder);
 router.get('/order/:id', getOrder);

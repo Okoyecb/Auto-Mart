@@ -1,5 +1,7 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -7,14 +9,15 @@ exports["default"] = void 0;
 
 var _order = _interopRequireDefault(require("../model/order"));
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+/* eslint-disable camelcase */
+
+/* eslint-disable max-len */
 
 /* eslint-disable consistent-return */
 
 /* eslint-disable array-callback-return */
 var createOrder = function createOrder(req, res) {
   var newOrder = {
-    id: 101,
     buyer: req.body.buyer,
     car_id: req.body.car_id,
     created_on: req.body.created_on,
@@ -23,7 +26,7 @@ var createOrder = function createOrder(req, res) {
     price_offered: req.body.price_offered
   };
 
-  _order["default"].push(newOrder);
+  _order["default"].createOrder(newOrder);
 
   return res.status(201).json({
     status: 201,
@@ -35,37 +38,43 @@ var createOrder = function createOrder(req, res) {
 var getOrder = function getOrder(req, res) {
   var id = parseInt(req.params.id, 10);
 
-  var retrievedOrder = _order["default"].find(function (order) {
-    return order.id === id;
-  });
+  _order["default"].getOrder(id).then(function (value) {
+    var result = value.rows;
 
-  return res.status(200).send({
-    success: 'true',
-    message: 'Order retrieved successfully',
-    retrievedOrder: retrievedOrder
+    if (result.length > 0) {
+      return res.status(200).json({
+        success: 'true',
+        message: 'Order retrieved successfully',
+        data: result
+      });
+    }
+
+    return res.status(404).json({
+      status: 'false',
+      message: 'Order not Found'
+    });
   });
 };
 
 var updateOrder = function updateOrder(req, res) {
   var id = parseInt(req.params.id, 10);
+  var price_offered = req.body.price_offered;
 
-  var seenOrder = _order["default"].find(function (order) {
-    return order.id === id;
-  });
+  _order["default"].getOrder(id).then(function (result) {
+    var order = result.rows;
 
-  if (!seenOrder) {
-    return res.status(404).send({
-      success: 'false',
-      message: 'Order Not Found'
-    });
-  }
+    if (order.length > 0) {
+      var oldPrice = order[0].new_price_offered === null ? order[0].price_offered : order[0].new_price_offered;
 
-  seenOrder.old_offer = seenOrder.current_offer;
-  seenOrder.current_offer = req.body.price_offered;
-  return res.status(201).send({
-    success: 'true',
-    message: 'Order updated successfully',
-    seenOrder: seenOrder
+      _order["default"].updateOrder(id, oldPrice, price_offered).then(function (results) {
+        var value = results.rows;
+        return res.status(201).send({
+          success: 'true',
+          message: 'Order updated successfully',
+          data: value
+        });
+      });
+    }
   });
 };
 

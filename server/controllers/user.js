@@ -1,83 +1,78 @@
+/* eslint-disable camelcase */
 /* eslint-disable consistent-return */
 /* eslint-disable import/no-unresolved */
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
+import bcrypt from 'bcrypt';
 import userModel from '../model/user';
 
 dotenv.config();
-const createUsers = (req, res) => {
-  const newUser = {
-    id: 23,
-    email: req.body.email,
-    first_name: req.body.first_name,
-    last_name: req.body.last_name,
-    password: req.body.password,
-    confirm_password: req.body.confirm_password,
-    address: req.body.address,
-    is_admin: 'false',
-  };
+
+const secretHash = process.env.secret_key;
+const createUsers = async (req, res) => {
+  const {
+    first_name,
+    last_name,
+    email,
+    password,
+    address,
+  } = req.body;
+
+  const hash = bcrypt.hashSync(password, 10);
 
   const userDetails = {
-    id: 23,
-    email: req.body.email,
-    first_name: req.body.first_name,
-    last_name: req.body.last_name,
-    password: req.body.password,
-    confirm_password: req.body.confirm_password,
-    address: req.body.address,
-    token: 'kjhgvkysbtgvxg',
+    first_name,
+    last_name,
+    email,
+    password: hash,
+    address,
   };
-
-  const token = jwt.sign(userDetails, process.env.secret_key);
-  newUser.token = token;
-  userModel.push(newUser);
-  return res.status(201).json({
-    status: 201,
-    message: 'User successfully created',
-    result: newUser,
-
-  });
+  try {
+    const user = await userModel.createUsers(userDetails);
+    const token = jwt.sign(userDetails, secretHash);
+    return res.status(201).json({
+      status: 'success',
+      message: 'User Successfully Created',
+      data: user.rows[0],
+      token,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      status: 'False',
+      message: 'Something went wrong',
+    });
+  }
 };
 
-const signIn = (req, res) => {
-  const userInfo = req.body;
-  const verifiedUser = userModel.find(
-    databaseUser => databaseUser.email === userInfo.email,
-  );
-  if (!verifiedUser) {
-    res.status(404).json({
+const signIn = async (req, res) => {
+  // const userInfo = req.body;
+  // console.log(req.body.password);
+  const user = await userModel.getUser(req.body.email);
+  // const user = results.rows;
+  if (user.rowCount < 1) {
+    return res.status(404).json({
       status: 'error',
       message: 'User Not Found',
     });
-  } else {
-    if (verifiedUser.password === userInfo.password) {
-      const payload = {
-        id: userInfo.id,
-        email: userInfo.email,
-        isAdmin: userInfo.isAdmin,
-      };
-      jwt.sign(payload, process.env.secret_key, (err, token) => {
-        if (err) {
-          throw err;
-        } else {
-          res.status(201).json({
-            status: 'success',
-            token: `Bearer ${token}`,
-            message: 'Login Succesful',
-          });
-        }
-      });
-    } else {
-      return res
-        .status(400)
-        .json({
-          status: 'error',
-          message: 'Password Incorrect',
-        });
-    }
-    return false;
   }
+  console.log(user.rows[0].password);
+  if (bcrypt.compareSync(req.body.password, user.rows[0].password) === false) {
+    return res.status(400).json({
+      status: 'error',
+      message: 'Password Incorrect',
+    });
+  }
+  const token = jwt.sign(user.rows[0], process.env.secret_key, { expiresIn: '24hr' });
+
+  return res.status(201).json({
+    status: 'success',
+    message: 'Login Succesful',
+    user: user[0],
+    token,
+  });
 };
+
+
 const UserController = {
   createUsers,
   signIn,

@@ -1,5 +1,7 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -18,8 +20,6 @@ var _dotenv = _interopRequireDefault(require("dotenv"));
 var _swagger = _interopRequireDefault(require("./swagger.json"));
 
 var _routes = _interopRequireDefault(require("./routes/routes"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 /* eslint-disable import/no-extraneous-dependencies */
 _dotenv["default"].config();

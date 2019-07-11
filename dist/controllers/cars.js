@@ -1,13 +1,19 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports["default"] = void 0;
 
+var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"));
+
+var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/asyncToGenerator"));
+
 var _cars = _interopRequireDefault(require("../model/cars"));
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+/* eslint-disable max-len */
 
 /* eslint-disable camelcase */
 
@@ -16,7 +22,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 /* eslint-disable array-callback-return */
 var createCar = function createCar(req, res) {
   var newCar = {
-    id: 101,
     owner: req.body.owner,
     created_on: req.body.created_on,
     state: req.body.state,
@@ -24,10 +29,11 @@ var createCar = function createCar(req, res) {
     price: req.body.price,
     manufacturer: req.body.manufacturer,
     model: req.body.model,
+    image: req.body.image,
     body_type: req.body.body_type
   };
 
-  _cars["default"].push(newCar);
+  _cars["default"].createCar(newCar);
 
   return res.status(201).json({
     message: 'Car Posted Successfully',
@@ -39,164 +45,220 @@ var createCar = function createCar(req, res) {
 var getCar = function getCar(req, res) {
   var id = parseInt(req.params.id, 10);
 
-  var singleCar = _cars["default"].find(function (car) {
-    return car.id === id;
-  });
+  _cars["default"].getCar(id).then(function (value) {
+    var result = value.rows;
 
-  if (!singleCar) {
+    if (result.length > 0) {
+      return res.status(200).json({
+        status: 'true',
+        message: 'Car retrieved successfully',
+        data: result
+      });
+    }
+
     return res.status(404).json({
-      status: 'success',
+      status: 'false',
       message: 'Car not Found'
     });
-  }
-
-  return res.status(200).json({
-    status: 'success',
-    message: 'Car Successfully Retrieved',
-    singleCar: singleCar
   });
 };
 
 var carStatus = function carStatus(req, res) {
   var status = req.query.status;
 
-  var filtered = _cars["default"].filter(function (cars) {
-    return cars.status === status;
-  });
+  _cars["default"].carStatus(status).then(function (values) {
+    if (values.rows.length > 0) {
+      var result = values.rows;
+      return res.status(200).send({
+        success: 'true',
+        message: 'Cars retrieved successfully',
+        data: result
+      });
+    }
 
-  if (filtered.length > 0) {
-    return res.status(200).send({
-      success: 'true',
-      message: 'Car retrieved successfully',
-      filtered: filtered
+    return res.status(400).send({
+      success: 'Cars not Found'
     });
-  }
-
-  return res.status(400).send({
-    success: 'false'
   });
 };
 
 var priceRange = function priceRange(req, res) {
   var _req$query = req.query,
-      status = _req$query.status,
       min_price = _req$query.min_price,
       max_price = _req$query.max_price;
 
-  var availableCars = _cars["default"].filter(function (order) {
-    return order.status === status;
-  });
-
-  if (availableCars.length > 0) {
-    var filteredCars = availableCars.filter(function (order) {
-      return order.price >= min_price && order.price <= max_price;
-    });
-
-    if (filteredCars.length > 0) {
-      return res.status(200).json({
-        status: 'success',
-        data: filteredCars
+  _cars["default"].priceRange(min_price, max_price).then(function (values) {
+    if (values.rows.length > 0) {
+      var result = values.rows;
+      return res.status(200).send({
+        success: 'Success',
+        message: 'Cars Retrieved Successfully',
+        data: result
       });
     }
 
-    return res.status(404).json({
-      status: 'error',
-      message: 'Car not found'
+    return res.status(404).send({
+      success: 'Failed',
+      message: 'Cars not Found'
     });
-  }
-
-  return res.status(404).json({
-    status: 'error',
-    message: 'Car not found'
   });
 };
 
-var deleteCar = function deleteCar(req, res) {
+var deleteCar =
+/*#__PURE__*/
+function () {
+  var _ref = (0, _asyncToGenerator2["default"])(
+  /*#__PURE__*/
+  _regenerator["default"].mark(function _callee(req, res) {
+    var id;
+    return _regenerator["default"].wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            _context.prev = 0;
+            id = parseInt(req.params.id, 10);
+            _context.next = 4;
+            return _cars["default"].deleteCar(id);
+
+          case 4:
+            return _context.abrupt("return", res.status(200).json({
+              success: 'true',
+              message: 'Car deleted successfully'
+            }));
+
+          case 7:
+            _context.prev = 7;
+            _context.t0 = _context["catch"](0);
+            return _context.abrupt("return", res.status(404).json({
+              success: 'false',
+              message: 'Car not deleted successfully'
+            }));
+
+          case 10:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, _callee, null, [[0, 7]]);
+  }));
+
+  return function deleteCar(_x, _x2) {
+    return _ref.apply(this, arguments);
+  };
+}();
+
+var updateCarStatus = function updateCarStatus(req, res) {
   var id = parseInt(req.params.id, 10);
+  var status = req.body.status;
 
-  _cars["default"].find(function (car, index) {
-    if (car.id === id) {
-      _cars["default"].splice(index, 1);
+  _cars["default"].getCar(id).then(function (values) {
+    var singleCar = values.rows;
 
-      return res.status(200).json({
+    if (singleCar.length > 0) {
+      _cars["default"].updateCarStatus(id, status).then(function (value) {
+        var result = value.rows;
+        return res.status(200).json({
+          status: 'Success',
+          message: 'Car Status Updated Successfully',
+          result: result
+        });
+      })["catch"](function (error) {
+        return res.status(400).json({
+          status: 400,
+          error: error.message
+        });
+      });
+    } else {
+      res.status(404).json({
+        status: 'False',
+        error: 'Car not found'
+      });
+    }
+  });
+};
+
+var getSpecificBodytype = function getSpecificBodytype(req, res) {
+  var body_type = req.query.body_type;
+
+  _cars["default"].getSpecificBodytype(body_type).then(function (values) {
+    if (values.rows.length > 0) {
+      var result = values.rows;
+      return res.status(200).send({
         success: 'true',
-        message: 'Car has been deleted successfully',
-        carModel: _cars["default"]
+        message: 'Cars retrieved successfully',
+        data: result
+      });
+    }
+
+    return res.status(404).send({
+      success: 'Cars not Found'
+    });
+  });
+};
+
+var carStatusAndState = function carStatusAndState(req, res) {
+  var _req$query2 = req.query,
+      status = _req$query2.status,
+      state = _req$query2.state;
+
+  _cars["default"].carStatusAndState(status, state).then(function (values) {
+    if (values.rows.length > 0) {
+      var result = values.rows;
+      return res.status(200).json({
+        status: 200,
+        message: 'Cars retrieved successfully',
+        data: result
       });
     }
 
     return res.status(404).json({
-      success: 'false',
-      message: 'Car does not exist'
+      message: 'Cars not Found'
+    });
+  });
+};
+
+var availableAndManufacturer = function availableAndManufacturer(req, res) {
+  var _req$query3 = req.query,
+      status = _req$query3.status,
+      manufacturer = _req$query3.manufacturer;
+
+  _cars["default"].availableAndManufacturer(status, manufacturer).then(function (values) {
+    if (values.rows.length > 0) {
+      var result = values.rows;
+      return res.status(200).json({
+        status: 200,
+        message: 'Cars retrieved successfully',
+        data: result
+      });
+    }
+
+    return res.status(404).send({
+      success: 'Cars not Found'
     });
   });
 };
 
 var getAllCars = function getAllCars(req, res) {
-  if (_cars["default"].length === 0) {
-    return res.status(200).json({
-      status: 'false',
-      message: 'No cars available'
-    });
-  }
-
-  return res.status(200).json({
-    status: 'true',
-    message: 'Cars retrieved successfully',
-    carModel: _cars["default"]
-  });
-};
-
-var updateCarStatus = function updateCarStatus(req, res) {
-  var id = req.params.id;
-
-  var searchCar = _cars["default"].find(function (car) {
-    return car.id === parseInt(id, 10);
-  });
-
-  if (!searchCar) {
-    return res.status(404).json({
-      status: 'false',
-      message: 'car not found'
-    });
-  }
-
-  if (searchCar.status === 'sold') {
-    return res.status(400).json({
-      status: 'false',
-      message: 'car has already been sold'
-    });
-  }
-
-  searchCar.status = 'sold';
-  return res.status(404).json({
-    status: 'true',
-    message: 'car status successfully changed'
-  });
-};
-
-var getSpecificBodytype = function getSpecificBodytype(req, res) {
-  var body_type = req.params.body_type;
-  var customcars = [];
-
-  _cars["default"].find(function (car) {
-    if (car.body_type === body_type) {
-      customcars.push(car);
+  if ('status' in req.query) {
+    if ('state' in req.query) {
+      carStatusAndState(req, res);
+    } else if ('manufacturer' in req.query) {
+      availableAndManufacturer(req, res);
+    } else {
+      carStatus(req, res);
     }
-  });
-
-  if (customcars.length === 0) {
-    return res.status(404).json({
-      status: 'false',
-      message: 'Car not Found'
+  } else if ('body_type' in req.query) {
+    getSpecificBodytype(req, res);
+  } else {
+    _cars["default"].getAllCars().then(function (value) {
+      var result = value.rows;
+      return res.status(200).send({
+        success: 'true',
+        message: 'Cars retrieved successfully',
+        data: result
+      });
     });
   }
-
-  return res.status(200).json({
-    status: 'success',
-    message: 'Cars Successfully Retrieved',
-    customcars: customcars
-  });
 };
 
 var CarController = {
@@ -207,7 +269,9 @@ var CarController = {
   updateCarStatus: updateCarStatus,
   carStatus: carStatus,
   priceRange: priceRange,
-  getSpecificBodytype: getSpecificBodytype
+  getSpecificBodytype: getSpecificBodytype,
+  carStatusAndState: carStatusAndState,
+  availableAndManufacturer: availableAndManufacturer
 };
 var _default = CarController;
 exports["default"] = _default;

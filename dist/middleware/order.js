@@ -9,7 +9,7 @@ var validateCreateOrder = function validateCreateOrder(req, res, next) {
   try {
     req.body.status = req.body.status ? req.body.status : 'Pending';
 
-    if (req.body.buyer && req.body.price && req.body.price_offered) {
+    if (req.body.buyer && req.body.price_offered) {
       next();
     } else {
       throw new Error();
