@@ -56,7 +56,7 @@ describe('/GET /api/v1/order', () => {
       });
   });
   it('/api/v1/order/:id should respond with status code 200 and retrieve an order', (done) => {
-    const id = 10;
+    const id = 3;
     chai.request(app)
       .get(`${API_PREFIX}/order/${id}`)
       .set('x-access-token', authToken)
@@ -68,7 +68,7 @@ describe('/GET /api/v1/order', () => {
       });
   });
   it('/api/v1/order/:id/price should respond with status code 404 and and show order not found', (done) => {
-    const id = 10;
+    const id = 3;
     chai.request(app)
       .patch(`${API_PREFIX}/order/${id}/price`)
       .send({

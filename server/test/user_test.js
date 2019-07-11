@@ -18,9 +18,9 @@ describe('Create New user', () => {
     chai.request(app)
       .post('/api/v1/auth/signup')
       .send({
-        first_name: 'ttkie',
-        last_name: 'YYlwa',
-        email: 'rtty@gmail.com',
+        first_name: 'Twickkie',
+        last_name: 'Yewa',
+        email: 'Twiclke@gmail.com',
         password: '2388sswordy',
         address: 'Ade Street, Isolo',
       })
