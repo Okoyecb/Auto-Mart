@@ -1,12 +1,12 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
 var _chai = _interopRequireDefault(require("chai"));
 
 var _chaiHttp = _interopRequireDefault(require("chai-http"));
 
 var _app = _interopRequireDefault(require("../app"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 /* eslint-disable no-undef */
 // config chai to use expect

@@ -1,68 +1,206 @@
-const carModel = [
-  {
-    id: 100,
-    owner: 'Okoye Francis',
-    created_on: 'Wed May 22 09:13:52 2019 UTC',
-    state: 'New',
-    status: 'available',
-    price: 3000000,
-    manufacturer: 'Honda',
-    model: 'Accord',
-    body_type: 'Sedan',
+const validAd = {
+  // id: 1,
+  email: 'chiomab@yahoo.com',
+  created_on: new Date(),
+  manufacturer: 'Ford',
+  model: '2009',
+  price: parseFloat('150000.00'),
+  state: 'new',
+  status: 'sold',
+  body_type: 'truck',
+  imageUrl: 'http://www.image.com',
+};
 
-  },
+const undefinedManufacturer = {
+  email: 'chiomab@yahoo.com',
+  created_on: new Date(),
+  model: '2009',
+  price: parseFloat('150000.00'),
+  state: 'new',
+  status: 'sold',
+  body_type: 'truck',
+  imageUrl: 'http://www.image.com',
+};
+const emptyManufacturer = {
+  id: 1,
+  email: 'chiomab@yahoo.com',
+  created_on: new Date(),
+  manufacturer: '',
+  model: '2009',
+  price: parseFloat('150000.00'),
+  state: 'new',
+  status: 'sold',
+  body_type: 'truck',
+  imageUrl: 'http://www.image.com',
+};
+const nonStringManufacturer = {
+  id: 1,
+  email: 'chiomab@yahoo.com',
+  created_on: new Date(),
+  manufacturer: ['Ford'],
+  model: '2009',
+  price: parseFloat('150000.00'),
+  state: 'new',
+  status: 'sold',
+  body_type: 'truck',
+  imageUrl: 'http://www.image.com',
+};
+const undefinedModel = {
+  id: 1,
+  email: 'chiomab@yahoo.com',
+  created_on: new Date(),
+  manufacturer: 'Ford',
+  price: parseFloat('150000.00'),
+  state: 'new',
+  status: 'sold',
+  body_type: 'truck',
+  imageUrl: 'http://www.image.com',
+};
 
-  {
-    id: 101,
-    owner: 'Okoye Chukwuma',
-    created_on: 'Thurs May 23 09:13:52 2019 UTC',
-    state: 'New',
-    status: 'Sold',
-    price: 14000000,
-    manufacturer: 'BMW',
-    model: 'X6',
-    body_type: 'SUV',
+const nonStringModel = {
+  id: 1,
+  email: 'chiomab@yahoo.com',
+  created_on: new Date(),
+  manufacturer: 'Ford',
+  model: ['2009'],
+  price: parseFloat('150000.00'),
+  state: 'new',
+  status: 'sold',
+  body_type: 'truck',
+  imageUrl: 'http://www.image.com',
+};
 
-  },
+const undefinedPrice = {
+  id: 1,
+  email: 'chiomab@yahoo.com',
+  created_on: new Date(),
+  manufacturer: 'Ford',
+  model: '2009',
+  state: 'new',
+  status: 'sold',
+  body_type: 'truck',
+  imageUrl: 'http://www.image.com',
+};
 
-  {
-    id: 102,
-    owner: 'Okoye Chijioke',
-    created_on: 'Mon May 20 09:13:52 2019 UTC',
-    state: 'Used',
-    status: 'available',
-    price: 2800000,
-    manufacturer: 'Chevrolet',
-    model: 'Camaro',
-    body_type: 'Sedan',
+const noPrice = {
+  id: 1,
+  email: 'chiomab@yahoo.com',
+  created_on: new Date(),
+  manufacturer: 'Ford',
+  model: '2009',
+  price: '',
+  state: 'new',
+  status: 'sold',
+  body_type: 'truck',
+};
 
-  },
+const nonFloatPrice = {
+  id: 1,
+  email: 'chiomab@yahoo.com',
+  created_on: new Date(),
+  manufacturer: 'Ford',
+  model: '2009',
+  price: '150000.00',
+  state: 'new',
+  status: 'sold',
+  body_type: 'truck',
+  imageUrl: 'http://www.image.com',
+};
 
-  {
-    id: 107,
-    owner: 'Okoye Edward',
-    created_on: 'Mon May 20 11:13:52 2019 UTC',
-    state: 'Used',
-    status: 'available',
-    price: 2700000,
-    manufacturer: 'Ford',
-    model: 'Explorer',
-    body_type: 'SUV',
+const undefinedState = {
+  id: 1,
+  email: 'chiomab@yahoo.com',
+  created_on: new Date(),
+  manufacturer: 'Ford',
+  model: '2009',
+  price: parseFloat('150000.00'),
+  status: 'sold',
+  body_type: 'truck',
+  imageUrl: 'http://www.image.com',
+};
 
-  },
 
-  {
-    id: 108,
-    owner: 'Okoye Smith',
-    created_on: 'Mon May 20 11:13:52 2019 UTC',
-    state: 'Used',
-    status: 'available',
-    price: 1000000,
-    manufacturer: 'Hyundai',
-    model: 'Sonata',
-    body_type: 'Sedan',
+const nonStringState = {
+  id: 1,
+  email: 'chiomab@yahoo.com',
+  created_on: new Date(),
+  manufacturer: 'Ford',
+  model: '2009',
+  price: parseFloat('150000.00'),
+  state: ['new'],
+  status: 'sold',
+  body_type: 'truck',
+  imageUrl: 'http://www.image.com',
+};
 
-  },
-];
+const undefinedStatus = {
+  id: 1,
+  email: 'chiomab@yahoo.com',
+  created_on: new Date(),
+  manufacturer: 'Ford',
+  model: '2009',
+  price: parseFloat('150000.00'),
+  state: 'new',
+  body_type: 'truck',
+  imageUrl: 'http://www.image.com',
+};
 
-export default carModel;
+
+const nonStringStatus = {
+  id: 1,
+  email: 'chiomab@yahoo.com',
+  created_on: new Date(),
+  manufacturer: 'Ford',
+  model: '2009',
+  price: parseFloat('150000.00'),
+  state: 'new',
+  status: ['sold'],
+  body_type: 'truck',
+  imageUrl: 'http://www.image.com',
+};
+
+const undefinedBodyType = {
+  id: 1,
+  email: 'chiomab@yahoo.com',
+  created_on: new Date(),
+  manufacturer: 'Ford',
+  model: '2009',
+  price: parseFloat('150000.00'),
+  state: 'new',
+  status: 'sold',
+  imageUrl: 'http://www.image.com',
+};
+
+
+const nonStringBodyType = {
+  id: 1,
+  email: 'chiomab@yahoo.com',
+  created_on: new Date(),
+  manufacturer: 'Ford',
+  model: '2009',
+  price: parseFloat('150000.00'),
+  state: 'new',
+  status: 'sold',
+  body_type: ['truck'],
+  imageUrl: 'http://www.image.com',
+};
+
+export {
+  validAd,
+
+  undefinedManufacturer,
+  emptyManufacturer,
+  nonStringManufacturer,
+  undefinedModel,
+  nonStringModel,
+  undefinedPrice,
+  nonFloatPrice,
+  undefinedState,
+  nonStringState,
+  undefinedStatus,
+  nonStringStatus,
+  undefinedBodyType,
+  nonStringBodyType,
+  noPrice,
+
+};

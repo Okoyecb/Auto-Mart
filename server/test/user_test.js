@@ -4,43 +4,43 @@ import chai from 'chai';
 import chaiHttp from 'chai-http';
 import app from '../app';
 
-
+const {
+  expect,
+} = chai;
 chai.use(chaiHttp);
-const { expect } = chai;
 
-const details = {
-  id: 1000,
-  email: 'ooyecb@gmail.com',
-  first_name: 'Michael',
-  last_name: 'Smith',
-  password: 'zxcvbbn',
-  address: 'Ojota Avenue Osapa London',
-};
+// let token;
 
+/* Test for get all users */
 
-describe('User Sign-up Test', () => {
-  it('/api/v1/auth/signup should respond with status code 201 and create a User', (done) => {
+describe('Create New user', () => {
+  it('it should create a new user', (done) => {
     chai.request(app)
       .post('/api/v1/auth/signup')
-      .set('Accept', 'application/json')
-      .send(details)
+      .send({
+        first_name: 'ttkie',
+        last_name: 'YYlwa',
+        email: 'rtty@gmail.com',
+        password: '2388sswordy',
+        address: 'Ade Street, Isolo',
+      })
       .end((err, res) => {
         if (err) return done(err);
         expect(res.status).to.equal(201);
-        expect(res.body.message).to.eql('User successfully created');
         done();
       });
   });
 
-  it('/api/v1/auth/signin should respond with status code 201 and create a User', (done) => {
+  it('Signin A User', (done) => {
     chai.request(app)
       .post('/api/v1/auth/signin')
-      .set('Accept', 'application/json')
-      .send(details)
+      .send({
+        email: 'jos824@gmail.com',
+        password: 'passwordy',
+      })
       .end((err, res) => {
         if (err) return done(err);
         expect(res.status).to.equal(201);
-        expect(res.body.message).to.eql('Login Succesful');
         done();
       });
   });

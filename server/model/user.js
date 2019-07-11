@@ -1,52 +1,39 @@
-
-const userModel = [
-  {
-    id: 12,
-    email: 'chidizy4@gmail.com',
-    first_name: 'Chidi',
-    last_name: 'Okoye',
-    password: 'qwerty123',
-    token: 'jgdydgwldihjhgsydw53teugc2h2e',
-    address: 'No 14, Salem Crescent',
-    is_admin: 'false',
+import pool from '../database/connections';
 
 
-  },
+class User {
+  static createUsers(details) {
+    return new Promise((resolve, reject) => {
+      pool.query(`INSERT INTO users ( first_name, last_name, email, password, address, token) VALUES ('${details.first_name}', '${details.last_name}','${details.email}', '${details.password}', '${details.address}', '${details.token}') returning *`)
+        .then(results => resolve(results))
+        .catch(error => reject(error));
+    });
+  }
 
-  {
-    id: 13,
-    email: 'ishola@gmail.com',
-    first_name: 'Ishola',
-    last_name: 'Daniel',
-    password: 'qwerty1234',
-    address: 'Gold street, Cliford way',
-    is_admin: 'false',
-  },
+  static getUser(email) {
+    return new Promise((resolve, reject) => {
+      pool.query(`SELECT * FROM users WHERE email = '${email}'`)
+        .then(response => resolve(response))
+        .catch(error => reject(error));
+    });
+  }
 
-  {
-    id: 11,
-    email: 'mike@ymail.com',
-    first_name: 'Mike',
-    last_name: 'Okoye',
-    password: 'qwerty12309',
-    address: 'No 121, Ajao Street',
-    is_admin: 'false',
+  static storeUserToken(id, token) {
+    return new Promise((resolve, reject) => {
+      pool.query(`UPDATE users SET token =  '${token}' WHERE id = ${id} returning *`)
+        .then(response => resolve(response))
+        .catch(error => reject(error));
+    });
+  }
 
-
-  },
-
-  {
-    id: 15,
-    email: 'oyeseun@ymail.com',
-    first_name: 'Oye',
-    last_name: 'Seun',
-    password: 'qwerty1230900',
-    address: 'No 191, Ajao Street',
-    is_admin: 'true',
-
-
-  },
-];
+  static getUserByToken(token) {
+    return new Promise((resolve, reject) => {
+      pool.query(`SELECT * FROM users WHERE token =  '${token}'`)
+        .then(response => resolve(response))
+        .catch(error => reject(error));
+    });
+  }
+}
 
 
-export default userModel;
+export default User;

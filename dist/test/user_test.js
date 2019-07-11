@@ -1,41 +1,44 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
 var _chai = _interopRequireDefault(require("chai"));
 
 var _chaiHttp = _interopRequireDefault(require("chai-http"));
 
 var _app = _interopRequireDefault(require("../app"));
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
 /* eslint-disable consistent-return */
 
 /* eslint-disable no-undef */
-_chai["default"].use(_chaiHttp["default"]);
-
 var expect = _chai["default"].expect;
-var details = {
-  id: 1000,
-  email: 'ooyecb@gmail.com',
-  first_name: 'Michael',
-  last_name: 'Smith',
-  password: 'zxcvbbn',
-  address: 'Ojota Avenue Osapa London'
-};
-describe('User Sign-up Test', function () {
-  it('/api/v1/auth/signup should respond with status code 201 and create a User', function (done) {
-    _chai["default"].request(_app["default"]).post('/api/v1/auth/signup').set('Accept', 'application/json').send(details).end(function (err, res) {
+
+_chai["default"].use(_chaiHttp["default"]); // let token;
+
+/* Test for get all users */
+
+
+describe('Create New user', function () {
+  it('it should create a new user', function (done) {
+    _chai["default"].request(_app["default"]).post('/api/v1/auth/signup').send({
+      first_name: 'ttkie',
+      last_name: 'YYlwa',
+      email: 'rtty@gmail.com',
+      password: '2388sswordy',
+      address: 'Ade Street, Isolo'
+    }).end(function (err, res) {
       if (err) return done(err);
       expect(res.status).to.equal(201);
-      expect(res.body.message).to.eql('User successfully created');
       done();
     });
   });
-  it('/api/v1/auth/signin should respond with status code 201 and create a User', function (done) {
-    _chai["default"].request(_app["default"]).post('/api/v1/auth/signin').set('Accept', 'application/json').send(details).end(function (err, res) {
+  it('Signin A User', function (done) {
+    _chai["default"].request(_app["default"]).post('/api/v1/auth/signin').send({
+      email: 'jos824@gmail.com',
+      password: 'passwordy'
+    }).end(function (err, res) {
       if (err) return done(err);
       expect(res.status).to.equal(201);
-      expect(res.body.message).to.eql('Login Succesful');
       done();
     });
   });

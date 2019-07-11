@@ -1,116 +1,106 @@
 /* eslint-disable consistent-return */
 /* eslint-disable no-undef */
 import chai from 'chai';
+import 'chai/register-should';
 import chaiHttp from 'chai-http';
 import app from '../app';
-
-chai.use(chaiHttp);
-const { expect } = chai;
+import {
+  validAd,
+} from './dummyData/cars';
 
 const details = {
-  id: 100,
-  owner: 'Okoye Francis',
-  created_on: 'Wed May 22 09:13:52 2019 UTC',
-  state: 'New',
-  status: 'available',
-  price: 3000000,
-  manufacturer: 'Honda',
-  model: 'Accord',
-  body_type: 'Sedan',
+  id: 1,
+  email: 'chiomab@yahoo.com',
+  created_on: new Date(),
+  manufacturer: 'Ford',
+  model: '2009',
+  price: parseFloat('150000.00'),
+  state: 'new',
+  status: 'sold',
+  body_type: 'truck',
+  imageUrl: 'http://www.image.com',
 };
-
-const userdetails = {
-  id: 13,
-  email: 'ishola@gmail.com',
-  first_name: 'Ishola',
-  last_name: 'Daniel',
-  password: 'qwerty1234',
-  address: 'Gold street, Cliford way',
-};
-
 
 const API_PREFIX = '/api/v1';
+
 let authToken;
-describe('Create a Post', () => {
+
+
+chai.use(chaiHttp);
+const {
+  should,
+  expect,
+} = chai;
+should();
+
+
+describe('/GET /api/v1/car', () => {
   before((done) => {
     chai.request(app)
       .post('/api/v1/auth/signin')
-      .send(userdetails)
+      .send({
+        email: 'Okoyecb@gmail.com',
+        password: 'chi123',
+      })
       .end((err, res) => {
         authToken = res.body.token;
-        done();
-      });
-  });
-  it('/api/v1/car should respond with status code 201 and create a post', (done) => {
-    chai.request(app)
-      .post(`${API_PREFIX}/car`)
-      .set('Accept', 'application/json')
-      .send(details)
-      .end((err, res) => {
-        if (err) return done(err);
-        expect(res.status).to.equal(201);
-        expect(res.body.message).to.eql('Car Posted Successfully');
+        console.log(res.body);
         done();
       });
   });
 
-  it('/api/v1/car/:id should respond with status code 200 and get a single car', (done) => {
-    const id = 100;
+  it('it should get all cars whether sold or unsold', (done) => {
+    chai.request(app)
+      .get('/api/v1/car')
+      .send(validAd)
+      .end((err, res) => {
+        expect(res).to.have.status(200);
+        res.body.should.have.property('message');
+        done();
+      });
+  });
+
+  it('it should get a single car', (done) => {
+    const id = 3;
     chai.request(app)
       .get(`${API_PREFIX}/car/${id}`)
-      .set('Accept', 'application/json')
+      .set('x-access-token', `Bearer ${authToken}`)
       .end((err, res) => {
         if (err) return done(err);
         expect(res.status).to.equal(200);
-        expect(res.body.message).to.eql('Car Successfully Retrieved');
+        expect(res.body.message).to.eql('Car retrieved successfully');
         done();
       });
   });
 
-  it('/api/v1/car should respond with status code 200', (done) => {
-    const id = 100;
+  it('/api/v1/car should Delete Car', (done) => {
+    console.log('ghgyhgh', authToken);
+    const id = 1;
     chai.request(app)
       .delete(`${API_PREFIX}/car/${id}`)
-      .set('x-access-token', authToken)
+      .set('x-access-token', `Bearer ${authToken}`)
       .send(details)
       .end((err, res) => {
         expect(res.status).to.eql(200);
-        expect(res.body.message).to.eql('Car has been deleted successfully');
+        expect(res.body.message).to.eql('Car deleted successfully');
         done();
       });
   });
 
-
-  it('/api/v1/order/:id/price should respond with status code 404 and and show order not found', (done) => {
-    const id = 201;
+  it('/api/v1/car?body_type=Sedan should respond with status code 200', (done) => {
     chai.request(app)
-      .patch(`${API_PREFIX}/order/${id}/price`)
-      .send({
-        new_price_offered: 50000000,
-      })
+      .get(`${API_PREFIX}/car?body_type=Sedan`)
       .set('Accept', 'application/json')
       .end((err, res) => {
         if (err) return done(err);
-        expect(res.status).to.equal(404);
+        expect(res.status).to.eql(200);
+        expect(res.body.message).to.eql('Cars retrieved successfully');
         done();
       });
   });
-
-  it('/api/v1/car/body_type/:body_type should respond with status code 200 and get cars with specific body type', (done) => {
+  it('/api/v1/car?status=available&manufacturer=Honda should respond with status code 200', (done) => {
     chai.request(app)
-      .get(`${API_PREFIX}/car/body_type/:body_type`)
-      .set('Accept', 'application/json')
-      .end((err, res) => {
-        if (err) return done(err);
-        expect(res.status).to.eql(404);
-        expect(res.body.message).to.eql('Car not Found');
-        done();
-      });
-  });
-
-  it('/api/v1/car/status/available/New should respond with status code 200', (done) => {
-    chai.request(app)
-      .get(`${API_PREFIX}/car/status/available/New`)
+      .get(`${API_PREFIX}/car?status=available&manufacturer=Honda`)
       .set('Accept', 'application/json')
       .end((err, res) => {
         if (err) return done(err);
@@ -120,9 +110,21 @@ describe('Create a Post', () => {
       });
   });
 
-  it('/api/v1/car/status/available/Used should respond with status code 200', (done) => {
+  it('/api/v1/car?status=available should respond with status code 200', (done) => {
     chai.request(app)
-      .get(`${API_PREFIX}/car/status/available/Used`)
+      .get(`${API_PREFIX}/car?status=available`)
+      .set('Accept', 'application/json')
+      .end((err, res) => {
+        if (err) return done(err);
+        expect(res.status).to.eql(200);
+        expect(res.body.message).to.eql('Cars retrieved successfully');
+        done();
+      });
+  });
+
+  it('/api/v1/car?status=sold should respond with status code 200', (done) => {
+    chai.request(app)
+      .get(`${API_PREFIX}/car?status=sold`)
       .set('Accept', 'application/json')
       .end((err, res) => {
         if (err) return done(err);

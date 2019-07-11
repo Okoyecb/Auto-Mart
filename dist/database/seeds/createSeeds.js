@@ -1,12 +1,20 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports["default"] = void 0;
-var _default = {
-  userTable: " CREATE TABLE IF NOT EXISTS users(\n      id SERIAL PRIMARY KEY,\n      first_name VARCHAR NOT NULL,\n      last_name VARCHAR UNIQUE NOT NULL,\n      email VARCHAR NOT NULL,\n      password VARCHAR NOT NULL,\n      address VARCHAR NOT NULL,\n      token VARCHAR NOT NULL,\n      is_admin BOOLEAN NOT NULL\n    )",
-  carTable: "CREATE TABLE IF NOT EXISTS car(\n      id SERIAL PRIMARY KEY,\n      owner VARCHAR NOT NULL,\n      created_on TIMESTAMP DEFAULT CURRENT_TIMESTAMP,\n      state VARCHAR NOT NULL,\n      status VARCHAR NOT NULL,\n      price NUMERIC NOT NULL,\n      manufacturer VARCHAR NOT NULL,\n      model VARCHAR NOT NULL,\n      body_type VARCHAR NOT NULL\n    )",
-  orderTable: "CREATE TABLE IF NOT EXISTS orders(\n      id SERIAL PRIMARY KEY,\n      buyer VARCHAR NOT NULL,\n      car_id INTEGER REFERENCES car (id),\n      created_on TIMESTAMP DEFAULT CURRENT_TIMESTAMP,\n      status VARCHAR NOT NULL,\n      price_offered NUMERIC NOT NULL\n    )"
+
+var _bcrypt = _interopRequireDefault(require("bcrypt"));
+
+var _moment = _interopRequireDefault(require("moment"));
+
+var seedTable = {
+  userTable: "INSERT INTO users(first_name, last_name, email, password, address, token)\n  VALUES ('James', 'Okoye', 'jamiecb@gmail.com','".concat(_bcrypt["default"].hashSync('ch2123', 10), "', 'No 80 Kolawole street', ''),\n  ('Chidi', 'Okoye', 'Okoyecb@gmail.com','").concat(_bcrypt["default"].hashSync('chi123', 10), "', 'No 30 Kolawole street', ''),\n  ('Rita', 'Okoye', 'Rita22@gmail.com','").concat(_bcrypt["default"].hashSync('chiii123', 10), "', 'No 70 Ishola street', ''),\n  ('Theresa', 'Okoye', 'ttre@gmail.com','").concat(_bcrypt["default"].hashSync('teresa21', 10), "', 'Bankole Avenue Osapa London', '')\n   "),
+  carTable: "INSERT INTO car(owner, created_on, state, status, price, manufacturer, model, image, body_type)\n  VALUES ('1', to_date('".concat((0, _moment["default"])('2019-11-11').format('YYYY-MM-DD'), "', 'YYYY MM DD'), 'New', 'available', '12200000', 'BMW', 'X6', '', 'SUV'),\n  ('2', to_date('").concat((0, _moment["default"])('2019-11-11').format('YYYY-MM-DD'), "', 'YYYY MM DD'), 'Used', 'available', '23200000', 'Toyota', 'Corolla', '', 'Sedan'),\n  ('3', to_date('").concat((0, _moment["default"])('2019-11-11').format('YYYY-MM-DD'), "', 'YYYY MM DD'), 'New', 'sold', '2200000', 'Honda', 'Accord', '', 'Sedan'),\n  ('4', to_date('").concat((0, _moment["default"])('2019-11-11').format('YYYY-MM-DD'), "', 'YYYY MM DD'), 'New', 'available', '4200000', 'Volks', 'Passat', '', 'FWD')\n  "),
+  orderTable: "INSERT INTO orders(buyer, car_id, created_on, status, price_offered, old_price_offered, new_price_offered)\n  VALUES ('3', '1', to_date('".concat((0, _moment["default"])('2019-11-11').format('YYYY-MM-DD'), "', 'YYYY MM DD'), 'Pending', '1000000',  NULL, NULL),\n  ('2', '2', to_date('").concat((0, _moment["default"])('2019-11-11').format('YYYY-MM-DD'), "', 'YYYY MM DD'), 'Pending', '3500000', NULL, NULL),\n  ('1', '3', to_date('").concat((0, _moment["default"])('2019-11-11').format('YYYY-MM-DD'), "', 'YYYY MM DD'), 'Sold', '1500000',  NULL, NULL)\n  ")
 };
+var _default = seedTable;
 exports["default"] = _default;
