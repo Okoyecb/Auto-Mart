@@ -50,7 +50,7 @@
     "build-babel": "babel server --out-dir dist --copy-files",
     "watch": "nodemon --exec babel-node --presets @babel/preset-env ./server/app.js",
     "coveralls": "nyc npm test && nyc report --reporter=text-lcov | coveralls",
-    "test": "nyc mocha --exit ./server/test/*.js --require @babel/register",
+    "test": "nyc mocha --timeout 10000 --exit ./server/test/*.js --require @babel/register",
     "rt": "nodemon --exec babel-node ./server/database/migrations/migrations.js"
   },
   "repository": {
