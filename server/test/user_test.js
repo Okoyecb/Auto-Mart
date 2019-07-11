@@ -35,8 +35,8 @@ describe('Create New user', () => {
     chai.request(app)
       .post('/api/v1/auth/signin')
       .send({
-        email: 'jos824@gmail.com',
-        password: 'passwordy',
+        email: 'Okoyecb@gmail.com',
+        password: 'chi123',
       })
       .end((err, res) => {
         if (err) return done(err);
