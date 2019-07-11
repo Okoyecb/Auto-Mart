@@ -18,5 +18,7 @@ services:
 
 before_script:
   - psql -c "CREATE DATABASE testing_db;" -U postgres  
+  - npx babel-node server/database/migrations/migrations.js
+  - npx babel-node server/database/seeds/seeds.js
 
 
